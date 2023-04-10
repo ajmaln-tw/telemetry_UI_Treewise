@@ -24,7 +24,7 @@ export const STORAGE_KEYS = {
 export const PROJECT_PROPS = {
   BRAND: {
     LOGO: "",
-    NAME: "KSWMP-MIS - Trois"
+    NAME: ""
   }
 };
 
