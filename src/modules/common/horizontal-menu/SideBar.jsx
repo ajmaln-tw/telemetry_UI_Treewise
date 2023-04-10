@@ -38,7 +38,7 @@ const SideBar = () => {
 
     return (
 
-        <List sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", backgroundColor: "secondary.main", fontSize: "14px", minWidth: "270px", py: 0 }}>
+        <List sx={{ display: "flex", flexDirection: "column", justifyContent: "space-evenly", backgroundColor: "secondary.main", fontSize: "14px", minWidth: "270px", py: 0 }}>
             <List sx={{ pl: 4, pr: 2, pt: 6, height: "calc(100vh - 240px) !important", overflowX: "hidden", overflowY: "auto" }}>
                 <List sx={{ px: 0.5, py: 0 }}>
                     <ListItemButton sx={{ ...active, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../")}>
