@@ -2,9 +2,9 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Chart as ChartJS, BarElement, Title, Tooltip } from "chart.js/auto";
-import { DefaultComponents } from "common/components/material/Components";
 import { barConfig } from "./config";
 import _ from "lodash";
+import { DefaultComponents } from "../../material/Components";
 
 const { Paper, Typography } = DefaultComponents;
 

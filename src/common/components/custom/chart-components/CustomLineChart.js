@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import _ from "lodash";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, Title, Tooltip } from "chart.js/auto";
-import { DefaultComponents } from "common/components/material/Components";
 import { getGradient, lineConfig } from "./config";
-import MUISelect from "common/components/custom/CustomMUISelect";
+import MUISelect from "../../custom/CustomMUISelect";
+import { DefaultComponents } from "../../material/Components";
 
 const { Paper, Grid, Typography } = DefaultComponents;
 
