@@ -1,13 +1,13 @@
 import { Form, withFormik } from "formik";
 import React, { useEffect } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import { fetchUserById } from "../actions";
 import { getUserDetails } from "../selectors";
 
 import { actions as sliceActions } from "../slice";
-import { STATE_REDUCER_KEY } from "../constants";
+// import { STATE_REDUCER_KEY } from "../constants";
 import { Components, FormController } from "../../../common/components";
 import LoadingCustomOverlay from "../../common/components/LoadingOverlay";
 const { Card, CardActions, CardContent, CardHeader, Divider, Grid, Typography, Button } = Components;
@@ -17,7 +17,6 @@ const CreateUser = (props) => {
     const dispatch = useDispatch();
     const { id = 0 } = useParams();
     const { setFieldValue, handleSubmit } = props;
-    const requestInProgress = useSelector(state => state[STATE_REDUCER_KEY]).lookUpCategoryTypeDetails.requestInProgress;
 
     useEffect(() => {
         if (id) {
@@ -28,7 +27,7 @@ const CreateUser = (props) => {
     }, []);
     return (
         <Card sx={{ m: 2, overflow: "visible" }} >
-            <LoadingCustomOverlay active={requestInProgress}>
+            <LoadingCustomOverlay active={true}>
                 <Form onSubmit={handleSubmit}>
                     <CardHeader title={"User Details"} component={Typography} />
                     <Divider />

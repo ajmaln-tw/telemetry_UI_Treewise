@@ -1,10 +1,12 @@
 import App from "../App";
 import { Icons, RootBoundary } from "../common/components";
 import AdminHome from "./admin/Home";
+import Dashboard from "./dashboard/components/Dashboard";
 import { PrivateRoute } from "./common/protected-route/protectedRoute";
 
 import { routes as adminRoutes } from "../modules/admin/routes";
 import { routes as userManagement } from "../modules/user-management/routes";
+
 const { Home } = Icons;
 const routes =
     [
@@ -26,9 +28,21 @@ const routes =
                         </PrivateRoute>,
                     children: adminRoutes || [],
                     errorElement: <RootBoundary />
+                },
+                {
+                    path: "Dashboard",
+                    element:
+                        <PrivateRoute>
+                            <Dashboard />
+                        </PrivateRoute>,
+                    errorElement: <RootBoundary />
                 }
 
             ]
+        },
+        {
+            title: "user_management",
+            children: userManagement || []
         },
         {
             title: "user_management",

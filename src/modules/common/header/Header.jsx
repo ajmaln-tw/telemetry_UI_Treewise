@@ -19,7 +19,7 @@ const Header = () => {
                 }}
                 variant="contained" component="div"
             >
-                <Box sx={{ minWidth: "268px", }}>
+                <Box sx={{ minWidth: "268px" }}>
                     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", m: 1 }}>
                         <Box sx={{ m: 1 }}>
                             <img width={50} height={50} src={companyLogo} alt="logo" />
@@ -30,9 +30,9 @@ const Header = () => {
                 <Box
                     display="flex"
                     backgroundColor={"#ffff"}
-                    p={0.2}
+                    p={0.6}
                     ml={1}
-                    borderColor={"primary.main"}
+                    borderColor={"red.main"}
                     borderRadius={5}
                 >
                     <IconButton type="button">
