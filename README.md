@@ -4,6 +4,10 @@
 - [x] npm | yarn
 
 #### Initial setup
+- npm start
+
+#### Clear cache and lib 
+- npm clean
 
 
 ## Naming Conventions
