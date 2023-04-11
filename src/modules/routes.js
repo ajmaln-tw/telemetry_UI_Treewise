@@ -36,7 +36,32 @@ const routes =
                             <Dashboard />
                         </PrivateRoute>,
                     errorElement: <RootBoundary />
+                },
+                {
+                    path: "analytics",
+                    element:
+                        <PrivateRoute>
+                            <Dashboard />
+                        </PrivateRoute>,
+                    errorElement: <RootBoundary />
+                },
+                {
+                    path: "notifications",
+                    element:
+                        <PrivateRoute>
+                            <Dashboard />
+                        </PrivateRoute>,
+                    errorElement: <RootBoundary />
+                },
+                {
+                    path: "profile",
+                    element:
+                        <PrivateRoute>
+                            <Dashboard />
+                        </PrivateRoute>,
+                    errorElement: <RootBoundary />
                 }
+
 
             ]
         },
