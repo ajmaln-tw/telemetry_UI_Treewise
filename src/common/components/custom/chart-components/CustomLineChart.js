@@ -5,8 +5,9 @@ import { Chart as ChartJS, BarElement, Title, Tooltip } from "chart.js/auto";
 import { getGradient, lineConfig } from "./config";
 import MUISelect from "../../custom/CustomMUISelect";
 import { DefaultComponents } from "../../material/Components";
+import CustomHeader from "../../../../modules/common/components/CustomHeader";
 
-const { Grid, Typography } = DefaultComponents;
+const { Grid } = DefaultComponents;
 
 ChartJS.register(
     BarElement,
@@ -79,7 +80,7 @@ const CustomLineChart = (props) => {
         <Grid sx={{ p: 2, pb: 0, m: 1 }}>
             {filter && <Grid container sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Grid item xs={4}>
-                    <Typography variant="h5">{title}</Typography>
+                    <CustomHeader content={title} />
                 </Grid>
                 <Grid item xs={4}>
                     <MUISelect value={select} dataList={selectList} onItemSelect={selectedItem} />

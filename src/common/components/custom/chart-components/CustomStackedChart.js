@@ -5,8 +5,9 @@ import { Chart as ChartJS, BarElement, Title, Tooltip } from "chart.js/auto";
 import { barConfig } from "./config";
 import _ from "lodash";
 import { DefaultComponents } from "../../material/Components";
+import CustomHeader from "../../../../modules/common/components/CustomHeader";
 
-const { Paper, Typography } = DefaultComponents;
+const { Paper } = DefaultComponents;
 
 ChartJS.register(
     BarElement,
@@ -40,7 +41,7 @@ const StackedChart = (props) => {
 
     return (
         <Paper sx={{ p: "20px", backgroundColor: "#0000", m: 2 }}>
-            <Typography variant="h6">{title}</Typography>
+            <CustomHeader content={title} />
             <div style={chartStyle}>
                 <Bar options={OPTIONS} data={dataList} style={{ width: "100%" }} />
             </div >

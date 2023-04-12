@@ -4,10 +4,8 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Chart as ChartJS, BarElement, Title, Tooltip } from "chart.js/auto";
 import { barConfig } from "./config";
 import _ from "lodash";
-import { DefaultComponents } from "../../material/Components";
 import CustomHeader from "../../../../modules/common/components/CustomHeader";
 
-const { Paper, Typography } = DefaultComponents;
 
 ChartJS.register(
     BarElement,

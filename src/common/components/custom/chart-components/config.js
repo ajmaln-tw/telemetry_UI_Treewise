@@ -1,13 +1,13 @@
 const commonConfig = {
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     plugins: {
         legend: {
             position: "bottom",
             display: true,
             labels: {
                 font: {
-                    size: 14
+                    size: 12
                 }
             }
         },
@@ -17,10 +17,10 @@ const commonConfig = {
         },
         tooltip: {
             bodyFont: {
-                size: 16
+                size: 11
             },
             titleFont: {
-                size: 18
+                size: 12
             }
         },
         datalabels: {

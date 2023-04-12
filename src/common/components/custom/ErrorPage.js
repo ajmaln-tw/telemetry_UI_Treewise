@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const DATA = {
-    STATUS: "something_went_wrong",
+    STATUS: "Something Went Wrong",
     TITLE: "Oops!"
 };
 
@@ -28,24 +28,23 @@ const ErrorPage = (props) => {
             </Typography>
 
             {((message || statusText)) && < Typography sx={{
-                letterSpacing: "0.2rem", fontSize: "0.8rem", color: "grey", textAlign: "center"
+                letterSpacing: "0.2rem", fontSize: "0.8rem", color: "red.light", textAlign: "center"
             }}>
                 {message || statusText}
             </Typography>}
             {status && < Typography sx={{
-                letterSpacing: "0.2rem", fontSize: "0.8rem", color: "grey", textAlign: "center"
+                letterSpacing: "0.2rem", fontSize: "0.8rem", color: "red.light", textAlign: "center"
             }}>
                 {message || statusText}
             </Typography>}
             <Grid item xs={12} sx={{ bottom: "100px", position: "absolute" }}>
-                <Grid sx={{ textAlign: "center" }}>
+                <Grid sx={{ textAlign: "center", display: "flex", alignItems: "center" }}>
                     <Typography sx={{
                         fontSize: "1.6rem", letterSpacing: "0.4rem"
-                    }}>Lets Go
-                        <IconButton aria-label="home" size="large" onClick={() => navigate("../")} color="primary">
+                    }}>Take Me
+                        <IconButton aria-label="home" size="large" onClick={() => navigate("../")} color="primary.main">
                             <HomeOutlined fontSize="inherit" />
                         </IconButton>
-                        Try Again
                     </Typography>
                 </Grid>
             </Grid>

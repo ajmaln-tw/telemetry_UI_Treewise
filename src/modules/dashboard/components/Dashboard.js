@@ -9,7 +9,7 @@ import { vesselsInfo } from "../constants";
 import CustomMap from "../../../common/components/map/CustomMap";
 
 const chartStyle = {
-    padding: "10px", margin: 3, overflow: "hidden", maxHeight: 700, minHeight: 440, minWidth: "300px"
+    padding: "10px", margin: 3, overflow: "hidden", maxHeight: 700, minHeight: 300, minWidth: "300px"
 };
 const lineChartProps = {
     position: "bottom", axis: "y", filter: true, gradient: true, fillColor: "#57C2E9", legend: false, dataLabels: false
@@ -77,7 +77,7 @@ const Dashboard = () => {
                 <Grid item xs={12} sm={12} md={5} lg={4} xl={3} sx={{ display: "flex", justifyContent: "center", minWidth: "350px", py: 1, px: 0.5 }}>
                     <Box>
                         <CustomHeader content="Vessels" />
-                        <CustomCard additionalStyle={{ overflowY: "scroll", maxHeight: "55vh", width: "300px" }}>
+                        <CustomCard className="mainTreemetry" additionalStyle={{ overflowY: "scroll", maxHeight: "55vh", width: "300px" }}>
                             <VesselsInfo data={vesselsInfo} />
                         </CustomCard>
                     </Box>
@@ -90,9 +90,7 @@ const Dashboard = () => {
                             </CustomCard>
                         </Grid>
                         <Grid item sx={12} sm={12} md={6} lg={6} xl={6}>
-                            <CustomCard additionalStyle={{ height: "55vh" }}>
-                                <CustomCharts type="Bar" gradient={true} dataList={data} sx={chartStyle2} legend={false} axis="y" title="Alert Frequency" />
-                            </CustomCard>
+                            <CustomCharts type="Bar" gradient={true} dataList={data} sx={chartStyle2} legend={false} axis="y" title="Alert Frequency" />
                         </Grid>
                     </Grid>
                 </Grid>
