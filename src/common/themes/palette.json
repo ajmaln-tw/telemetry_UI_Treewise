@@ -37,7 +37,7 @@
       "green": {
         "main": "#84BD0B",
         "dark": "#5d8508",
-        "light": "##9ee20d "
+        "light": "#9ee20d "
       },
       "red": {
         "main": "#D74654",
@@ -51,6 +51,7 @@
         "light": "#9c9c9c"
       },
       "yellow": {
+        "light": "#CDFD02",
         "dark": "#E4B10F"
       },
       "blue": {

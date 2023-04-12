@@ -37,7 +37,7 @@ let data = {
             backgroundColor: ["#DC796E", "#E4B10F", "#96AD13", "#256AF5", "#CB3EFC"]
         }
     ]
-}
+};
 
 const Dashboard = () => {
     return (
@@ -83,12 +83,6 @@ const Dashboard = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12} sm={12} md={7} lg={8} xl={9} sx={{ minWidth: "350px", display: "flex", justifyContent: "center", py: 1, px: 0.5 }}>
-                    {/* <Box sx={{ width: "99%" }}>
-                        <CustomHeader content="Fuel Consumption" />
-                        <CustomCard additionalStyle={{ width: "100%" }}>
-                            <CustomCharts type="Line" sx={chartStyle} {...lineChartProps} />
-                        </CustomCard>
-                    </Box> */}
                     <Grid container rowSpacing={1}>
                         <Grid item sx={12} sm={12} md={6} lg={6} xl={6}>
                             <CustomCard additionalStyle={{ p: 0, height: "55vh" }}>
