@@ -8,7 +8,7 @@ const commonConfig = {
             display: true,
             labels: {
                 font: {
-                    size: 14
+                    size: 12
                 }
             }
         },
@@ -17,7 +17,7 @@ const commonConfig = {
         },
         tooltip: {
             bodyFont: {
-                size: 16
+                size: 10
             },
             titleFont: {
                 size: 18

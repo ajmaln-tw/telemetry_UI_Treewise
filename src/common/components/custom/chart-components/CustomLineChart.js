@@ -6,7 +6,7 @@ import { getGradient, lineConfig } from "./config";
 import MUISelect from "../../custom/CustomMUISelect";
 import { DefaultComponents } from "../../material/Components";
 
-const { Paper, Grid, Typography } = DefaultComponents;
+const { Grid, Typography } = DefaultComponents;
 
 ChartJS.register(
     BarElement,
@@ -76,7 +76,7 @@ const CustomLineChart = (props) => {
     };
 
     return (
-        <Paper sx={{ p: 2, pb: 0, backgroundColor: "#0000", m: 1, border: "#86938E 1px solid", borderRadius: "30px" }}>
+        <Grid sx={{ p: 2, pb: 0, m: 1 }}>
             {filter && <Grid container sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Grid item xs={4}>
                     <Typography variant="h5">{title}</Typography>
@@ -88,7 +88,7 @@ const CustomLineChart = (props) => {
             <div style={chartStyle}>
                 <Line options={OPTIONS} data={DATA} />
             </div >
-        </Paper>
+        </Grid>
     );
 };
 

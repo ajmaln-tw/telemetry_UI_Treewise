@@ -71,6 +71,7 @@ export const barConfig = {
 export const lineConfig = {
     ...commonConfig,
     indexAxis: "x",
+    bezierCurve: false,
     datasets: {
         line: {
             fill: true,

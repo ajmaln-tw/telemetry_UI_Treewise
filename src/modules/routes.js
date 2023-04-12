@@ -1,11 +1,16 @@
+import React from "react";
 import App from "../App";
 import { Icons, RootBoundary } from "../common/components";
 import AdminHome from "./admin/Home";
-import Dashboard from "./dashboard/components/Dashboard";
+
 import { PrivateRoute } from "./common/protected-route/protectedRoute";
+
+const Dashboard = React.lazy(() => import("./dashboard/components/Dashboard"));
+const Analytics = React.lazy(() => import("./analytics/components/Analytics"));
 
 import { routes as adminRoutes } from "../modules/admin/routes";
 import { routes as userManagement } from "../modules/user-management/routes";
+
 
 const { Home } = Icons;
 const routes =
@@ -41,7 +46,7 @@ const routes =
                     path: "analytics",
                     element:
                         <PrivateRoute>
-                            <Dashboard />
+                            <Analytics />
                         </PrivateRoute>,
                     errorElement: <RootBoundary />
                 },
