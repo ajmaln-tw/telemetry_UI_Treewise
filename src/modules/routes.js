@@ -7,6 +7,7 @@ import { PrivateRoute } from "./common/protected-route/protectedRoute";
 
 const Dashboard = React.lazy(() => import("./dashboard/components/Dashboard"));
 const Analytics = React.lazy(() => import("./analytics/components/Analytics"));
+const Profile = React.lazy(() => import("./profile/components/EditProfile"));
 
 import { routes as adminRoutes } from "../modules/admin/routes";
 import { routes as userManagement } from "../modules/user-management/routes";
@@ -62,7 +63,7 @@ const routes =
                     path: "profile",
                     element:
                         <PrivateRoute>
-                            <Dashboard />
+                            <Profile />
                         </PrivateRoute>,
                     errorElement: <RootBoundary />
                 }

@@ -4,8 +4,8 @@ import React from "react";
 const VesselsInfo = ({ data = [] }) => {
     return (
         <Grid sx={{ display: "flex", flexDirection: "column" }}>
-            {data.map((ele) =>
-                <Box key={`${ele.title}.${ele.dateModified}`}>
+            {data.map((ele, i) =>
+                <Box key={`${i}${ele.title}.${ele.dateModified}`}>
                     <Grid sx={{ display: "flex", justifyContent: "space-between", px: 0.8, py: 0.5 }}>
                         <Box item xs={6} sx={{ mx: 0.5, my: 1.2 }}>
                             <Typography sx={{ fontSize: "12px", fontWeight: 700 }}>{ele.title} </Typography>

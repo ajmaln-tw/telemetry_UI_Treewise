@@ -1,5 +1,6 @@
 import { Files, Checkbox, CustomInput, CustomSelect, DatePicker, Input, RadioButtons, Textarea, FileUploader, ToggleButton } from "./form-controller-components";
 import FileUploadCommon from "./form-controller-components/FileUploadCommon";
+import Input2 from "./form-controller-components/input2";
 
 const FormController = (props) => {
   const { control, ...rest } = props;
@@ -7,6 +8,8 @@ const FormController = (props) => {
   switch (control) {
     case "input":
       return <Input {...rest} />;
+    case "input2":
+      return <Input2 {...rest} />;
     case "textarea":
       return <Textarea {...rest} />;
     case "select":
