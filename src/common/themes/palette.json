@@ -1,7 +1,9 @@
   {
     "palette": {
       "primary": {
-        "light": "#E0F8E2",
+        "100": "#f1f9fe",
+        "200": "#cbe9fd",
+        "light": "#33aaf8",
         "main": "#0784D6",
         "dark": "#0890e9"
       },

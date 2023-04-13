@@ -105,7 +105,11 @@ export default function ImageUploaderPopUp({ id, name = "Name", description = "S
 
     return (
         <Grid>
-            <Button onClick={handleClickOpen}>
+            <Button onClick={handleClickOpen} sx={{
+                backgroundColor: "primary.100", "&:hover": {
+                    backgroundColor: "primary.200"
+                }
+            }}>
                 <CloudUpload /> &nbsp; <Typography variant="p" sx={{ fontSize: 10 }}>{popupName}</Typography>
             </Button>
             <Dialog maxWidth={30} open={open} onClose={handleClose} sx={{ display: "flex", justifyContent: "center" }}>

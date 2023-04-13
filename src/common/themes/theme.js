@@ -16,6 +16,7 @@ import inputBase from "./inputBase.json";
 import listItemButton from "./listItemButton.json";
 import paper from "./paper.json";
 import cardHeader from "./cardHeader.json";
+import CustomSwitch from "./CustomSwitch.json";
 
 const overrides = {
   components: {
@@ -30,7 +31,8 @@ const overrides = {
     ...inputBase,
     ...listItemButton,
     ...paper,
-    ...cardHeader
+    ...cardHeader,
+    ...CustomSwitch
   }
 };
 const customThemes = {

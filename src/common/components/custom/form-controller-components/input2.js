@@ -1,20 +1,18 @@
 import { Grid, IconButton, InputAdornment, InputLabel, TextField, Typography } from "@mui/material";
 import { ErrorMessage, Field } from "formik";
 
-
 import { FORM_CONTROL_STYLE_ALT } from "./style";
-import TextError from "./TextError";
+import TextErrorType2 from "./TextErrorType2";
 
 function Input2(props) {
     const { label, name, icon, onClick, sx = {}, errorName = "", statusError = false, onChangeText, onChangeFromController, digitsOnly = false, isMandatory = false, upperCase = false, ...rest } = props;
-
     return (
-        <Grid sx={{ ...FORM_CONTROL_STYLE_ALT, ...sx }}>
-            <Grid>
-                <InputLabel htmlFor={name}>{label} {isMandatory && <span style={{ color: "red", fontSize: "14px" }}> *</span>}</InputLabel>
+        <Grid container sx={{ ...FORM_CONTROL_STYLE_ALT, ...sx }}>
+            <Grid item sx={12} sm={12} md={6}>
+                <InputLabel sx={{ fontWeight: 700, }} htmlFor={name}>{label} {isMandatory && <span style={{ color: "red", fontSize: "14px" }}> *</span>}</InputLabel>
             </Grid>
-            <Grid>
-                <Field name={name} >
+            <Grid item sx={12} sm={12} md={6}>
+                <Field name={name} sx={{ height: "20px" }}>
                     {({ form, field }) => {
                         const { handleChange } = form;
                         const customHandleChange = (e) => {
@@ -53,12 +51,14 @@ function Input2(props) {
                                         )
                                     }}
                                 />
-                                {statusError ? <Typography variant="p" sx={{ color: "red", mt: 1, lineHeight: 0 }}>{errorName}</Typography> :
-                                    <ErrorMessage component={TextError} name={name} />}
+                                {statusError ? <Typography variant="p" sx={{ color: "error.main", lineHeight: 0 }}>{errorName}</Typography> :
+                                    <ErrorMessage component={TextErrorType2} name={name} />}
+
                             </>
                         );
                     }}
                 </Field>
+
             </Grid>
         </Grid>
     );

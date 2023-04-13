@@ -1,0 +1,33 @@
+import React from "react";
+import { PROFILE_PATH } from "../constants";
+import ChangePassword from "./ChangePassword";
+// import EditProfile from "./EditProfile";
+import Settings from "./Settings";
+import Subcriptions from "./Subcriptions";
+
+const MyProfileWrapper = (props) => {
+    const { type = "" } = props;
+    if (type === PROFILE_PATH.EDIT_PROFILE) {
+        return (
+            // <EditProfile />
+            <Subcriptions />
+        );
+    }
+    if (type === PROFILE_PATH.CHANGE_PASSWORD) {
+        return (
+            <ChangePassword />
+        );
+    }
+    if (type === PROFILE_PATH.SETTINGS) {
+        return (
+            <Settings />
+        );
+    }
+    if (type === PROFILE_PATH.SUBSCRIPTION) {
+        return (
+            <Subcriptions />
+        );
+    }
+};
+
+export default MyProfileWrapper;

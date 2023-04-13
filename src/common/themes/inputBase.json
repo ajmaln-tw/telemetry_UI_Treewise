@@ -6,7 +6,7 @@
                 "fontSize": "12px",
                 "borderRadius": "5px",
                 "height": "25px",
-                "fontWeight": 700,
+                "fontWeight": 600,
                 "color": "#000",
                 "backgroundColor": "#f8f8f8",
                 "fieldset": {

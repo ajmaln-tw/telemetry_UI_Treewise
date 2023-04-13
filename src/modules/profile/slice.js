@@ -14,6 +14,10 @@ const initialState = {
             designation: "",
             alternativeEmail: ""
 
+        },
+        cropData: null,
+        modal: {
+            openProfileModal: false,
         }
     }
 
@@ -24,7 +28,13 @@ const slice = createSlice({
     initialState,
     name: STATE_REDUCER_KEY,
     reducers: {
-        clearAll: () => initialState
+        clearAll: () => initialState,
+        setOpenProfileModal: (state, action) => {
+            state.modal.openProfileModal = action.payload;
+        },
+        setCropData: (state, action) => {
+            state.cropData = action.payload;
+        },
 
     },
     extraReducers: (builder) => {
