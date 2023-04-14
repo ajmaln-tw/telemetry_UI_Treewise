@@ -17,6 +17,7 @@ import listItemButton from "./listItemButton.json";
 import paper from "./paper.json";
 import cardHeader from "./cardHeader.json";
 import CustomSwitch from "./CustomSwitch.json";
+import MuiCSSBaseLine from "./muiCssBaseline.json";
 
 const overrides = {
   components: {
@@ -32,7 +33,8 @@ const overrides = {
     ...listItemButton,
     ...paper,
     ...cardHeader,
-    ...CustomSwitch
+    ...CustomSwitch,
+    ...MuiCSSBaseLine
   }
 };
 const customThemes = {

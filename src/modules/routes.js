@@ -4,13 +4,13 @@ import { Icons, RootBoundary } from "../common/components";
 import AdminHome from "./admin/Home";
 
 import { PrivateRoute } from "./common/protected-route/protectedRoute";
+import { routes as adminRoutes } from "../modules/admin/routes";
+import { routes as userManagement } from "../modules/user-management/routes";
 
 const Dashboard = React.lazy(() => import("./dashboard/components/Dashboard"));
 const Analytics = React.lazy(() => import("./analytics/components/Analytics"));
 const Profile = React.lazy(() => import("./profile/components/MyProfile"));
-
-import { routes as adminRoutes } from "../modules/admin/routes";
-import { routes as userManagement } from "../modules/user-management/routes";
+const NotificationTable = React.lazy(() => import("./notifications/components/NotificationTable"));
 
 
 const { Home } = Icons;
@@ -55,7 +55,7 @@ const routes =
                     path: "notifications",
                     element:
                         <PrivateRoute>
-                            <Dashboard />
+                            <NotificationTable />
                         </PrivateRoute>,
                     errorElement: <RootBoundary />
                 },
@@ -70,10 +70,6 @@ const routes =
 
 
             ]
-        },
-        {
-            title: "user_management",
-            children: userManagement || []
         },
         {
             title: "user_management",
