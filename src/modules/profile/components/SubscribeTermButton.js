@@ -9,11 +9,11 @@ const SubscribeTermButton = ({ handleButton1, button1, button2 }) => {
                 sx={{
                     borderRadius: "10 0 0 10",
                     m: "0px",
-                    backgroundColor: button1 ? "primary.light" : "primary.100",
-                    color: button1 ? "white.main" : "primary.light",
+                    backgroundColor: button1 ? "primary.main" : "primary.100",
+                    color: button1 ? "white.main" : "primary.main",
                     "&:hover": {
-                        backgroundColor: button1 ? "primary.main" : ""
-                    },
+                        backgroundColor: button1 ? "primary.dark" : ""
+                    }
                 }}
                 onClick={handleButton1}
             > Monthly</Button>
@@ -22,11 +22,11 @@ const SubscribeTermButton = ({ handleButton1, button1, button2 }) => {
                     borderRadius: "0 10 10 0",
                     P: "0px",
                     m: "0px",
-                    backgroundColor: button2 ? "primary.light" : "primary.100",
-                    color: button2 ? "white.main" : "primary.light",
+                    backgroundColor: button2 ? "primary.main" : "primary.100",
+                    color: button2 ? "white.main" : "primary.main",
                     "&:hover": {
-                        backgroundColor: button2 ? "primary.main" : ""
-                    },
+                        backgroundColor: button2 ? "primary.dark" : ""
+                    }
                 }}
                 onClick={handleButton1}
             > Annually</Button>
@@ -35,4 +35,4 @@ const SubscribeTermButton = ({ handleButton1, button1, button2 }) => {
     );
 };
 
-export default SubscribeTermButton
+export default SubscribeTermButton;

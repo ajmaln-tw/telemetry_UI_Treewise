@@ -1,5 +1,5 @@
 import { Avatar, CardActions, CardContent, Divider, Grid, InputLabel, Typography, useMediaQuery, useTheme } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, withFormik } from "formik";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
@@ -20,6 +20,9 @@ const EditProfile = (props) => {
     const { handleSubmit, profileDetails = {}, cropData, open, setCropData, setOpenProfileModal, errors = {} } = props;
     const theme = useTheme();
     const smScreen = useMediaQuery(theme.breakpoints.down("sm"));
+    useEffect(() => {
+
+    }, []);
 
     return (
         <Grid sx={{ overflow: "visible" }} >
@@ -43,7 +46,7 @@ const EditProfile = (props) => {
                                 {/* Profile Picture Container */}
                                 <Grid container pb={1.5}>
                                     <Grid item xs={12} sm={12} md={6}>
-                                        <InputLabel sx={{ fontWeight: 700, }} htmlFor={name}>{"Profile Picture"} </InputLabel>
+                                        <InputLabel sx={{ fontWeight: 700 }} htmlFor={name}>{"Profile Picture"} </InputLabel>
                                     </Grid>
                                     {profileDetails.profilePicture ?
                                         <Grid item xs={12} sm={12} md={2} sx={{ display: smScreen ? "block" : " flex", justifyContent: "center", alignItems: "center" }}>

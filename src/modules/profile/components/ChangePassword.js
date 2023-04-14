@@ -1,5 +1,5 @@
 import { Badge, CardActions, CardContent, Chip, Divider, Grid, Link, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, withFormik } from "formik";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -13,6 +13,10 @@ import { changePasswordSchema } from "../validate";
 const { Cancel } = Icons;
 const ChangePassword = (props) => {
     const { handleSubmit, errors = {}, twoFactorAuthentication = false } = props;
+
+    useEffect(() => {
+
+    }, []);
 
 
     return (
