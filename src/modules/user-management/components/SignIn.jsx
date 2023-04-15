@@ -86,7 +86,7 @@ function SignIn(props) {
                             <Divider variant="caption" />
                             <Box sx={{ display: "flex", py: { xs: 3, xl: 4.5 }, justifyContent: "center", alignItems: "space-around", boxShadow: 0 }} elevation={0}>
                                 <Typography display="inline" sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "shaded.main" }}>{"Need an Account?"}</Typography>
-                                <Typography display="inline" variant="text" sx={{ fontWeight: 600, fontSize: { lg: "16px", xl: "18px" }, p: 0.5, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
+                                <Typography display="inline" variant="text" sx={{ fontWeight: 600, fontSize: { lg: "16px", xl: "18px" }, pb: 0.5, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
                                     onClick={() => {
                                         navigate("../signup");
                                     }
