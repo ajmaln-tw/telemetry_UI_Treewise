@@ -26,7 +26,7 @@ const CustomSwitch = (props) => {
                                 onChangeFromController && onChangeFromController(!field.value);
                             }
                             }
-                        />
+                        />;
                     }}
                 </Field>
                 <ErrorMessage component={TextError} name={name} />

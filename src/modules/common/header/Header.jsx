@@ -22,7 +22,7 @@ const Header = () => {
                 <Box sx={{ minWidth: "268px" }}>
                     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", m: 1 }}>
                         <Box sx={{ m: 1 }}>
-                            <img width={50} height={50} src={companyLogo} alt="logo" />
+                            <img width={70} height={70} src={companyLogo} alt="logo" />
                         </Box>
                     </Box>
                 </Box>

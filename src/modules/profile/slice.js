@@ -17,7 +17,7 @@ const initialState = {
         },
         cropData: null,
         modal: {
-            openProfileModal: false,
+            openProfileModal: false
         }
     }
 
@@ -34,7 +34,7 @@ const slice = createSlice({
         },
         setCropData: (state, action) => {
             state.cropData = action.payload;
-        },
+        }
 
     },
     extraReducers: (builder) => {

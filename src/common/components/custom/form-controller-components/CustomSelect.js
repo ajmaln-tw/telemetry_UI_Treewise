@@ -16,7 +16,6 @@ function CustomSelect(props) {
       >
         {
           ({ field, form }) => {
-            console.log("form", form)
             return (
               <>
                 <Select
