@@ -74,5 +74,7 @@ export const TABLE_IDS = {
 
 };
 
+export const COMMOM_TABLE_PAGINATION = { pageIndex: 0, count: 500, pageSize: 25 };
+
 export const imageURL = `${process.env.REACT_APP_API_URL}/resource/api/auth/multimedia/download?id=`;
 

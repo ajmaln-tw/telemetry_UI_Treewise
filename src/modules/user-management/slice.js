@@ -18,13 +18,10 @@ const initialState = {
             email: "",
             password: "",
             confirmPassword: "",
-            info: {
-                company_name: "",
-                vessel_name: "",
-                imo_number: "",
-                mobile: "",
-                userType: ""
-            }
+            companyName: "",
+            vesselName: "",
+            mobile: ""
+
         }
     }
 

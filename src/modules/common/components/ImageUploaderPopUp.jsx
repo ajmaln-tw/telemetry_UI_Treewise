@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 import _ from "lodash";
 import { Components, Icons } from "../../../common/components";
 
-export default function ImageUploaderPopUp({ id, name = "Name", description = "Sample", popupName = "Upload", action, open, setOpen, cropData, setCropData }) {
+export default function ImageUploaderPopUp({ title = "Title", id, name = "Name", description = "Sample", popupName = "Upload", action, open, setOpen, cropData, setCropData }) {
     const dispatch = useDispatch();
     const { Grid, Input, InputLabel, Typography, DialogActions, DialogContent, Divider, DialogTitle, IconButton } = Components;
     const { AddAPhoto, Close, CloudUpload, Crop, Image } = Icons;
@@ -31,13 +31,13 @@ export default function ImageUploaderPopUp({ id, name = "Name", description = "S
             const currentFileSize = currentFile.size;
             const sizeInMb = Math.round((currentFileSize / 1000000) * 100) / 100;
             if (currentFileSize > imageMaxSize) {
-                setError("file_size_not_allowed" + sizeInMb);
+                setError("File size not allowed" + sizeInMb);
                 setShowCropper(false);
                 return false;
             }
             if (!acceptedFileTypesArray.includes(currentFileType)) {
                 setShowCropper(false);
-                setError("files_not_allowed");
+                setError("This file Not allowed");
                 return false;
             }
             return true;
@@ -105,11 +105,15 @@ export default function ImageUploaderPopUp({ id, name = "Name", description = "S
 
     return (
         <Grid>
-            <Button onClick={handleClickOpen}>
+            <Button onClick={handleClickOpen} sx={{
+                backgroundColor: "primary.100", "&:hover": {
+                    backgroundColor: "primary.200"
+                }
+            }}>
                 <CloudUpload /> &nbsp; <Typography variant="p" sx={{ fontSize: 10 }}>{popupName}</Typography>
             </Button>
             <Dialog maxWidth={30} open={open} onClose={handleClose} sx={{ display: "flex", justifyContent: "center" }}>
-                <DialogTitle >{"crop_image_title"}</DialogTitle>
+                <DialogTitle >{title}</DialogTitle>
                 <Divider sx={{ width: "90%" }} />
                 <DialogContent sx={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
                     {showCropper ?

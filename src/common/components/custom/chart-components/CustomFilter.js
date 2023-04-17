@@ -1,6 +1,6 @@
 import React from "react";
-import { DefaultComponents } from "common/components/material/Components";
-import { Icons } from "common/components/material/Icons";
+import { DefaultComponents } from "../../material/Components";
+import { Icons } from "../../material/Icons";
 
 const { Accordion, AccordionSummary, AccordionDetails, Typography } = DefaultComponents;
 const { ExpandMore } = Icons;

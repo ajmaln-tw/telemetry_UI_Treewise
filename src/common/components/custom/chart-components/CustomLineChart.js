@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import _ from "lodash";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, Title, Tooltip } from "chart.js/auto";
-import { DefaultComponents } from "common/components/material/Components";
 import { getGradient, lineConfig } from "./config";
-import MUISelect from "common/components/custom/CustomMUISelect";
+import MUISelect from "../../custom/CustomMUISelect";
+import { DefaultComponents } from "../../material/Components";
+import CustomHeader from "../../../../modules/common/components/CustomHeader";
 
-const { Paper, Grid, Typography } = DefaultComponents;
+const { Grid } = DefaultComponents;
 
 ChartJS.register(
     BarElement,
@@ -76,19 +77,19 @@ const CustomLineChart = (props) => {
     };
 
     return (
-        <Paper sx={{ p: 2, pb: 0, backgroundColor: "#0000", m: 1, border: "#86938E 1px solid", borderRadius: "30px" }}>
-            {filter && <Grid container sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Grid item xs={4}>
-                    <Typography variant="h5">{title}</Typography>
+        <Grid sx={{ p: 2, pb: 0, m: 1 }}>
+            {filter && <Grid sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Grid >
+                    <CustomHeader content={title} />
                 </Grid>
-                <Grid item xs={4}>
+                <Grid >
                     <MUISelect value={select} dataList={selectList} onItemSelect={selectedItem} />
                 </Grid>
             </Grid>}
             <div style={chartStyle}>
                 <Line options={OPTIONS} data={DATA} />
             </div >
-        </Paper>
+        </Grid>
     );
 };
 

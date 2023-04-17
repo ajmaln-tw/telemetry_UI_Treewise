@@ -11,10 +11,15 @@ import { actions as sliceActions } from "../slice";
 import { signInSchema as validator } from "../validate";
 // import { getSignIn } from "../selectors";
 import { signIn } from "../actions";
-import { Box, Paper } from "@mui/material";
-import FAQs from "../../common/FAQs/FAQs";
+import { Box, Paper, useMediaQuery, useTheme } from "@mui/material";
+// import FAQs from "../../common/FAQs/FAQs";
 import { createStructuredSelector } from "reselect";
 import { getSignIn } from "../selectors";
+import logo from "../../../assets/images/logo_tele.png";
+// import bg from "../../../assets/images/background.jpg"
+import { images } from "../constants";
+import Carousal from "../../../common/components/carousal/Carousal";
+
 
 // const { Card, CardActions, CardContent, CardHeader, Divider, Grid, Typography } = Components;
 const { Divider, Grid, Typography } = Components;
@@ -25,6 +30,8 @@ function SignIn(props) {
     const { pathname } = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const theme = useTheme();
+    const smScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
     const { handleSubmit } = props;
     // const confirmed = useSelector(state => state[REDUCER_KEY].signUpForm.confirm);
@@ -43,17 +50,16 @@ function SignIn(props) {
     useEffect(() => {
         return () => dispatch(sliceActions.clear());
     }, [pathname]);
-    const faqStyle = { position: "absolute", left: "35px", bottom: "-20px", width: { md: "60%", lg: "55%", xl: "45%" }, height: "13vh", alignItems: "center", justifyContent: "end", display: { xs: "none", md: "flex" }, borderRadius: "20px" };
+    // const faqStyle = { position: "absolute", left: "35px", bottom: "-20px", width: { md: "60%", lg: "55%", xl: "45%" }, height: "13vh", alignItems: "center", justifyContent: "end", display: { xs: "none", md: "flex" }, borderRadius: "20px" };
 
     return (
-        <Grid height="100vh" container sx={{ width: 1, bgcolor: "white.main", p: { xs: 3, md: 5 } }}>
-            <Paper sx={{ display: "flex", justifyContent: { xs: "center", md: "space-around" }, alignItems: "center", flexDirection: { xs: "column", md: "row" }, width: 1, height: "100%", backgroundImage: `url(${Image})`, backgroundSize: "cover", position: "relative" }} elevation={0}>
+        <Grid height="100vh" container sx={{ overflowY: "hidden", width: 1, bgcolor: "white.main", p: 0, display: "flex", alignItems: "center" }}>
+            <Grid item xs={12} sm={12} md={5} lg={5} xl={5} sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: 1, height: "100%" }}>
                 <Box sx={{ mt: 5, right: 0, display: "flex", alignItems: "center", mb: { lg: "130px", xl: "140px", justifyContent: "end" }, width: { xs: "100%", md: "auto" } }}>
                     <Paper item xs={12} md={5} sx={{ bgcolor: "white.main", boxShadow: 0, borderRadius: "20px", mr: { xs: "40px", lg: "95px" }, width: { xs: "100%", md: "420px", lg: "480px", xl: "560px" }, ml: 5 }} elevation={0}>
                         <Grid sx={{ display: "flex", flexDirection: "column", justifyContent: "space-evenly" }}>
                             <Box sx={{ px: { xs: 3, xl: 6 }, py: 4 }}>
-                                <Typography sx={{ fontSize: { xs: "30px", lg: "36px", xl: "40px" }, fontWeight: 600, fontFamily: "Clash Display" }} >{"logo"}</Typography>
-                                <Typography sx={{ fontWeight: 400, pb: { lg: 2, xl: 3 }, color: "shaded.main", fontSize: { lg: "16px", xl: "18px" } }} >{"Email"}</Typography>
+                                <Typography sx={{ fontSize: { xs: "30px", lg: "36px", xl: "40px" }, fontWeight: 600, fontFamily: "Clash Display" }} >  <img src={logo} /></Typography>
                                 <Box >
                                     <Form>
                                         <Grid sx={{ my: 1, py: { md: 1, xl: 1.5 } }}>
@@ -79,7 +85,7 @@ function SignIn(props) {
                             <Divider variant="caption" />
                             <Box sx={{ display: "flex", py: { xs: 3, xl: 4.5 }, justifyContent: "center", alignItems: "space-around", boxShadow: 0 }} elevation={0}>
                                 <Typography display="inline" sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "shaded.main" }}>{"Need an Account?"}</Typography>
-                                <Typography display="inline" variant="text" sx={{ fontWeight: 600, fontSize: { lg: "16px", xl: "18px" }, p: 0.5, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
+                                <Typography display="inline" variant="text" sx={{ fontWeight: 600, fontSize: { lg: "16px", xl: "18px" }, pb: 0.5, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
                                     onClick={() => {
                                         navigate("../signup");
                                     }
@@ -88,8 +94,12 @@ function SignIn(props) {
                         </Grid>
                     </Paper >
                 </Box>
-                <FAQs style={faqStyle} />
-            </Paper >
+
+                {/* <FAQs style={faqStyle} /> */}
+            </Grid >
+            <Grid item xs={12} sm={12} md={7} lg={7} xl={7} p={0} m={0} >
+                {smScreen && <Carousal items={images} />}
+            </Grid>
         </Grid >
     );
 }

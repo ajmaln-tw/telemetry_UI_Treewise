@@ -2,7 +2,7 @@
     "MuiButton": {
         "styleOverrides": {
             "root": {
-                "fontWeight": "100",
+                "fontWeight": "400",
                 "margin": "5px",
                 "fontSize": "18px",
                 "borderRadius": "11px",

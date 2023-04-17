@@ -1,55 +1,96 @@
-import { List, ListItemButton, ListItemText, Typography } from "@mui/material";
-import { routes } from "../../routes";
-
-
-// import { useSelector } from "react-redux";
-import DrawerMenu from "./DrawerMenu";
-import { FiHome } from "react-icons/fi";
+import { List, ListItemButton, ListItemText } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
-// import { STATE_REDUCER_KEY } from "../../user/constant";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { CiUser } from "react-icons/ci";
+import { BiLogOutCircle } from "react-icons/bi";
 
-
+export let active = {
+    color: "white.main",
+    bgcolor: "primary.main",
+    "&:hover": {
+        color: "secondary.main",
+        bgcolor: "primary.dark"
+    },
+    fontWeight: "700 !important"
+};
+export let inActive = {
+    color: "grey.main",
+    bgcolor: "secondary.main",
+    "&:hover": {
+        color: "secondary.main",
+        bgcolor: "primary.dark"
+    }
+};
 const SideBar = () => {
-    const depthLevel = 0;
-
-    // const menuItems = checkUserTypeMenuPermissions(routes, [userType.id || USER_TYPE_PERMISSIONS.CUSTOMER]);
-    const menuItems = routes;
     const navigate = useNavigate();
     const location = useLocation();
-    let active = {
-        color: "white.main",
-        bgcolor: "secondary.main"
-    };
-    if (location.pathname === "/") {
-        active = {
-            color: "secondary.main",
-            bgcolor: "white.main",
-            "&:hover": {
-                color: "secondary.main",
-                bgcolor: "white.main"
-            },
-            fontWeight: "700 !important"
-        };
+    let dashStyle = { ...inActive };
+    let analyticsStyle = { ...inActive };
+    let notificationsStyle = { ...inActive };
+    let profileStyle = { ...inActive };
+    if (location.pathname === "/Dashboard") {
+        dashStyle = { ...active };
     }
+    if (location.pathname === "/analytics") {
+        analyticsStyle = { ...active };
+    }
+    if (location.pathname === "/notifications") {
+        notificationsStyle = { ...active };
+    }
+    if (location.pathname === "/profile") {
+        profileStyle = { ...active };
+    }
+
+    let logout = {
+        pl: 1, py: 0,
+        color: "white.main",
+        height: "47px",
+        fontSize: "14px",
+        bgcolor: "red.main",
+        "&:hover": {
+            bgcolor: "red.dark"
+        }
+    };
 
     return (
 
-        <List sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", backgroundColor: "secondary.main", fontSize: "14px", minWidth: "310px", py: 0 }}>
+        <List sx={{ display: "flex", flexDirection: "column", justifyContent: "space-evenly", backgroundColor: "secondary.main", fontSize: "14px", minWidth: "270px", py: 0 }}>
             <List sx={{ pl: 4, pr: 2, pt: 6, height: "calc(100vh - 240px) !important", overflowX: "hidden", overflowY: "auto" }}>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...active, pl: 1, py: 0, height: "47px", fontSize: "14px" }} onClick={() => navigate("../")}>
-                        <FiHome />
-                        <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"home"}</ListItemText>
+                    <ListItemButton sx={{ ...dashStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../Dashboard")}>
+                        <MdOutlineSpaceDashboard />
+                        <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>
                     </ListItemButton>
                 </List>
-                {menuItems[0].children.map((item, index) => (
-                    item.title ? (
-                        <DrawerMenu item={item} key={index} path="" depth={depthLevel} index={index} />
-                    ) : (<>
-                    </>)
-                ))}
+                <List sx={{ px: 0.5, py: 0 }}>
+                    <ListItemButton sx={{ ...analyticsStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../analytics")}>
+                        <TbBrandGoogleAnalytics />
+                        <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Analytics"}</ListItemText>
+                    </ListItemButton>
+                </List>
+                <List sx={{ px: 0.5, py: 0 }}>
+                    <ListItemButton sx={{ ...notificationsStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
+                        <IoIosNotificationsOutline />
+                        <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>
+                    </ListItemButton>
+                </List>
+                <List sx={{ px: 0.5, py: 0 }}>
+                    <ListItemButton sx={{ ...profileStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../profile")}>
+                        <CiUser />
+                        <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Profile"}</ListItemText>
+                    </ListItemButton>
+                </List>
             </List>
-            <Typography sx={{ color: "white.main", m: 5 }}> {"version"}</Typography>
+            <List sx={{ pl: 4, pr: 2, pt: 6 }}>
+                <List sx={{ px: 0.5, py: 0 }}>
+                    <ListItemButton sx={logout} onClick={() => navigate("./logout")}>
+                        <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Logout"}</ListItemText>
+                        <BiLogOutCircle />
+                    </ListItemButton>
+                </List>
+            </List>
         </List >
 
     );

@@ -1,40 +1,66 @@
 import React from "react";
-import { Doughnut } from "react-chartjs-2";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import { Chart as ChartJS, BarElement, Title, Tooltip } from "chart.js/auto";
-import { DefaultComponents } from "common/components/material/Components";
-import { doughnutConfig } from "./config";
-import _ from "lodash";
-
-const { Paper } = DefaultComponents;
-
-ChartJS.register(
-    ChartDataLabels,
-    BarElement,
-    Title,
-    Tooltip
-);
+import Chart from "react-apexcharts";
+import CustomHeader from "../../../../modules/common/components/CustomHeader";
+import { Box, Grid } from "@mui/material";
 
 const DoughnutChart = (props) => {
-    const { dataList = {}, chartStyle = {}, legend } = props;
+    const { dataList: { series, options } = {}, chartStyle = {}, title = "" } = props;
 
-    const options = {
-        ...doughnutConfig
+    const plotOptions = {
+        pie: {
+            donut: {
+                labels: {
+                    show: true,
+                    total: {
+                        show: true,
+                        total: {
+                            show: true,
+                            fontSize: 11,
+                            color: "red.main"
+                        }
+                    }
+                }
+            }
+        }
     };
-
-    let label = _.get(dataList, "datasets.0.label", "");
-    let OPTIONS = _.cloneDeep(options);
-    _.set(OPTIONS, "plugins.legend.display", legend);
-    _.set(OPTIONS, "plugins.legend.filltext", "No Data");
-    _.set(OPTIONS, "plugins.title.display", true);
-    _.set(OPTIONS, "plugins.title.text", label);
-
+    let OPTIONS = {
+        ...options,
+        legend: {
+            show: true,
+            position: "bottom",
+            fontSize: "12px"
+        }
+    };
     return (
-        <Paper sx={{ p: "20px", backgroundColor: "#0000", m: 2 }}>
-            <div style={chartStyle}>
-                <Doughnut options={OPTIONS} data={dataList} style={{ width: "100%" }} />
-            </div >
-        </Paper>
+        <Grid style={chartStyle}>
+            <CustomHeader content={title} />
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <Chart
+                    series={series}
+                    options={OPTIONS}
+                    plotOptions={plotOptions}
+                    dataLabels={{
+                        enabled: true,
+                        style: {
+                            fontSize: "11px",
+                            fontFamily: "Roboto, Arial, sans-serif",
+                            fontWeight: "bold",
+                            colors: undefined
+                        }
+                    }}
+                    legend={
+                        { position: "bottom" }
+                    }
+                    tooltip={{
+                        style: {
+                            fontSize: "10px"
+                        }
+                    }}
+                    type="donut"
+                    width="300"
+                    height="300" />
+            </Box>
+        </Grid >
     );
 };
 
