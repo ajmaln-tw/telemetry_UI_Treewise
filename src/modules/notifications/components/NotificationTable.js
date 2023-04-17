@@ -1,18 +1,17 @@
 import React, { useEffect, useMemo } from "react";
 import CustomReactTable from "../../../common/components/custom/CustomReactTable";
 import { STATE_REDUCER_KEY } from "../constants";
-import { Icons } from "../../../common/components";
+import { Icons, Components } from "../../../common/components";
 import CustomListMenu from "../../../common/components/custom/CustomListMenu";
 import { COMMOM_TABLE_PAGINATION, REACT_TABLE_COMMON_OPTIONS } from "../../../common/constants";
 import { actions as sliceActions } from "../slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import Box from "@mui/material/Box";
-import { Link } from "@mui/material";
 import { loadUsers } from "../actions";
 
-
 const { EditIcon, OpenInNewIcon } = Icons;
+const { Grid } = Components;
+
 const NotificationTable = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -29,30 +28,27 @@ const NotificationTable = () => {
             },
             {
                 id: "albumId",
-                header: "ALbumd ID",
+                header: "Album ID",
                 accessorKey: "albumId",
                 size: 150
             },
             {
                 id: "thumbnailUrl",
-                header: "URL",
+                header: "View",
                 size: 150,
                 Cell: ({ row }) => (
-                    <Box
+                    <Grid
                         sx={{
                             display: "flex",
                             alignItems: "center",
-                            gap: "1rem"
+                            gap: "1rem",
+                            backgroundImage: `url(${row.thumbnailUrl || ""})`, backgroundSize: "cover",
+                            width: "50px",
+                            height: "50px"
                         }}
                     >
-                        <img
-                            alt="avatar"
-                            height={30}
-                            src={`${row.thumbnailUrl}.jpg`}
-                            loading="lazy"
-                            style={{ borderRadius: "50%" }}
-                        />
-                    </Box>
+                        {row.thumbnailUrl}
+                    </Grid>
                 )
             },
             {
@@ -63,19 +59,13 @@ const NotificationTable = () => {
             },
             {
                 id: "url",
-                header: "View Photo",
+                header: "URL",
                 accessorKey: "url",
                 size: 150,
                 Cell: ({ cell }) => (
-                    <Link href={cell.getValue()}
-                        passhref="true"
-                        component="button"
-                        variant="body2"
-                        onClick={() => {
-                            navigate(cell.getValue());
-                        }}>
+                    <a href={cell.getValue()} rel="noreferrer" target="_blank" >
                         {cell.getValue()}
-                    </Link>
+                    </a >
                 )
             }
         ],

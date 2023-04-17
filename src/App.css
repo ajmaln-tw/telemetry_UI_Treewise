@@ -9,7 +9,7 @@
 
 /* Sizing of Map Container */
 .leaflet-container {
-  height: 49vh;
+  height: 25vh;
   width: 20rem;
 }
 
@@ -18,7 +18,6 @@
   height: 8px;              
   width: 4px;               
 }
-
 *::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 3px rgba(190, 190, 190, 0.3);

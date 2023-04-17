@@ -6,7 +6,7 @@ import LoadingCustomOverlay from "../../../modules/common/components/LoadingOver
 import CustomHeader from "../../../modules/common/components/CustomHeader";
 import { TablePagination } from "@mui/material";
 
-const { Grid, Box, IconButton, Tooltip } = Components;
+const { Grid, Box, IconButton, Tooltip, Paper } = Components;
 
 const CustomReactTable = ({ data, columns, options, title = "", enableRowVirtualization = false, enableCustomTableFilter = false, filterComponent }) => {
     const virtualizerInstanceRef = useRef(null);
@@ -29,10 +29,10 @@ const CustomReactTable = ({ data, columns, options, title = "", enableRowVirtual
     }, [sorting]);
     return (
         <LoadingCustomOverlay active={requestInProgress} >
-            <Grid sx={{ m: 2 }}>
+            <Paper sx={{ m: 2 }}>
                 <Grid sx={{ display: "flex", justifyContent: "space-between", paddingBottom: "10px" }}>
                     <Grid>
-                        <CustomHeader content={title} />
+                        <CustomHeader sx={{ fontSize: "17px", paddingTop: "15px", fontWeight: 800 }} content={title} />
                     </Grid>
                     {
                         toolBarActions.length > 0 && <Box sx={{ marginLeft: 2 }}>
@@ -81,19 +81,16 @@ const CustomReactTable = ({ data, columns, options, title = "", enableRowVirtual
                     enableBottomToolbar={false}
                     enableStickyFooter={false}
                     muiTablePaperProps={{
-                        elevation: 1,
+                        elevation: 0,
                         sx: {
-                            borderRadius: "10px",
-                            border: "1px solid #86938E",
-                            padding: "7px",
-                            background: "none"
+                            borderRadius: "0",
+                            border: "none"
                         }
                     }
                     }
                     muiTableBodyCellProps={{
                         sx: {
                             fontSize: "12px",
-                            borderTop: "1px solid #86938E",
                             fontFamily: "Franklin Gothic Book"
 
                         }
@@ -108,7 +105,7 @@ const CustomReactTable = ({ data, columns, options, title = "", enableRowVirtual
                     muiTableHeadCellProps={{
                         sx: {
                             fontSize: "14px",
-                            fontWeight: "medium",
+                            fontWeight: 700,
                             py: 3
                         }
                     }}
@@ -136,7 +133,7 @@ const CustomReactTable = ({ data, columns, options, title = "", enableRowVirtual
                 {(enableCustomTableFilter && open) && <TableFilterContainer open={open} setOpen={setOpen} handleOpen={handleOpen} >
                     {filterComponent({ setOpen })}
                 </TableFilterContainer>}
-            </Grid>
+            </Paper>
         </LoadingCustomOverlay>
     );
 };

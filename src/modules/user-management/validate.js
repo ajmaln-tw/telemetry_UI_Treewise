@@ -14,19 +14,22 @@ export const signInSchema = Yup.object({
 
 
 export const signUpSchema = Yup.object({
-    info: Yup.object().shape({
-        company_name: Yup.string()
-            .min(3)
-            .max(100)
-            .required("Company Name Required")
-    }),
+    companyName: Yup.string()
+        .min(3)
+        .max(100),
     email: Yup.string()
         .min(3)
         .max(100)
         .required("Email Required"),
     password: Yup.string()
         .max(150)
-        .required("Password Required")
+        .required("Password Required"),
+    confirmPassword: Yup.string()
+        .max(150)
+        .required("Confrim Password Required"),
+    vesselName: Yup.string()
+        .max(150)
+        .required("Confrim Password Required")
 
 });
 

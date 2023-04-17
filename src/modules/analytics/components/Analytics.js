@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import Gauge from "./Gauge";
 import { GAUGE_STATUS } from "../constants";
@@ -48,6 +48,8 @@ const dataList = {
 
 
 const Analytics = () => {
+    const theme = useTheme();
+    const smScreen = useMediaQuery(theme.breakpoints.up("md"));
 
 
     return (
@@ -84,14 +86,14 @@ const Analytics = () => {
                 <Grid item xs={12} sm={12} md={7} lg={8} xl={8} p={2} order={{ xs: 3, sm: 3 }} sx={{ height: "50vh", display: "flex", justifyContent: "space-between" }}>
                     <Grid container p={1} columnSpacing={{ xs: 1, sm: 2, md: 3, lg: 4 }} >
                         <Grid item xs={12} sm={12} md={6} lg={6} xl={8} >
-                            <CustomCard additionalStyle={{ p: 1, height: "49vh" }}>
+                            <CustomCard additionalStyle={{ p: 2, height: "49vh" }}>
                                 <CustomCharts type="Line" sx={chartStyle} {...lineChartProps} />
                             </CustomCard>
                         </Grid>
                         <Grid item xs={12} sm={12} md={3} lg={3} xl={4} >
-                            <CustomCard additionalStyle={{ p: 0, height: "49vh", width: "20rem" }}>
+                            {smScreen && <CustomCard additionalStyle={{ p: 0, minHeight: "33vh", width: "20rem" }}>
                                 <CustomMap title="Last Journey" coordinates={[51.505, -0.09]} />
-                            </CustomCard>
+                            </CustomCard>}
                         </Grid>
                     </Grid>
 
