@@ -5,7 +5,7 @@ import RootBoundary from "./custom/RootBoundary";
 import Loader from "./custom/Loader";
 import CustomCardHeader from "./custom/CustomCardHeader";
 import CardWithHeader from "./custom/CardWithHeader";
-
+import LogoLoader from "../../modules/common/components/LogoLoader";
 import { Icons } from "./material/Icons";
 import { DefaultComponents } from "./material/Components";
 
@@ -14,7 +14,8 @@ const Components = {
     Button,
     Loader,
     CustomCardHeader,
-    CardWithHeader
+    CardWithHeader,
+    LogoLoader
 };
 
 export { Components, RootBoundary, ReactNotifications, FormController, Icons };

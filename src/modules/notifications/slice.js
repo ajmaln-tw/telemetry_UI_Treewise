@@ -32,6 +32,9 @@ const slice = createSlice({
         setLoading: (state) => {
             _.set(state, "table.notifications.requestInProgress", true);
         },
+        unsetLoading: (state) => {
+            _.set(state, "table.notifications.requestInProgress", false);
+        },
         setPagination: (state, action) => {
             _.set(state, "tablePagination", action.payload);
         },

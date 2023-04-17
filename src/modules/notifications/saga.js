@@ -14,6 +14,7 @@ export function* fetchUsers() {
         yield put(setUsers(response));
     } catch (err) {
         yield put(errorNotify({ title: err.name, message: err?.message }));
+        yield put(sliceActions.unsetLoading());
 
     }
 
