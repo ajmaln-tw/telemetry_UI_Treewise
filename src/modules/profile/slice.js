@@ -4,7 +4,6 @@ import _ from "lodash";
 import { ACTION_TYPES } from "./actions";
 import { STATE_REDUCER_KEY } from "./constants";
 const initialState = {
-
     profileDetails: {
         requestInProgress: false,
         data: {
@@ -12,15 +11,16 @@ const initialState = {
             lastName: "",
             email: "",
             designation: "",
-            alternativeEmail: ""
+            alternativeEmail: "",
+            profileImage: ""
 
-        },
-        cropData: null,
-        modal: {
-            openProfileModal: false
         }
-    }
 
+    },
+    cropData: null,
+    modal: {
+        openProfileModal: false
+    }
 };
 
 

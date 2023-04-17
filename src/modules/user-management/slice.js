@@ -21,6 +21,7 @@ const initialState = {
             companyName: "",
             vesselName: "",
             mobile: ""
+
         }
     }
 

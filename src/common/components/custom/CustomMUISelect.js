@@ -6,7 +6,7 @@ const selectTheme = createTheme({
         MuiInput: {
             styleOverrides: {
                 root: {
-                    backgroundColor: "#F8F8F8", borderRadius: "15px", color: "#888888", width: "100%", alignItems: "center"
+                    backgroundColor: "#F8F8F8", borderRadius: "5px", color: "#888888", minWidth: "170px", alignItems: "center"
                 }
             }
         },
@@ -14,15 +14,15 @@ const selectTheme = createTheme({
             styleOverrides: {
                 icon: {
                     color: "grey.main",
-                    right: "10px"
+                    right: "9px"
                 },
                 select: {
                     paddingLeft: "20px",
-                    fontSize: "14px"
+                    fontSize: "11px"
                 },
                 root: {
                     color: "grey.main",
-                    height: "40px",
+                    height: "20px",
                     boxShadow: "0px 1px 2px 1px rgba(0, 0, 0, 0.1), 0px 1px 1px 0px rgba(71, 68, 68, 0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)",
                     "&::before": {
                         borderBottom: 0
@@ -38,6 +38,7 @@ const selectTheme = createTheme({
         MuiMenuItem: {
             styleOverrides: {
                 root: {
+                    fontSize: "11px",
                     "&&:hover": {
                         color: "#fff",
                         backgroundColor: "#0784D6",

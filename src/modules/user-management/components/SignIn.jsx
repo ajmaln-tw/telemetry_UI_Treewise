@@ -53,9 +53,8 @@ function SignIn(props) {
     // const faqStyle = { position: "absolute", left: "35px", bottom: "-20px", width: { md: "60%", lg: "55%", xl: "45%" }, height: "13vh", alignItems: "center", justifyContent: "end", display: { xs: "none", md: "flex" }, borderRadius: "20px" };
 
     return (
-        <Grid height="100vh" container sx={{ width: 1, bgcolor: "white.main", p: { xs: 3, md: 5 } }}>
-            <Grid sx={{ display: "flex", justifyContent: { xs: "block", md: "space-around" }, alignItems: "center", flexDirection: { xs: "column", md: "row" }, width: 1, height: "100%" }}>
-                {smScreen && <Carousal items={images} />}
+        <Grid height="100vh" container sx={{ overflowY: "hidden", width: 1, bgcolor: "white.main", p: 0, display: "flex", alignItems: "center" }}>
+            <Grid item xs={12} sm={12} md={5} lg={5} xl={5} sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: 1, height: "100%" }}>
                 <Box sx={{ mt: 5, right: 0, display: "flex", alignItems: "center", mb: { lg: "130px", xl: "140px", justifyContent: "end" }, width: { xs: "100%", md: "auto" } }}>
                     <Paper item xs={12} md={5} sx={{ bgcolor: "white.main", boxShadow: 0, borderRadius: "20px", mr: { xs: "40px", lg: "95px" }, width: { xs: "100%", md: "420px", lg: "480px", xl: "560px" }, ml: 5 }} elevation={0}>
                         <Grid sx={{ display: "flex", flexDirection: "column", justifyContent: "space-evenly" }}>
@@ -95,8 +94,12 @@ function SignIn(props) {
                         </Grid>
                     </Paper >
                 </Box>
+
                 {/* <FAQs style={faqStyle} /> */}
             </Grid >
+            <Grid item xs={12} sm={12} md={7} lg={7} xl={7} p={0} m={0} >
+                {smScreen && <Carousal items={images} />}
+            </Grid>
         </Grid >
     );
 }

@@ -42,7 +42,7 @@ const ErrorPage = (props) => {
                     <Typography sx={{
                         fontSize: "1.6rem", letterSpacing: "0.4rem"
                     }}>Take Me
-                        <IconButton aria-label="home" size="large" onClick={() => navigate("../")} color="primary.main">
+                        <IconButton aria-label="home" size="large" onClick={() => navigate("../Dashboard")} color="primary.main">
                             <HomeOutlined fontSize="inherit" />
                         </IconButton>
                     </Typography>

@@ -15,6 +15,7 @@ import { updateProfile, uploadProfileImage } from "../actions";
 import ImageUploaderPopUp from "../../common/components/ImageUploaderPopUp";
 
 import { profileInfoSchema } from "../validate";
+import { getCropData, getModalOpen, getProfileDetails } from "../selectors";
 const EditProfile = (props) => {
     const { id = 0 } = useParams();
     const { handleSubmit, profileDetails = {}, cropData, open, setCropData, setOpenProfileModal, errors = {} } = props;
@@ -48,12 +49,12 @@ const EditProfile = (props) => {
                                     <Grid item xs={12} sm={12} md={6}>
                                         <InputLabel sx={{ fontWeight: 700 }} htmlFor={name}>{"Profile Picture"} </InputLabel>
                                     </Grid>
-                                    {profileDetails.profilePicture ?
+                                    {profileDetails.profileImage ?
                                         <Grid item xs={12} sm={12} md={2} sx={{ display: smScreen ? "block" : " flex", justifyContent: "center", alignItems: "center" }}>
                                             <Avatar
                                                 variant="rounded"
                                                 alt={profileDetails?.firstName}
-                                                src={`${profileDetails.profilePicture}`}
+                                                src={`${profileDetails.profileImage}`}
                                                 sx={{
                                                     width: 150, height: 150
                                                 }} />
@@ -67,6 +68,7 @@ const EditProfile = (props) => {
                                             name={profileDetails.firstName}
                                             description="Profile Picture"
                                             action={uploadProfileImage}
+                                            title={"Upload Profile Picture"}
                                             popupName={"Click Here to upload Profile Picture"}
                                             open={open}
                                             setOpen={setOpenProfileModal}
@@ -98,9 +100,9 @@ const EditProfile = (props) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-    // profileDetails: getProfileDetails [-] write selectors pending
-    // cropData: getCropData,
-    // open: getModalOpen,
+    profileDetails: getProfileDetails, //[-] write selectors pending
+    cropData: getCropData,
+    open: getModalOpen
 });
 
 const mapDispatchToProps = (dispatch) => ({

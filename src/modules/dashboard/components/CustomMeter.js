@@ -23,13 +23,14 @@ const CustomMeter = ({ totalVessels = "0.70", sailing = 0, onShore = 0 }) => {
                 conic-gradient(transparent 0deg ${sailingAngle}deg, ${grey} ${sailingAngle}deg 360deg),
                 ${progressColor}`,
                 borderRadius: "50%",
-                width: "100px",
+                width: "90px",
                 // height: `${size}px`,
-                height: "100px",
+                height: "90px",
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "center",
-                p: "20px"
+                alignItems: "center"
+
+
             }}>
                 <Box
                     sx={{
@@ -43,7 +44,8 @@ const CustomMeter = ({ totalVessels = "0.70", sailing = 0, onShore = 0 }) => {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        flexDirection: "column"
+                        flexDirection: "column",
+                        m: 1
                     }}
 
                 >

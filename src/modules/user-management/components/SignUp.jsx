@@ -49,14 +49,15 @@ function SignUp(props) {
     }, [pathname]);
     return (
         <>
-            <Grid height="100vh" container sx={{ width: 1, bgcolor: "white.main", p: { xs: 3, md: 5 } }}>
-                <Grid sx={{ display: "flex", justifyContent: { xs: "block", md: "space-around" }, alignItems: "center", flexDirection: { xs: "column", md: "row" }, width: 1, height: "100%" }}>
-                    {smScreen && <Carousal items={images} />}
-                    <Box sx={{ mt: 5, right: 0, display: "flex", alignItems: "center", mb: { lg: "50px", xl: "90px", justifyContent: "end" }, width: { xs: "100%", md: "auto" } }}>
+            <Grid height="100vh" container sx={{ overflowY: "hidden", width: 1, bgcolor: "white.main", p: 0, display: "flex", alignItems: "center" }}>
+                <Grid item xs={12} sm={12} md={5} lg={5} xl={5} sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: 1, height: "100%" }}>
+                    <Box sx={{ mt: 5, right: 0, display: "flex", alignItems: "center", mb: { lg: "30px", xl: "50px", justifyContent: "end" }, width: { xs: "100%", md: "auto" } }}>
                         <Paper item xs={12} md={5} sx={{ bgcolor: "white.main", boxShadow: 0, borderRadius: "20px", mr: { xs: "40px", lg: "95px" }, width: { xs: "100%", md: "420px", lg: "480px", xl: "560px" }, ml: 5 }} elevation={0}>
-                            <Grid sx={{ display: "flex", flexDirection: "column", justifyContent: "center", pt: 1 }}>
+                            <Grid sx={{ display: "flex", flexDirection: "column", justifyContent: "space-evenly" }}>
                                 <Box sx={{ px: { xs: 3, xl: 6 }, py: 4 }}>
                                     <Typography sx={{ fontSize: { xs: "30px", lg: "36px", xl: "40px" }, fontWeight: 600, fontFamily: "Clash Display" }} >  <img src={logo} /></Typography>
+
+
                                     <Box sx={{ overflowY: "scroll", height: "60vh" }}>
                                         <Form>
                                             <Grid sx={{ my: 1, py: { md: 1, xl: 1.5 } }}>
@@ -93,6 +94,8 @@ function SignUp(props) {
                                             </Grid>
                                         </Form>
                                     </Box>
+
+
                                 </Box>
                                 <Divider variant="caption" />
                                 <Box sx={{ display: "flex", py: { xs: 3, xl: 4.5 }, justifyContent: "center", alignItems: "space-around", boxShadow: 0 }} elevation={0}>
@@ -101,13 +104,17 @@ function SignUp(props) {
                                         onClick={() => {
                                             navigate("../login");
                                         }
-                                        }>{"Login Account"}</Typography>
+                                        }>{"Login"}</Typography>
                                 </Box>
                             </Grid>
                         </Paper >
                     </Box>
+
                     {/* <FAQs style={faqStyle} /> */}
                 </Grid >
+                <Grid item xs={12} sm={12} md={7} lg={7} xl={7} p={0} m={0} >
+                    {smScreen && <Carousal items={images} />}
+                </Grid>
             </Grid >
         </>
 

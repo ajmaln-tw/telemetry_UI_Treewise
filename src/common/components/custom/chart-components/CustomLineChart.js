@@ -78,11 +78,11 @@ const CustomLineChart = (props) => {
 
     return (
         <Grid sx={{ p: 2, pb: 0, m: 1 }}>
-            {filter && <Grid container sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Grid item xs={4}>
+            {filter && <Grid sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Grid >
                     <CustomHeader content={title} />
                 </Grid>
-                <Grid item xs={4}>
+                <Grid >
                     <MUISelect value={select} dataList={selectList} onItemSelect={selectedItem} />
                 </Grid>
             </Grid>}
