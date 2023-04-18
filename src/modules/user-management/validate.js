@@ -16,7 +16,8 @@ export const signInSchema = Yup.object({
 export const signUpSchema = Yup.object({
     companyName: Yup.string()
         .min(3)
-        .max(100),
+        .max(100)
+        .required("Company Name Required"),
     email: Yup.string()
         .min(3)
         .max(100)
@@ -25,9 +26,6 @@ export const signUpSchema = Yup.object({
         .max(150)
         .required("Password Required"),
     confirmPassword: Yup.string()
-        .max(150)
-        .required("Confrim Password Required"),
-    vesselName: Yup.string()
         .max(150)
         .required("Confrim Password Required")
 

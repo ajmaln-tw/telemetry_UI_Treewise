@@ -59,26 +59,35 @@ function SignIn(props) {
                     <Paper item xs={12} md={5} sx={{ bgcolor: "white.main", boxShadow: 0, borderRadius: "20px", mr: { xs: "40px", lg: "95px" }, width: { xs: "100%", md: "420px", lg: "480px", xl: "560px" }, ml: 5 }} elevation={0}>
                         <Grid sx={{ display: "flex", flexDirection: "column", justifyContent: "space-evenly" }}>
                             <Box sx={{ px: { xs: 3, xl: 6 }, py: 4 }}>
-                                <Typography sx={{ fontSize: { xs: "30px", lg: "36px", xl: "40px" }, fontWeight: 600, fontFamily: "Clash Display" }} >  <img src={logo} /></Typography>
+                                <Typography sx={{ fontSize: { xs: "20px", lg: "26px", xl: "30px" } }} >  <img src={logo} /> </Typography>
+                                <Typography sx={{ fontSize: { xs: "20px", lg: "26px", xl: "30px" }, textAlign: "center", fontWeight: 800, color: "primary.main" }} >   LOGIN </Typography>
                                 <Box >
                                     <Form>
                                         <Grid sx={{ my: 1, py: { md: 1, xl: 1.5 } }}>
-                                            <FormController control="input" name="email" placeholder="Email" />
+                                            <FormController control="input" name="email" label={"Email"} placeholder="eg:- user@companydomain.com" />
                                         </Grid>
                                         <Grid sx={{ my: 1, py: { md: 1, xl: 1.5 }, pb: { md: 2, xl: 3 } }}>
-                                            <FormController control="input" name="password" placeholder="Password" />
+                                            <FormController control="input" name="password" label={"Password"} placeholder="*********" />
                                         </Grid>
-                                        <Grid sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                            <Button sx={{ fontSize: { xs: "16px", xl: "18px" }, height: { xs: "40px", xl: "50px" } }} variant="contained" type="submit" onClick={handleSubmit}>{"Login"}</Button>
-                                            <Typography
-                                                variant="text"
-                                                sx={{ mb: 0, p: 0.5, fontSize: { lg: "16px", xl: "18px" }, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}
-                                            // onClick={() => navigate("../reset-password")}
-                                            >
-                                                {"Forgot password"}
+                                        <Box sx={{ display: "flex", justifyContent: "space-between", pb: 1 }}>
+                                            <Grid sx={{ display: "flex", alignItems: "flex-start" }}>
+                                                <FormController control="checkbox" name="savePassword" />
+                                                <Typography sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}>{"Remember Me"}</Typography>
+                                            </Grid>
+                                            <Grid sx={{ display: "flex", alignItems: "flex-start" }}>
+                                                <Typography
+                                                    variant="p"
+                                                    sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}
+                                                // onClick={() => navigate("../reset-password")}
+                                                >
+                                                    {"Forgot password?"}
 
-                                            </Typography>
-                                        </Grid>
+                                                </Typography>
+                                            </Grid>
+                                        </Box>
+                                        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                            <Button sx={{ width: "70%", borderRadius: "17px", fontSize: { xs: "16px", xl: "18px" }, height: { xs: "40px", xl: "50px" } }} variant="contained" type="submit" onClick={handleSubmit}>{"Login"}</Button>
+                                        </Box>
                                     </Form>
                                 </Box>
                             </Box>
