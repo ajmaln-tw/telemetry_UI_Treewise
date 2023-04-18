@@ -1,4 +1,4 @@
-import { CardActions, CardContent, Divider, Grid, Typography } from "@mui/material";
+import { Box, CardActions, CardContent, Divider, Grid, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { Form, withFormik } from "formik";
 import { connect } from "react-redux";
@@ -21,27 +21,29 @@ const Settings = (props) => {
     return (
         <Grid sx={{ overflow: "visible" }} >
             <LoadingCustomOverlay active={false}>
-                <Form onSubmit={handleSubmit}>
-                    <Typography pl={2} component="h6" variant="h6" sx={{ fontWeight: 700 }}> Settings</Typography>
-                    <Typography pl={2} variant="p"> Change your theme and customize other options</Typography>
-                    <Divider />
-                    <CardContent sx={{ ml: 2, mr: 2 }}>
-                        <Grid container spacing={3} sx={{ mb: 3 }} >
-                            <Grid item xs={12} md={12} lg={12} >
-                                <FormController statusError={true} errorName={errors?.newPassword} control="switch" label={"Push notifications"} name="newPassword" />
+                <Box sx={{ mt: 2 }}>
+                    <Form onSubmit={handleSubmit}>
+                        <Typography pl={2} component="h6" variant="h6" sx={{ fontWeight: 700 }}> Settings</Typography>
+                        <Typography pl={2} variant="p"> Change your theme and customize other options</Typography>
+                        <Divider />
+                        <CardContent sx={{ ml: 2, mr: 2 }}>
+                            <Grid container spacing={3} sx={{ mb: 3 }} >
+                                <Grid item xs={12} md={12} lg={12} >
+                                    <FormController statusError={true} errorName={errors?.newPassword} control="switch" label={"Push notifications"} name="newPassword" />
+                                </Grid>
+                                <Grid item xs={12} md={12} lg={12} >
+                                    <FormController statusError={true} errorName={errors?.confirmPassword} control="Checkbox" label={"Customizable variables"} name="independentVariables" />
+                                </Grid>
                             </Grid>
-                            <Grid item xs={12} md={12} lg={12} >
-                                <FormController statusError={true} errorName={errors?.confirmPassword} control="Checkbox" label={"Customizable variables"} name="independentVariables" />
+                        </CardContent>
+                        <Divider />
+                        <CardActions>
+                            <Grid sx={{ my: 2 }} container justifyContent="center">
+                                <Button type="submit"> {"Reset"}</Button>
                             </Grid>
-                        </Grid>
-                    </CardContent>
-                    <Divider />
-                    <CardActions>
-                        <Grid sx={{ my: 2 }} container justifyContent="center">
-                            <Button type="submit"> {"Reset"}</Button>
-                        </Grid>
-                    </CardActions>
-                </Form >
+                        </CardActions>
+                    </Form >
+                </Box>
             </LoadingCustomOverlay>
         </Grid >
     );

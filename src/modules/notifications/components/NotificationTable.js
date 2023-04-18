@@ -53,7 +53,7 @@ const NotificationTable = () => {
             },
             {
                 id: "title",
-                header: "Titke",
+                header: "Title",
                 accessorKey: "title",
                 size: 250
             },

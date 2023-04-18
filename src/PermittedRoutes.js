@@ -1,16 +1,17 @@
 
 
 import React, { Suspense } from "react";
-import { createHashRouter, Outlet, RouterProvider } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { routes } from "./modules/routes";
 import { Components } from "./common/components";
 
-const { Loader } = Components;
+
+const { LogoLoader } = Components;
 
 const PermittedRoutes = () => {
     return (
-        <Suspense fallback={<Loader />}>
-            <RouterProvider router={createHashRouter(routes)} />
+        <Suspense fallback={<LogoLoader />}>
+            <RouterProvider router={createBrowserRouter(routes)} />
             <Outlet />
         </Suspense>
     );

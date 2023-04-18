@@ -2,6 +2,7 @@
 
 - [x] Node.js `v18.12.1 (npm v8.19.2)`
 - [x] npm | yarn
+- [x] code version 1.77.0
 
 #### Initial setup
 - npm start

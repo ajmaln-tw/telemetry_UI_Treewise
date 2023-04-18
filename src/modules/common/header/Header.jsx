@@ -20,7 +20,7 @@ const Header = () => {
                 variant="contained" component="div"
             >
                 <Box sx={{ minWidth: "268px" }}>
-                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", m: 1 }}>
+                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 3 }}>
                         <Box sx={{ m: 1 }}>
                             <img width={70} height={70} src={companyLogo} alt="logo" />
                         </Box>
