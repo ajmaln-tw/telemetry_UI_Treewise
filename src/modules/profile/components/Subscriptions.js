@@ -4,7 +4,7 @@ import { FREE_TIER, PREMIUM_TIER } from "../constants";
 import SubscribeTermButton from "./SubscribeTermButton";
 import SubScriptionBanner from "./SubScriptionBanner";
 
-const Subcriptions = () => {
+const Subscriptions = () => {
     const [button1, setButton1] = useState(false);
     const [button2, setButton2] = useState(true);
     const theme = useTheme();
@@ -43,5 +43,5 @@ const Subcriptions = () => {
     );
 };
 
-export default Subcriptions;
+export default Subscriptions;
 

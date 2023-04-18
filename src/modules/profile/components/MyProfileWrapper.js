@@ -8,7 +8,7 @@ import { PROFILE_PATH } from "../constants";
 const EditProfile = lazy(() => import("./EditProfile"));
 const ChangePassword = lazy(() => import("./ChangePassword"));
 const Settings = lazy(() => import("./Settings"));
-const Subcriptions = lazy(() => import("./Subcriptions"));
+const Subscription = lazy(() => import("./Subscriptions"));
 
 const MyProfileWrapper = (props) => {
     const { type = "" } = props;
@@ -30,7 +30,7 @@ const MyProfileWrapper = (props) => {
     }
     if (type === PROFILE_PATH.SUBSCRIPTION) {
         return (
-            <Subcriptions />
+            <Subscription />
         );
     }
 };

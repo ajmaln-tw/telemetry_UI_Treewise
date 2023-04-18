@@ -39,7 +39,7 @@ const SideBar = () => {
     if (location.pathname === "/notifications") {
         notificationsStyle = { ...active };
     }
-    if (location.pathname === "/profile") {
+    if (location.pathname.includes("/profile")) {
         profileStyle = { ...active };
     }
 
@@ -77,7 +77,7 @@ const SideBar = () => {
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...profileStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../profile")}>
+                    <ListItemButton sx={{ ...profileStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../profile/info")}>
                         <CiUser />
                         <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Profile"}</ListItemText>
                     </ListItemButton>
