@@ -17,7 +17,8 @@ const itemStyle = {
         backgroundColor: "#9c9c9c",
         cursor: "pointer"
     }
-}
+};
+
 const SearchResults = ({ results = [] }) => {
     const dispatch = useDispatch();
     const { open, searchTerm = "" } = useSelector(state => state[STATE_REDUCER_KEY]);
@@ -37,7 +38,7 @@ const SearchResults = ({ results = [] }) => {
                 display: open ? "flex" : "none", position: "fixed",
                 flexDirection: "column",
                 justifyContent: "flex-end",
-                top: 70, left: 300,
+                top: 70, left: 300
             }}>
                 {(loading || results.length > 0) && <>
                     <IconButton sx={{ alignSelf: "flex-end" }} type="button" onClick={handleClose}>
@@ -61,7 +62,7 @@ const SearchResults = ({ results = [] }) => {
                     <IconButton sx={{ alignSelf: "flex-end" }} type="button" onClick={handleClose}>
                         <MdClose />
                     </IconButton>
-                    <Box sx={{ width: "300px", }}>   <Typography sx={{ textAlign: "center", }}> No results found</Typography>
+                    <Box sx={{ width: "300px" }}>   <Typography sx={{ textAlign: "center" }}> No results found</Typography>
                     </Box>
                 </>}
 

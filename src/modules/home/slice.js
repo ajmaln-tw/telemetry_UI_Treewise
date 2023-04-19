@@ -31,6 +31,7 @@ const slice = createSlice({
         },
         setSuggestion: (state, { payload }) => {
             _.set(state, "searchResult.data", payload);
+            _.set(state, "open", true);
             _.set(state, "searchResult.requestInProgress", false);
         },
         unsetLoading: (state) => {
@@ -41,7 +42,7 @@ const slice = createSlice({
         },
         clearSearchResults: (state) => {
             _.set(state, "searchResult.data", []);
-        },
+        }
     }
 
 });

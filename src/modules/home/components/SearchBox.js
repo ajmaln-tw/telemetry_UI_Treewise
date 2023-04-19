@@ -2,7 +2,7 @@ import { Box, IconButton, InputBase } from "@mui/material";
 import React from "react";
 import { BiSearch } from "react-icons/bi";
 import { connect, useDispatch } from "react-redux";
-import { searchSuggestionsAction } from "../actions";
+import { searchSuggestionsAction, searchVessel } from "../actions";
 import { createStructuredSelector } from "reselect";
 import { getSearchTerm } from "../selectors";
 import { actions as sliceActions } from "../slice";
@@ -12,11 +12,10 @@ import BackspaceIcon from "@mui/icons-material/Backspace";
 const SearchBox = (props) => {
     const dispatch = useDispatch();
     const { searchSuggestions, searchTerm = "" } = props;
-    const handleSearch = ({ target: { value } = {} } = {}) => dispatch(searchSuggestions(value));
+    const handleSearchSuggestions = ({ target: { value } = {} } = {}) => dispatch(searchSuggestions(value));
     const handleClear = () => dispatch(sliceActions.clearAll());
-    const handleClick = () => {
-        dispatch(sliceActions.setOpenClose());
-    }
+    const handleClick = () => dispatch(sliceActions.setOpenClose());
+    const handleSearch = () => dispatch(searchVessel());
     return (
         <>
             <Box
@@ -27,10 +26,10 @@ const SearchBox = (props) => {
                 borderColor={"red.main"}
                 borderRadius={5}
             >
-                <IconButton type="button">
+                <IconButton type="button" onClick={handleSearch}>
                     <BiSearch />
                 </IconButton>
-                <InputBase type="string" sx={{ ml: 1, flex: 1 }} value={searchTerm} onChange={handleSearch} onClick={handleClick} placeholder="Search for Vessels" />
+                <InputBase type="string" sx={{ ml: 1, flex: 1 }} value={searchTerm} onChange={handleSearchSuggestions} onClick={handleClick} placeholder="Search for Vessels" />
                 {searchTerm && <IconButton type="button" onClick={handleClear}>
                     <BackspaceIcon fontSize="small" />
                 </IconButton>}
