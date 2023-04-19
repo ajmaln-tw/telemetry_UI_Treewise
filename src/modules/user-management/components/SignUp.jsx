@@ -57,7 +57,7 @@ function SignUp(props) {
                                 <Box sx={{ px: { xs: 3, xl: 6 }, py: 4 }}>
                                     <Typography sx={{ fontSize: { xs: "20px", lg: "26px", xl: "30px" } }} >  <img src={logo} /> </Typography>
                                     <Typography sx={{ fontSize: { xs: "20px", lg: "26px", xl: "30px" }, textAlign: "center", fontWeight: 800, color: "primary.main" }} >   SIGN UP</Typography>
-                                    <Box sx={{ overflowY: "scroll", height: "60vh" }}>
+                                    <Box sx={{ overflowY: "scroll", height: "50vh" }}>
                                         <Form>
                                             <Grid sx={{ my: 1, py: { md: 1, xl: 1.5 }, pb: { md: 2, xl: 3 } }}>
                                                 <FormController control="input" placeholder="eg:- user@companydomain.com" label={"Email"} isMandatory={true} name="email" />

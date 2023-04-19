@@ -167,7 +167,7 @@ export default function ImageUploaderPopUp({ title = "Title", id, name = "Name",
                         <Grid sx={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", py: 1 }} >
                             <Grid>
                                 <InputLabel htmlFor="file-upload" sx={customUploadStyle}>
-                                    <AddAPhoto /> <Typography sx={{ display: "inline", pb: 0.8 }}>Add Photos</Typography>
+                                    <AddAPhoto /> <Typography sx={{ display: "inline", pb: 0.8 }}>Add Photo</Typography>
                                 </InputLabel>
                                 <Input
                                     id="file-upload"

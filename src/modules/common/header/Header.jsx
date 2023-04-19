@@ -1,11 +1,8 @@
 import { Components } from "../../../common/components";
 import companyLogo from "../../../assets/images/logo_tele.png";
-import { IconButton, InputBase } from "@mui/material";
-import { BiSearch } from "react-icons/bi";
-import { MdClose } from "react-icons/md";
+import SearchBox from "../../home/components/SearchBox";
 
 const { Box, Grid } = Components;
-
 const Header = () => {
     //, "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.04)" }
     return (
@@ -27,22 +24,7 @@ const Header = () => {
                     </Box>
                 </Box>
                 {/* Search */}
-                <Box
-                    display="flex"
-                    backgroundColor={"#ffff"}
-                    p={0.6}
-                    ml={1}
-                    borderColor={"red.main"}
-                    borderRadius={5}
-                >
-                    <IconButton type="button">
-                        <BiSearch />
-                    </IconButton>
-                    <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search for Vessels" />
-                    <IconButton type="button">
-                        <MdClose />
-                    </IconButton>
-                </Box>
+                <SearchBox />
             </Box>
         </Grid >
     );
