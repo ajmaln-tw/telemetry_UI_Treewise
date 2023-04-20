@@ -20,7 +20,7 @@ const VesselsInfo = ({ data = [] }) => {
             setNewData([2404, 2040, 2800, 2808, 2064, 1800, 1702, 2200, 2080, 3000, 3200, 2800]);
         }
     };
-    const selectList = ["All Vessels", "ABC", "XYZ", "AXYZ", "QZA"];
+    const selectList = ["All Vessels", "On Shore", "Sailing"];
     return (
         <CustomCard>
             <Grid sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>

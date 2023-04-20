@@ -22,4 +22,4 @@ export const ACTION_TYPES = {
 
 export const signUp = createAction(ACTION_TYPES.SIGN_UP);
 
-export const signIn = createAction(ACTION_TYPES.SIGN_IN);
+export const signIn = createAction(ACTION_TYPES.AUTHENTICATE_USER);

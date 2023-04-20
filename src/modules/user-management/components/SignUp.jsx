@@ -16,10 +16,7 @@ import Carousal from "../../../common/components/carousal/Carousal";
 import { useTheme } from "@mui/system";
 import logo from "../../../assets/images/logo_tele.png";
 
-const { Divider, Grid, Typography } = Components;
-
-
-const { Button } = Components;
+const { Button, CircularProgress, Divider, Grid, Typography } = Components;
 
 function SignUp(props) {
     const { pathname } = useLocation();
@@ -28,7 +25,7 @@ function SignUp(props) {
     const theme = useTheme();
     const smScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
-    const { handleSubmit, setFieldValue } = props;
+    const { handleSubmit, setFieldValue, signUp: { requestInProgress = false } = {} } = props;
     // setFieldValue("userType", USER_TYPE.VESSEL);
     // const confirmed = useSelector(state => state[REDUCER_KEY].signUpForm.confirm);
 
@@ -63,7 +60,7 @@ function SignUp(props) {
                                                 <FormController control="input" placeholder="eg:- user@companydomain.com" label={"Email"} isMandatory={true} name="email" />
                                             </Grid>
                                             <Grid sx={{ my: 1, py: { md: 1, xl: 1.5 } }}>
-                                                <FormController control="input" placeholder="eg:- Samsung" label={"Company Name"} isMandatory={true} name="companyName" />
+                                                <FormController control="input" placeholder="eg:- MARIAPPS" label={"Company Name"} isMandatory={true} name="companyName" />
                                             </Grid>
                                             <Grid sx={{ my: 1, py: { md: 1, xl: 1.5 }, pb: { md: 2, xl: 3 } }}>
                                                 <FormController control="input" placeholder="*********" label={"Password"} isMandatory={true} name="password" type="password" />
@@ -71,33 +68,17 @@ function SignUp(props) {
                                             <Grid sx={{ my: 1, py: { md: 1, xl: 1.5 }, pb: { md: 2, xl: 3 } }}>
                                                 <FormController control="input" placeholder="*********" label={"Confirm Password"} placeho isMandatory={true} name="confirmPassword" type="password" />
                                             </Grid>
-
-                                            <Box sx={{ display: "flex", justifyContent: "space-between", pb: 1 }}>
-                                                <Grid sx={{ display: "flex", alignItems: "flex-start" }}>
-                                                    <FormController control="checkbox" name="savePassword" />
-                                                    <Typography sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}>{"Remember Me"}</Typography>
-                                                </Grid>
-                                                <Grid sx={{ display: "flex", alignItems: "flex-start" }}>
-                                                    <Typography
-                                                        variant="p"
-                                                        sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}
-                                                    // onClick={() => navigate("../reset-password")}
-                                                    >
-                                                        {"Forgot password?"}
-
-                                                    </Typography>
-                                                </Grid>
-                                            </Box>
-                                            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
                                                 <Button sx={{ width: "70%", borderRadius: "17px", fontSize: { xs: "16px", xl: "18px" }, height: { xs: "40px", xl: "50px" } }} variant="contained" type="submit" onClick={handleSubmit}>{"Sign Up"}</Button>
+                                                {requestInProgress && <CircularProgress size={20} color="primary" />}
                                             </Box>
                                         </Form>
                                     </Box>
                                 </Box>
                                 <Divider variant="caption" />
                                 <Box sx={{ display: "flex", py: { xs: 0.5, xl: 1 }, justifyContent: "center", alignItems: "space-around", boxShadow: 0 }} elevation={0}>
-                                    <Typography display="inline" sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "shaded.main" }}>{"Already have an account?"}</Typography>
-                                    <Typography display="inline" variant="text" sx={{ fontWeight: 600, fontSize: { lg: "16px", xl: "18px" }, pb: 0.5, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
+                                    <Typography display="inline" sx={{ fontSize: "13px", color: "shaded.main" }}>{"Already have an account?"}</Typography>
+                                    <Typography display="inline" variant="text" sx={{ fontWeight: 600, fontSize: "14px", pb: 0.5, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
                                         onClick={() => {
                                             navigate("../login");
                                         }

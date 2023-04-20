@@ -14,8 +14,9 @@ const itemStyle = {
     p: 1,
     my: 0.1,
     "&:hover": {
-        backgroundColor: "#9c9c9c",
-        cursor: "pointer"
+        backgroundColor: "#f4f4f4",
+        cursor: "pointer",
+        borderRadius: "10px"
     }
 };
 
@@ -47,11 +48,11 @@ const SearchResults = ({ results = [] }) => {
                     <LoadingCustomOverlay active={loading} spinnerProps="skeleton">
                         <Box sx={{ overflowY: "scroll", width: "300px", height: "180px", px: 1, pb: 1 }}>
                             {results.map((ele, i) => <Box sx={itemStyle} key={i} onClick={handleClose}>
-                                <Typography sx={{ fontSize: "14px", fontWeight: 700, color: "#0008" }}>
+                                <Typography sx={{ fontSize: "13px", fontWeight: 700, color: "grey.dark" }}>
                                     {ele.title.slice(0, 10)}
                                 </Typography>
-                                <Typography sx={{ fontWeight: 500, color: "grey.main", cursor: "pointer" }}>
-                                    {ele.title.slice(0, 15)}
+                                <Typography sx={{ fontWeight: 500, fontSize: "11px", color: "grey.light", cursor: "pointer" }}>
+                                    {ele.title.slice(0, 40)}
                                 </Typography>
                             </Box>)}
                         </Box>

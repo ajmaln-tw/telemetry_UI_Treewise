@@ -55,7 +55,6 @@ const SideBar = () => {
     }
 
     let logout = {
-        pl: 1, py: 0,
         color: "white.main",
         height: "47px",
         fontSize: "14px",
@@ -78,41 +77,41 @@ const SideBar = () => {
     return (
 
         <List sx={mainStyle}>
-            <Box sx={{ alignSelf: drawerToggle ? "end" : "center" }}>
+            <Box sx={{ alignSelf: drawerToggle ? "start" : "center" }}>
                 <IconButton type="button" onClick={handleDrawer}>
                     <MenuIcon />
                 </IconButton>
             </Box>
-            <List sx={{ pl: 4, pr: 2, pt: 6, height: "calc(100vh - 240px) !important", overflowX: "hidden", overflowY: "auto" }}>
+            <List sx={{ px: 1.5, pt: 6, height: "calc(100vh - 240px) !important", overflowX: "hidden", overflowY: "auto" }}>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...dashStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
+                    <ListItemButton sx={{ ...dashStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
                         <MdOutlineSpaceDashboard size="20px" />
-                        {drawerToggle && <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>}
+                        {drawerToggle && <ListItemText sx={{ px: 0.5, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...analyticsStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../analytics")}>
+                    <ListItemButton sx={{ ...analyticsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../analytics")}>
                         <TbBrandGoogleAnalytics size="20px" />
-                        {drawerToggle && <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Analytics"}</ListItemText>}
+                        {drawerToggle && <ListItemText sx={{ px: 0.5, fontSize: "14px !!important" }}>{"Analytics"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...notificationsStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
+                    <ListItemButton sx={{ ...notificationsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
                         <IoIosNotificationsOutline size="20px" />
-                        {drawerToggle && <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>}
+                        {drawerToggle && <ListItemText sx={{ px: 0.5, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...profileStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../profile/info")}>
+                    <ListItemButton sx={{ ...profileStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../profile/info")}>
                         <CiUser size="20px" />
-                        {drawerToggle && <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Profile"}</ListItemText>}
+                        {drawerToggle && <ListItemText sx={{ px: 0.5, fontSize: "14px !!important" }}>{"Profile"}</ListItemText>}
                     </ListItemButton>
                 </List>
             </List>
-            <List sx={{ pl: 4, pr: 2, pt: 6 }}>
+            <List sx={{ px: 1.5, pt: 6 }}>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={logout} onClick={() => navigate("./logout")}>
-                        {drawerToggle && <ListItemText sx={{ fontSize: "14px !!important" }}>{"Logout"}</ListItemText>}
+                    <ListItemButton sx={{ ...logout, px: 1, py: 0 }} onClick={() => navigate("./logout")}>
+                        {drawerToggle && <ListItemText sx={{ px: 0.5, fontSize: "14px !!important" }}>{"Logout"}</ListItemText>}
                         <BiLogOutCircle size="20px" />
                     </ListItemButton>
                 </List>

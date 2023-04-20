@@ -20,11 +20,10 @@ import logo from "../../../assets/images/logo_tele.png";
 import { images } from "../constants";
 import Carousal from "../../../common/components/carousal/Carousal";
 
-
 // const { Card, CardActions, CardContent, CardHeader, Divider, Grid, Typography } = Components;
 const { Divider, Grid, Typography } = Components;
 
-const { Button } = Components;
+const { Button, CircularProgress } = Components;
 
 function SignIn(props) {
     const { pathname } = useLocation();
@@ -33,7 +32,7 @@ function SignIn(props) {
     const theme = useTheme();
     const smScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
-    const { handleSubmit } = props;
+    const { handleSubmit, signIn: { requestInProgress = false } = {} } = props;
     // const confirmed = useSelector(state => state[REDUCER_KEY].signUpForm.confirm);
 
     // if (confirmed) {
@@ -72,12 +71,12 @@ function SignIn(props) {
                                         <Box sx={{ display: "flex", justifyContent: "space-between", pb: 1 }}>
                                             <Grid sx={{ display: "flex", alignItems: "flex-start" }}>
                                                 <FormController control="checkbox" name="savePassword" />
-                                                <Typography sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}>{"Remember Me"}</Typography>
+                                                <Typography sx={{ fontSize: "12px", color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}>{"Remember Me"}</Typography>
                                             </Grid>
                                             <Grid sx={{ display: "flex", alignItems: "flex-start" }}>
                                                 <Typography
                                                     variant="p"
-                                                    sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}
+                                                    sx={{ fontSize: "12px", color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}
                                                 // onClick={() => navigate("../reset-password")}
                                                 >
                                                     {"Forgot password?"}
@@ -85,16 +84,19 @@ function SignIn(props) {
                                                 </Typography>
                                             </Grid>
                                         </Box>
-                                        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                            <Button sx={{ width: "70%", borderRadius: "17px", fontSize: { xs: "16px", xl: "18px" }, height: { xs: "40px", xl: "50px" } }} variant="contained" type="submit" onClick={handleSubmit}>{"Login"}</Button>
+                                        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+                                            <Button sx={{ width: "70%", borderRadius: "17px", fontSize: { xs: "16px", xl: "18px" }, height: { xs: "40px", xl: "50px" } }} variant="contained" type="submit" onClick={handleSubmit}>
+                                                {"Login"}
+                                            </Button>
+                                            {requestInProgress && <CircularProgress size={20} color="primary" />}
                                         </Box>
                                     </Form>
                                 </Box>
                             </Box>
                             <Divider variant="caption" />
                             <Box sx={{ display: "flex", py: { xs: 3, xl: 4.5 }, justifyContent: "center", alignItems: "space-around", boxShadow: 0 }} elevation={0}>
-                                <Typography display="inline" sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "shaded.main" }}>{"Need an Account?"}</Typography>
-                                <Typography display="inline" variant="text" sx={{ fontWeight: 600, fontSize: { lg: "16px", xl: "18px" }, pb: 0.5, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
+                                <Typography display="inline" sx={{ fontSize: "13px", color: "shaded.main" }}>{"Need an Account?"}</Typography>
+                                <Typography display="inline" variant="text" sx={{ fontWeight: 600, fontSize: "14px", pb: 0.5, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
                                     onClick={() => {
                                         navigate("../signup");
                                     }

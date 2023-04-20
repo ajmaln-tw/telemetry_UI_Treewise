@@ -1,8 +1,9 @@
 /* eslint-disable camelcase */
 import { createSlice } from "@reduxjs/toolkit";
-// import _ from "lodash";
+import _ from "lodash";
 
 import { STATE_REDUCER_KEY } from "./constants";
+import { ACTION_TYPES } from "./actions";
 const initialState = {
 
     signIn: {
@@ -38,18 +39,26 @@ const slice = createSlice({
         }
 
     },
-    extraReducers: () => {
-        // builder
-        //     .addCase(ACTION_TYPES.FETCH_USER_BY_ID_REQUEST, (state) => {
-        //         _.set(state, "userDetails.requestInProgress", true);
-        //     })
-        //     .addCase(ACTION_TYPES.FETCH_USER_BY_ID_SUCCESS, (state, action) => {
-        //         _.set(state, "userDetails.requestInProgress", false);
-        //         _.set(state, "userDetails.data", action.payload);
-        //     })
-        //     .addCase(ACTION_TYPES.FETCH_USER_BY_ID_FAILURE, (state) => {
-        //         _.set(state, "userDetails.requestInProgress", false);
-        //     });
+    extraReducers: (builder) => {
+        builder
+            .addCase(ACTION_TYPES.AUTHENTICATE_USER_REQUEST, (state) => {
+                _.set(state, "signIn.requestInProgress", true);
+            })
+            .addCase(ACTION_TYPES.AUTHENTICATE_USER_SUCCESS, (state) => {
+                _.set(state, "signIn.requestInProgress", false);
+            })
+            .addCase(ACTION_TYPES.AUTHENTICATE_USER_FAILURE, (state) => {
+                _.set(state, "signIn.requestInProgress", false);
+                //
+            }).addCase(ACTION_TYPES.SIGN_UP_REQUEST, (state) => {
+                _.set(state, "signUp.requestInProgress", true);
+            })
+            .addCase(ACTION_TYPES.SIGN_UP_SUCCESS, (state) => {
+                _.set(state, "signUp.requestInProgress", false);
+            })
+            .addCase(ACTION_TYPES.SIGN_UP_FAILURE, (state) => {
+                _.set(state, "signUp.requestInProgress", false);
+            });
 
     }
 });

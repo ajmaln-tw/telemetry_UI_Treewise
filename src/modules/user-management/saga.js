@@ -14,7 +14,7 @@ export function* signUp({ payload = {} }) {
 
 export default function* moduleSaga() {
     yield all([
-        takeLatest(ACTION_TYPES.SIGN_IN, signIn),
+        takeLatest(ACTION_TYPES.AUTHENTICATE_USER, signIn),
         takeLatest(ACTION_TYPES.SIGN_UP, signUp)
 
     ]);
