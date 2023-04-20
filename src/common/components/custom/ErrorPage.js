@@ -32,17 +32,12 @@ const ErrorPage = (props) => {
             }}>
                 {message || statusText}
             </Typography>}
-            {status && < Typography sx={{
-                letterSpacing: "0.2rem", fontSize: "0.8rem", color: "red.light", textAlign: "center"
-            }}>
-                {message || statusText}
-            </Typography>}
             <Grid item xs={12} sx={{ bottom: "100px", position: "absolute" }}>
                 <Grid sx={{ textAlign: "center", display: "flex", alignItems: "center" }}>
                     <Typography sx={{
                         fontSize: "1.6rem", letterSpacing: "0.4rem"
                     }}>Take Me
-                        <IconButton aria-label="home" size="large" onClick={() => navigate("../Dashboard")} color="primary.main">
+                        <IconButton aria-label="home" size="large" onClick={() => navigate("../dashboard")} color="primary.main">
                             <HomeOutlined fontSize="inherit" />
                         </IconButton>
                     </Typography>

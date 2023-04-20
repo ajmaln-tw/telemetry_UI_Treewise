@@ -54,13 +54,13 @@
     "yup": "^1.0.2"
   },
   "scripts": {
-    "start": "npm i && react-scripts start",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
+    "start": "npm i && lint:fix && react-scripts start",
     "clean": "npm cache clean --force  && rmdir ./node_modules",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint \"src/**/*.{js,jsx}\"",
-    "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

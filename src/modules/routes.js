@@ -38,7 +38,7 @@ const routes =
                     errorElement: <RootBoundary />
                 },
                 {
-                    path: "Dashboard",
+                    path: "dashboard",
                     element:
                         <PrivateRoute>
                             <Dashboard />

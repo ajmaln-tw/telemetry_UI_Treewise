@@ -41,7 +41,7 @@ const SideBar = () => {
     let analyticsStyle = { ...inActive };
     let notificationsStyle = { ...inActive };
     let profileStyle = { ...inActive };
-    if (location.pathname === "/Dashboard") {
+    if (location.pathname === "/dashboard") {
         dashStyle = { ...active };
     }
     if (location.pathname === "/analytics") {
@@ -85,7 +85,7 @@ const SideBar = () => {
             </Box>
             <List sx={{ pl: 4, pr: 2, pt: 6, height: "calc(100vh - 240px) !important", overflowX: "hidden", overflowY: "auto" }}>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...dashStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../Dashboard")}>
+                    <ListItemButton sx={{ ...dashStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
                         <MdOutlineSpaceDashboard size="20px" />
                         {drawerToggle && <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>}
                     </ListItemButton>
