@@ -2,7 +2,7 @@
 import { createAction } from "@reduxjs/toolkit";
 import { deleteRequest, getRequest, patchRequest, postRequest, putRequest } from "../app/axios";
 import _ from "lodash";
-// import { API_URL } from "modules/user-management/apiUrls";
+import { API_URL } from "../modules/user-management/urls";
 import { call, delay, put } from "redux-saga/effects";
 import { errorNotify, warningNotify } from "./notificationUtils";
 import { HTTP_CONSTANTS, REQUEST_METHOD, STORAGE_KEYS } from "../common/constants";

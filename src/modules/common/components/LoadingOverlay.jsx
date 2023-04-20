@@ -4,6 +4,7 @@ import React from "react";
 import LoadingOverlay from "react-loading-overlay-ts";
 import { ScaleLoader, PulseLoader, SyncLoader } from "react-spinners";
 import palette from "../../../common/themes/palette.json";
+import SearchResultSkeleton from "./Skeleton/SearchResultSkeleton";
 
 const DefaultLoader = ({ speedMultiplier, color }) => {
     return <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
@@ -20,6 +21,9 @@ const LoadingCustomOverlay = ({ active, children, spinnerProps = "" }) => {
             break;
         case "scale":
             loader = <ScaleLoader color={palette.palette.grey.main} />;
+            break;
+        case "skeleton":
+            loader = <SearchResultSkeleton />;
             break;
         default:
             loader = <DefaultLoader speedMultiplier={0.5} color={palette.palette.grey.dark} />;

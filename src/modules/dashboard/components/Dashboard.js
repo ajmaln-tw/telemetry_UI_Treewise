@@ -60,7 +60,7 @@ const Dashboard = () => {
                     </Box>
                     <Grid container rowSpacing={1} sx={{ display: "flex", justifyContent: "center" }}>
                         <Grid item xm={12} sm={12} md={12} lg={6} xl={6}>
-                            {smScreen && <CustomMap title="Last Journey" coordinates={[51.505, -0.09]} />}
+
                         </Grid>
                         <Grid item xm={12} sm={12} md={12} lg={6} xl={6} sx={{ display: smScreen ? "display" : "block" }}>
                             <CustomCharts type="Bar" gradient={true} dataList={data} sx={chartStyle2} legend={false} axis="y" title="Alert Frequency" />

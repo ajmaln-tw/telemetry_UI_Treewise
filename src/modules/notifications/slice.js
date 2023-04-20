@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
-import { COMMOM_TABLE_PAGINATION } from "../../common/constants";
+import { COMMON_TABLE_PAGINATION } from "../../common/constants";
 
 import { ACTION_TYPES } from "./actions";
 import { STATE_REDUCER_KEY } from "./constants";
 const initialState = {
     tablePagination: {
-        ...COMMOM_TABLE_PAGINATION
+        ...COMMON_TABLE_PAGINATION
     },
 
     table: {

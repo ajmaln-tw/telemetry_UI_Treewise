@@ -9,10 +9,6 @@ export const profileInfoSchema = Yup.object({
         .min(3)
         .max(100)
         .required("Last Name Required"),
-    email: Yup.string()
-        .email()
-        .max(100)
-        .required("Email Required"),
     designation: Yup.string()
         .max(100)
         .required("Designation Required")

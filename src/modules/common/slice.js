@@ -5,7 +5,8 @@ import { STATE_REDUCER_KEY } from "./constants";
 
 const initialState = {
     navigator: {},
-    table: {}
+    table: {},
+    drawerToggle: true
 };
 
 
@@ -16,6 +17,9 @@ const slice = createSlice({
         clearAll: () => initialState,
         setNavigator: (state, action) => {
             state.navigator = action.payload;
+        },
+        setUnsetDrawer: (state) => {
+            state.drawerToggle = !state.drawerToggle;
         }
     },
     extraReducers: (builder) => {

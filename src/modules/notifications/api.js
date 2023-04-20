@@ -18,7 +18,7 @@ export const testTableAPICall = ({ pageIndex, count, pageSize }) => {
     let start = pageIndex * pageSize;
     // eslint-disable-next-line no-undef
     return new Promise((resolve, reject) => {
-        fetch(`http://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${pageSize}&count=${count}&pageIndex=${pageIndex}`)
+        fetch(`https://jsonplaceholder.typicode.com/users?_start=${start}&_limit=${pageSize}&count=${count}&pageIndex=${pageIndex}`)
             .then(response => response.json())
             .then(json => resolve(json))
             .catch(err => reject(err));

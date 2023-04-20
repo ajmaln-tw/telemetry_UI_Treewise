@@ -7,37 +7,41 @@
 }
 
 body {
-  margin:0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 /* Sizing of Map Container */
 .leaflet-container {
-  height: 25vh;
+  height: 25rem;
   width: 20rem;
 }
 
 /* Scroll BAR */
 ::-webkit-scrollbar {
-  height: 8px;              
-  width: 4px;               
+  height: 8px;
+  width: 4px;
 }
+
 *::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 3px rgba(190, 190, 190, 0.3);
   background: #9c9c9c;
 }
+
 .mainTreemetry::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 3px rgba(190, 190, 190, 0.3);
   border-radius: 10px;
   background-color: #f8f8f8
 }
+
 .mainTreemetry-root::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 3px rgba(190, 190, 190, 0.3);
   background: #9c9c9c;
 }
+
 .MuiTableContainer-root::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 3px rgba(190, 190, 190, 0.3);
   border-radius: 10px;
@@ -55,7 +59,7 @@ body {
 *::-webkit-scrollbar {
   width: 8px;
   background-color: #fff;
-  color:rgba(190, 190, 190, 0.3)
+  color: rgba(190, 190, 190, 0.3)
 }
 
 

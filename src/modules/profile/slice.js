@@ -9,7 +9,7 @@ const initialState = {
         data: {
             firstName: "",
             lastName: "",
-            email: "",
+            email: "test@company.com",
             designation: "",
             alternativeEmail: "",
             profileImage: ""

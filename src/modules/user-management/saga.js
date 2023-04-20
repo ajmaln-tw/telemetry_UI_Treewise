@@ -1,14 +1,14 @@
-import { all, call, takeLatest } from "redux-saga/effects";
+import { all, fork, takeLatest } from "redux-saga/effects";
 import { ACTION_TYPES } from "./actions";
-import { fetUserById } from "./api";
+import { authenticateUser, signUpApi } from "./api";
 import { handleAPIRequest } from "../../utils/http";
 
-export function* signIn({ payload: id }) {
-    yield call(handleAPIRequest, fetUserById, { id });
+export function* signIn({ payload = {} }) {
+    yield fork(handleAPIRequest, authenticateUser, payload);
 }
 
-export function* signUp({ payload: id }) {
-    yield call(handleAPIRequest, fetUserById, { id });
+export function* signUp({ payload = {} }) {
+    yield fork(handleAPIRequest, signUpApi, payload);
 }
 
 

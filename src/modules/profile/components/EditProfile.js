@@ -42,7 +42,7 @@ const EditProfile = (props) => {
                                     <FormController statusError={true} errorName={errors?.lastName} control="input2" label={"Last Name"} name="lastName" isMandatory={true} />
                                 </Grid>
                                 <Grid item xs={12} md={12} lg={12} >
-                                    <FormController statusError={true} errorName={errors?.email} control="input2" label={"Email"} name="email" isMandatory={true} />
+                                    <FormController statusError={true} errorName={errors?.email} control="input2" label={"Email"} name="email" disabled />
                                 </Grid>
                                 <Grid item xs={12} md={12} lg={12} >
                                     {/* Profile Picture Container */}
@@ -115,9 +115,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 const editUser = withFormik({
     enableReinitialize: true,
-    // mapPropsToValues: (props) => {
-    //     return props.profileDetails.data;
-    // },
+    mapPropsToValues: (props) => {
+        return props.profileDetails.data;
+    },
     validationSchema: profileInfoSchema,
     handleSubmit: (values, { props }) => {
         props.updateValues(values);
