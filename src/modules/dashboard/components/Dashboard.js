@@ -4,7 +4,6 @@ import CustomCard from "../../../common/components/custom/CustomCard";
 import CustomCharts from "../../../common/components/custom/CustomCharts";
 import VesselsInfo from "./VesselsInfo";
 import { vesselsInfo } from "../constants";
-import CustomMap from "../../../common/components/map/CustomMap";
 import StatsCard from "./StatsCard";
 
 
