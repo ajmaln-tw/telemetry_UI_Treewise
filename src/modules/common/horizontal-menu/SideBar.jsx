@@ -86,32 +86,32 @@ const SideBar = () => {
                 <List sx={{ px: 0.5, py: 0 }}>
                     <ListItemButton sx={{ ...dashStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
                         <MdOutlineSpaceDashboard size="20px" />
-                        {drawerToggle && <ListItemText sx={{ px: 0.5, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>}
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
                     <ListItemButton sx={{ ...analyticsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../analytics")}>
                         <TbBrandGoogleAnalytics size="20px" />
-                        {drawerToggle && <ListItemText sx={{ px: 0.5, fontSize: "14px !!important" }}>{"Analytics"}</ListItemText>}
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Analytics"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
                     <ListItemButton sx={{ ...notificationsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
                         <IoIosNotificationsOutline size="20px" />
-                        {drawerToggle && <ListItemText sx={{ px: 0.5, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>}
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
                     <ListItemButton sx={{ ...profileStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../profile/info")}>
                         <CiUser size="20px" />
-                        {drawerToggle && <ListItemText sx={{ px: 0.5, fontSize: "14px !!important" }}>{"Profile"}</ListItemText>}
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Profile"}</ListItemText>}
                     </ListItemButton>
                 </List>
             </List>
             <List sx={{ px: 1.5, pt: 6 }}>
                 <List sx={{ px: 0.5, py: 0 }}>
                     <ListItemButton sx={{ ...logout, px: 1, py: 0 }} onClick={() => navigate("./logout")}>
-                        {drawerToggle && <ListItemText sx={{ px: 0.5, fontSize: "14px !!important" }}>{"Logout"}</ListItemText>}
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Logout"}</ListItemText>}
                         <BiLogOutCircle size="20px" />
                     </ListItemButton>
                 </List>
