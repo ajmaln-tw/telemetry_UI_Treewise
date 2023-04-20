@@ -132,7 +132,7 @@ export default function ImageUploaderPopUp({ title = "Title", id, name = "Name",
             }}>
                 <CloudUpload /> &nbsp; <Typography variant="p" sx={{ fontSize: 10 }}>{popupName}</Typography>
             </Button>
-            <Dialog maxWidth={30} open={open} onClose={handleClose} sx={{ display: "flex", justifyContent: "center" }}>
+            <Dialog maxWidth={"200px"} open={open} onClose={handleClose} sx={{ display: "flex", justifyContent: "center" }}>
                 <Box sx={{ backgroundColor: "primary.light" }}>
                     <DialogTitle sx={{ color: "white.main", fontWeight: 700 }}>{title}</DialogTitle>
                     <Divider sx={{ width: "100%" }} />

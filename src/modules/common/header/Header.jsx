@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <Grid
             component="header"
-            sx={{ backgroundColor: "secondary.main", width: "100%", height: "82px", position: "sticky", top: 0, zIndex: 100, display: "flex", justifyContent: "space-between", alignItems: "center" }}
+            sx={{ backgroundColor: "secondary.main", pb: 0.4, width: "100%", height: "83px", position: "sticky", top: 0, zIndex: 100, display: "flex", justifyContent: "space-between", alignItems: "center" }}
         >
             <Box
                 sx={{

@@ -8,10 +8,10 @@ function Input2(props) {
     const { label, name, icon, onClick, sx = {}, errorName = "", statusError = false, onChangeText, onChangeFromController, digitsOnly = false, isMandatory = false, upperCase = false, ...rest } = props;
     return (
         <Grid container sx={{ ...FORM_CONTROL_STYLE_ALT, ...sx }}>
-            <Grid item sx={12} sm={12} md={6}>
+            <Grid item xs={12} sm={12} md={6}>
                 <InputLabel sx={{ fontWeight: 700 }} htmlFor={name}>{label} {isMandatory && <span style={{ color: "red", fontSize: "14px" }}> *</span>}</InputLabel>
             </Grid>
-            <Grid item sx={12} sm={12} md={6}>
+            <Grid item xs={12} sm={12} md={6}>
                 <Field name={name} sx={{ height: "20px" }}>
                     {({ form, field }) => {
                         const { handleChange } = form;

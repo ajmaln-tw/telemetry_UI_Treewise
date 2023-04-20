@@ -3,9 +3,10 @@ import { Box } from "@mui/system";
 import { useState } from "react";
 import { Icons } from "../../../common/components";
 import Main from "./Main";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 
-const { ViewList, Map, SupportAgent, CloseOutlined } = Icons;
+const { Map, SupportAgent, CloseOutlined } = Icons;
 
 const iconStyle = {
     position: "fixed",
@@ -13,7 +14,7 @@ const iconStyle = {
     minWidth: "55px",
     bottom: 21,
     right: 10,
-    backgroundColor: "secondary.light",
+    backgroundColor: "transparent",
     "&:hover": {
         backgroundColor: "secondary.dark"
     }
@@ -68,7 +69,7 @@ const Footer = () => {
     return (
         <>
             <IconButton sx={iconStyle} onClick={() => handleOpen()}>
-                <ViewList fontSize="medium" sx={{ color: "primary.main" }} />
+                <HelpOutlineIcon onClick={() => handleOpen()} fontSize="medium" sx={{ iconStyle, color: "primary.main" }} />
             </IconButton>
             <Main />
             <Modal

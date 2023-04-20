@@ -1,16 +1,15 @@
 import React, { useEffect, useMemo } from "react";
 import CustomReactTable from "../../../common/components/custom/CustomReactTable";
-import { STATE_REDUCER_KEY } from "../constants";
-import { Icons, Components } from "../../../common/components";
+import { NOTIFICATIONS_TABLE_COLUMN, STATE_REDUCER_KEY, notificationsColumnOrder } from "../constants";
+import { Icons } from "../../../common/components";
 import CustomListMenu from "../../../common/components/custom/CustomListMenu";
-import { COMMOM_TABLE_PAGINATION, REACT_TABLE_COMMON_OPTIONS } from "../../../common/constants";
+import { COMMON_TABLE_PAGINATION, REACT_TABLE_COMMON_OPTIONS } from "../../../common/constants";
 import { actions as sliceActions } from "../slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { loadUsers } from "../actions";
 
 const { EditIcon, OpenInNewIcon } = Icons;
-const { Grid } = Components;
 
 const NotificationTable = () => {
     const navigate = useNavigate();
@@ -19,56 +18,7 @@ const NotificationTable = () => {
     const { data: users = [], requestInProgress: loading = false, rowSelectionState = {} } = notifications;
 
     const columns = useMemo(
-        () => [
-            {
-                id: "id",
-                header: "Id",
-                accessorKey: "id",
-                size: 70
-            },
-            {
-                id: "albumId",
-                header: "Album ID",
-                accessorKey: "albumId",
-                size: 150
-            },
-            {
-                id: "thumbnailUrl",
-                header: "View",
-                size: 150,
-                Cell: ({ row }) => (
-                    <Grid
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "1rem",
-                            backgroundImage: `url(${row.thumbnailUrl || ""})`, backgroundSize: "cover",
-                            width: "50px",
-                            height: "50px"
-                        }}
-                    >
-                        {row.thumbnailUrl}
-                    </Grid>
-                )
-            },
-            {
-                id: "title",
-                header: "Title",
-                accessorKey: "title",
-                size: 250
-            },
-            {
-                id: "url",
-                header: "URL",
-                accessorKey: "url",
-                size: 150,
-                Cell: ({ cell }) => (
-                    <a href={cell.getValue()} rel="noreferrer" target="_blank" >
-                        {cell.getValue()}
-                    </a >
-                )
-            }
-        ],
+        () => NOTIFICATIONS_TABLE_COLUMN,
         []
     );
     const actions = (row) => {
@@ -102,11 +52,12 @@ const NotificationTable = () => {
         dispatch(sliceActions.setRowSelection(payload));
     };
     const handleChangeRowsPerPage = (e) => {
-        dispatch(sliceActions.setPagination({ ...COMMOM_TABLE_PAGINATION, pageSize: e.target.value }));
+        dispatch(sliceActions.setPagination({ ...COMMON_TABLE_PAGINATION, pageSize: e.target.value }));
         dispatch(loadUsers());
     };
     const options = {
         ...REACT_TABLE_COMMON_OPTIONS,
+        enableRowSelection: false,
         requestInProgress: loading,
         pageSize: pageSize,
         rowCount: pageSize,
@@ -116,6 +67,9 @@ const NotificationTable = () => {
             pageIndex: pageIndex,
             pageSize: pageSize,
             rowSelection: rowSelectionState
+        },
+        initialState: {
+            columnOrder: notificationsColumnOrder
         },
         customPagination: {
             handleChangePage,
