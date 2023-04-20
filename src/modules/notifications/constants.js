@@ -47,5 +47,5 @@ export const notificationsColumnOrder = [
     "email",
     "phone",
     "phone",
-    "website",
-]
+    "website"
+];
