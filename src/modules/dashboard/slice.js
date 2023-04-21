@@ -17,6 +17,15 @@ const initialState = {
     usersList: {
         requestInProgress: false,
         data: []
+    },
+    dashboard: {
+        requestInProgress: false,
+        lineChart: {
+            requestInProgress: false
+        },
+        vesselsStats: {
+            requestInProgress: false
+        }
     }
 
 };
@@ -34,15 +43,14 @@ const slice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(ACTION_TYPES.FETCH_USER_BY_ID_REQUEST, (state) => {
-                _.set(state, "userDetails.requestInProgress", true);
+            .addCase(ACTION_TYPES.FETCH_DASHBOARD_DATA_REQUEST, (state) => {
+                _.set(state, "dashboard.requestInProgress", true);
             })
-            .addCase(ACTION_TYPES.FETCH_USER_BY_ID_SUCCESS, (state, action) => {
-                _.set(state, "userDetails.requestInProgress", false);
-                _.set(state, "userDetails.data", action.payload);
+            .addCase(ACTION_TYPES.FETCH_DASHBOARD_DATA, (state) => {
+                _.set(state, "dashboard.requestInProgress", true);
             })
-            .addCase(ACTION_TYPES.FETCH_USER_BY_ID_FAILURE, (state) => {
-                _.set(state, "userDetails.requestInProgress", false);
+            .addCase(ACTION_TYPES.FETCH_DASHBOARD_DATA_FAILURE, (state) => {
+                _.set(state, "dashboard.requestInProgress", false);
             });
 
     }

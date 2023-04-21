@@ -56,7 +56,7 @@
   "scripts": {
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
-    "start": "npm i && lint:fix && react-scripts start",
+    "start": "npm i && react-scripts start",
     "clean": "npm cache clean --force  && rmdir ./node_modules",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -1,10 +1,13 @@
 import { Box, Grid, useMediaQuery, useTheme } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import CustomCard from "../../../common/components/custom/CustomCard";
 import CustomCharts from "../../../common/components/custom/CustomCharts";
 import VesselsInfo from "./VesselsInfo";
-import { vesselsInfo } from "../constants";
+import { STATE_REDUCER_KEY, vesselsInfo } from "../constants";
 import StatsCard from "./StatsCard";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDashBoardData } from "../actions";
+import LoadingCustomOverlay from "../../common/components/LoadingOverlay";
 
 
 const chartStyle = {
@@ -41,33 +44,48 @@ let data = {
 const Dashboard = () => {
     const theme = useTheme();
     const smScreen = useMediaQuery(theme.breakpoints.up("md"));
+    const dashboardSpinner = useSelector(state => state[STATE_REDUCER_KEY]).dashboard.requestInProgress;
+    const dispatch = useDispatch();
+    let countdown = 30 * 60 * 1000;
+    useEffect(() => {
+        dispatch(fetchDashBoardData());
+        const intervalCall = setInterval(() => {
+            dispatch(fetchDashBoardData());
+        }, countdown);
+        return () => {
+            // clean up
+            clearInterval(intervalCall);
+        };
+    }, []);
     return (
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 0.1, sm: 0.3 }}>
-                <Grid item xs={12} sm={12} md={5} lg={4} xl={4} sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", py: 1, flexDirection: "column" }}>
-                    <StatsCard />
-                    <Box>
-                        <VesselsInfo data={vesselsInfo} />
-                    </Box>
+        <LoadingCustomOverlay spinnerProps="fetch" active={dashboardSpinner}>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <Grid container rowSpacing={1} columnSpacing={{ xs: 0.1, sm: 0.3 }}>
+                    <Grid item xs={12} sm={12} md={5} lg={4} xl={4} sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", py: 1, flexDirection: "column" }}>
+                        <StatsCard />
+                        <Box>
+                            <VesselsInfo data={vesselsInfo} />
+                        </Box>
 
-                </Grid>
-                <Grid item xs={12} sm={12} md={7} lg={8} xl={8} sx={{ display: "flex", justifyContent: "flex-start", py: 1, flexDirection: "column" }}>
-                    <Box sx={{ width: "99%" }}>
-                        <CustomCard additionalStyle={{ width: "100%" }}>
-                            <CustomCharts type="Line" sx={chartStyle} {...lineChartProps} title="Fuel Consumption" />
-                        </CustomCard>
-                    </Box>
-                    <Grid container rowSpacing={1} sx={{ display: "flex", justifyContent: "center" }}>
-                        <Grid item xm={12} sm={12} md={12} lg={6} xl={6}>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={7} lg={8} xl={8} sx={{ display: "flex", justifyContent: "flex-start", py: 1, flexDirection: "column" }}>
+                        <Box sx={{ width: "99%" }}>
+                            <CustomCard additionalStyle={{ width: "100%" }}>
+                                <CustomCharts type="Line" sx={chartStyle} {...lineChartProps} title="Fuel Consumption" />
+                            </CustomCard>
+                        </Box>
+                        <Grid container rowSpacing={1} sx={{ display: "flex", justifyContent: "center" }}>
+                            <Grid item xm={12} sm={12} md={12} lg={6} xl={6}>
 
-                        </Grid>
-                        <Grid item xm={12} sm={12} md={12} lg={6} xl={6} sx={{ display: smScreen ? "display" : "block" }}>
-                            <CustomCharts type="Bar" gradient={true} dataList={data} sx={chartStyle2} legend={false} axis="y" title="Alert Frequency" />
+                            </Grid>
+                            <Grid item xm={12} sm={12} md={12} lg={6} xl={6} sx={{ display: smScreen ? "display" : "block" }}>
+                                <CustomCharts type="Bar" gradient={true} dataList={data} sx={chartStyle2} legend={false} axis="y" title="Alert Frequency" />
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-        </Box >
+            </Box >
+        </LoadingCustomOverlay>
     );
 };
 
