@@ -28,3 +28,11 @@ export const changePasswordSchema = Yup.object({
         .required("Confirm Password Required")
 
 });
+
+
+export const vesselDataSchema = Yup.object({
+    vesselName: Yup.string()
+        .required("Vessel Name Required"),
+    apiURL: Yup.string()
+        .required("Vessel API URL Required")
+});

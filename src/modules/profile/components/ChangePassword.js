@@ -6,7 +6,7 @@ import { createStructuredSelector } from "reselect";
 import { FormController, Icons } from "../../../common/components";
 import Button from "../../../common/components/custom/Button";
 import LoadingCustomOverlay from "../../common/components/LoadingOverlay";
-import { changePassowrd } from "../actions";
+import { changePassword } from "../actions";
 
 import { changePasswordSchema } from "../validate";
 
@@ -74,7 +74,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    changePassowrd: (data) => dispatch(changePassowrd(data))
+    changePassword: (data) => dispatch(changePassword(data))
 });
 
 const editUser = withFormik({
@@ -84,7 +84,7 @@ const editUser = withFormik({
     // },
     validationSchema: changePasswordSchema,
     handleSubmit: (values, { props }) => {
-        props.changePassowrd(values);
+        props.changePassword(values);
     },
     displayName: "View/ChangePassword"
 })(ChangePassword);

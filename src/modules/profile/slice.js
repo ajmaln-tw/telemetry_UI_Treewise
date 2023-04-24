@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
 
 import { ACTION_TYPES } from "./actions";
-import { STATE_REDUCER_KEY } from "./constants";
+import { STATE_REDUCER_KEY, VESSEL_VARIABLES } from "./constants";
 const initialState = {
     profileDetails: {
         requestInProgress: false,
@@ -17,9 +17,22 @@ const initialState = {
         }
 
     },
+    vesselData: {
+        requestInProgress: false,
+        data: {
+            vesselName: "as",
+            apiURL: "assa",
+            vesselVariables: VESSEL_VARIABLES
+        }
+    },
     cropData: null,
     modal: {
-        openProfileModal: false
+        openProfileModal: false,
+        openVesselDataModal: false,
+        openEditVesselDataModal: false
+    },
+    stepper: {
+        activeStep: 0
     }
 };
 
@@ -34,6 +47,19 @@ const slice = createSlice({
         },
         setCropData: (state, action) => {
             state.cropData = action.payload;
+        },
+        closeOpenVesselDataModal: (state, { payload }) => {
+            state.modal.openVesselDataModal = payload;
+        },
+        closeOpenEditVesselDataModal: (state, { payload }) => {
+            state.stepper.activeStep = 0;
+            state.modal.openEditVesselDataModal = payload;
+        },
+        setActiveStep: (state) => {
+            state.stepper.activeStep = state.stepper.activeStep + 1;
+        },
+        setActiveStepBack: (state) => {
+            state.stepper.activeStep = state.stepper.activeStep - 1;
         }
 
     },

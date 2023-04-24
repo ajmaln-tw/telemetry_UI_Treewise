@@ -1,0 +1,10 @@
+{
+    "MuiInputLabel": {
+        "styleOverrides": {
+            "root": {
+                "fontWeight": 900,
+                "color": "#000000"
+            }
+        }
+    }
+}

@@ -102,7 +102,7 @@ const EditProfile = (props) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-    profileDetails: getProfileDetails, //[-] write selectors pending
+    profileDetails: getProfileDetails,
     cropData: getCropData,
     open: getModalOpen
 });

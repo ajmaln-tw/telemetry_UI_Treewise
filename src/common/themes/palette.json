@@ -25,7 +25,8 @@
         "main": "#FC3B3B "
       },
       "white": {
-        "main": "#ffffff"
+        "main": "#ffffff",
+        "light": "#fcfcfc"
       },
       "shaded": {
         "main": "#86938E"

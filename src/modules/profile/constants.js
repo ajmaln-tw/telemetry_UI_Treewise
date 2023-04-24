@@ -28,3 +28,24 @@ export const PREMIUM_TIER = [
 ];
 
 
+export const vesselList = [
+    { name: "ASW", api: "/sdf/d" },
+    { name: "SSS", api: "/sdf/dss" },
+    { name: "SBA", api: "/sdf/dss" }
+];
+
+export const VESSEL_VARIABLES = [
+    { name: true, label: "EEFE" }, { name: false, label: "SSS" },
+    { name: false, label: "SS" }, { name: false, label: "SS" },
+    { name: false, label: "EEFE" }, { name: false, label: "SSS" },
+    { name: false, label: "SS" }, { name: false, label: "SS" },
+    { name: false, label: "EEFE" }, { name: false, label: "SSS" },
+    { name: false, label: "SS" }, { name: false, label: "SS" },
+    { name: false, label: "EEFE" }, { name: false, label: "SSS" },
+    { name: false, label: "SS" }, { name: false, label: "SS" },
+    { name: false, label: "EEFE" }, { name: false, label: "SSS" },
+    { name: false, label: "SS" }, { name: false, label: "SS" },
+    { name: false, label: "EEFE" }, { name: false, label: "SSS" },
+    { name: false, label: "SS" }, { name: false, label: "SS" }
+
+];

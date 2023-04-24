@@ -41,7 +41,8 @@ function Input2(props) {
                                     sx={{
                                         "& .MuiInputBase-input.Mui-disabled": {
                                             WebkitTextFillColor: "#5A5A5A"
-                                        }
+                                        },
+                                        maxWidth: "400px"
                                     }}
                                     InputProps={{
                                         endAdornment: (
@@ -60,7 +61,7 @@ function Input2(props) {
                 </Field>
 
             </Grid>
-        </Grid>
+        </Grid >
     );
 }
 

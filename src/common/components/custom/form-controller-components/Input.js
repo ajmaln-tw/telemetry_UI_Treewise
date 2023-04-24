@@ -28,10 +28,10 @@ const StyledTextField = styled(TextField)({
 function Input(props) {
   const { label, name, icon, onClick, sx = {}, errorName = "", statusError = false, onChangeText, onChangeFromController, digitsOnly = false, isMandatory = false, upperCase = false, ...rest } = props;
 
-
+  const inputStyle = { color: "primary.main" };
   return (
     <Grid sx={{ ...FORM_CONTROL_STYLE, ...sx }}>
-      <InputLabel htmlFor={name}>{label} {isMandatory && <span style={{ color: "red", fontSize: "14px" }}> *</span>}</InputLabel>
+      <InputLabel sx={inputStyle} htmlFor={name}>{label} {isMandatory && <span style={{ color: "red", fontSize: "14px" }}> *</span>}</InputLabel>
       <Field name={name} >
         {({ form, field }) => {
           const { handleChange } = form;

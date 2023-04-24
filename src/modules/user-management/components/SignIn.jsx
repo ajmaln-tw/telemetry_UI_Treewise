@@ -71,12 +71,12 @@ function SignIn(props) {
                                         <Box sx={{ display: "flex", justifyContent: "space-between", pb: 1 }}>
                                             <Grid sx={{ display: "flex", alignItems: "flex-start" }}>
                                                 <FormController control="checkbox" name="savePassword" />
-                                                <Typography sx={{ fontSize: "12px", color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}>{"Remember Me"}</Typography>
+                                                <Typography sx={{ fontSize: "12px", fontWeight: 700, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}>{"Remember Me"}</Typography>
                                             </Grid>
                                             <Grid sx={{ display: "flex", alignItems: "flex-start" }}>
                                                 <Typography
                                                     variant="p"
-                                                    sx={{ fontSize: "12px", color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}
+                                                    sx={{ fontSize: "12px", fontWeight: 700, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}
                                                 // onClick={() => navigate("../reset-password")}
                                                 >
                                                     {"Forgot password?"}
@@ -95,12 +95,12 @@ function SignIn(props) {
                             </Box>
                             <Divider variant="caption" />
                             <Box sx={{ display: "flex", py: { xs: 3, xl: 4.5 }, justifyContent: "center", alignItems: "space-around", boxShadow: 0 }} elevation={0}>
-                                <Typography display="inline" sx={{ fontSize: "13px", color: "shaded.main" }}>{"Need an Account?"}</Typography>
-                                <Typography display="inline" variant="text" sx={{ fontWeight: 600, fontSize: "14px", pb: 0.5, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
+                                <Typography display="inline" sx={{ fontSize: "13px", color: "shaded.main" }}>{"Don’t have an account?"}</Typography>
+                                <Typography display="inline" variant="text" sx={{ fontWeight: 700, fontSize: "14px", pb: 0.6, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
                                     onClick={() => {
                                         navigate("../signup");
                                     }
-                                    }>{"Create Account"}</Typography>
+                                    }>{"Sign up"}</Typography>
                             </Box>
                         </Grid>
                     </Paper >
