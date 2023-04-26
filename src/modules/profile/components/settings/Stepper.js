@@ -52,10 +52,10 @@ const VesselDataVariableModalHeader = () => {
     return (
         <Box sx={{ mb: 2, display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
             <Typography sx={{ color: "primary.main", fontSize: "16px", fontWeight: 700 }}>
-                Vessel Data
+                Edit Vessel variables
             </Typography>
             <Typography >
-                Your vessel and the corresponding API to your profile
+                Select the variables you want to display
             </Typography>
         </Box>
     );

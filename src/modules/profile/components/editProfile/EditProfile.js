@@ -1,26 +1,56 @@
-import { Avatar, Box, CardActions, CardContent, Divider, Grid, InputLabel, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { useState } from "react";
+import { Avatar, Box, CardActions, CardContent, Divider, Grid, InputLabel, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { Form, withFormik } from "formik";
 import { useParams } from "react-router-dom";
-import { connect } from "react-redux";
+
+import { connect, useDispatch } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { FormController, Icons } from "../../../common/components";
-import Button from "../../../common/components/custom/Button";
-import LoadingCustomOverlay from "../../common/components/LoadingOverlay";
-import { actions as sliceActions } from "../slice";
+import { FormController, Icons } from "../../../../common/components";
+import Button from "../../../../common/components/custom/Button";
+import LoadingCustomOverlay from "../../../common/components/LoadingOverlay";
+import { actions as sliceActions } from "../../slice";
 
 const { Person } = Icons;
 
-import { updateProfile, uploadProfileImage } from "../actions";
-import ImageUploaderPopUp from "../../common/components/ImageUploaderPopUp";
+import { updateProfile, uploadProfileImage } from "../../actions";
 
-import { profileInfoSchema } from "../validate";
-import { getCropData, getModalOpen, getProfileDetails } from "../selectors";
+
+import { profileInfoSchema, verifyFile } from "../../validate";
+import { getCropData, getModalOpen, getProfileDetails } from "../../selectors";
+import FileUpload from "./FileUpload";
+
 const EditProfile = (props) => {
     const { id = 0 } = useParams();
-    const { handleSubmit, profileDetails = {}, cropData, open, setCropData, setOpenProfileModal, errors = {} } = props;
-    const theme = useTheme();
-    const smScreen = useMediaQuery(theme.breakpoints.down("sm"));
+    const [fileError, setFileError] = useState("");
+    const [isFile, setIsFile] = useState(false);
+    const [fileName, setFileName] = useState("");
+    const { handleSubmit, profileDetails = {}, errors = {} } = props;
+    const dispatch = useDispatch();
+    const handleImage = (e) => {
+        setFileError("");
+        setIsFile(false);
+        let files = e.target.files;
+        if (files && files.length > 0) {
+            const { isVerified, message = "", currFileName = "" } = verifyFile(files);
+            if (isVerified) {
+                const currentFile = files[0];
+                // save to store;
+                dispatch(sliceActions.setImage(currentFile));
+                setIsFile(true);
+                setFileName(currFileName);
+            } else {
+                setIsFile(false);
+                setFileError(message);
+            }
+        }
+    };
+    const handleUpload = () => {
+        dispatch(uploadProfileImage());
+        setIsFile(false);
+    };
+
+
     useEffect(() => {
 
     }, []);
@@ -47,24 +77,25 @@ const EditProfile = (props) => {
                                 <Grid item xs={12} md={12} lg={12} >
                                     {/* Profile Picture Container */}
                                     <Grid container pb={1.5}>
-                                        <Grid item xs={12} sm={12} md={6}>
+                                        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                                             <InputLabel sx={{ fontWeight: 700 }} htmlFor={name}>{"Profile Picture"} </InputLabel>
                                         </Grid>
-                                        {profileDetails.profileImage ?
-                                            <Grid item xs={12} sm={12} md={2} sx={{ display: smScreen ? "block" : " flex", justifyContent: "center", alignItems: "center" }}>
+                                        {profileDetails.data.profileImage ?
+                                            <Grid item xs={12} sm={12} md={2} sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
                                                 <Avatar
-                                                    variant="rounded"
-                                                    alt={profileDetails?.firstName}
-                                                    src={`${profileDetails.profileImage}`}
+                                                    variant="square"
+                                                    alt={profileDetails?.data.firstName}
+                                                    src={`${profileDetails.data.profileImage}`}
                                                     sx={{
-                                                        width: 150, height: 150
+                                                        borderRadius: "5px",
+                                                        width: 110, height: 110
                                                     }} />
                                             </Grid>
-                                            : <Grid item xs={12} sm={12} md={2} sx={{ display: smScreen ? "flex" : " flex", justifyContent: "center", alignItems: "center" }}>
+                                            : <Grid item xs={12} sm={12} md={2} lg={2} xl={1} sx={{ display: " flex", justifyContent: "center", alignItems: "center" }}>
                                                 <Person sx={{ fontSize: "4rem", color: "grey.main", opacity: 0.8 }} />
                                             </Grid>}
-                                        <Grid item xs={12} sm={12} md={2} sx={{ display: smScreen ? "flex" : "block", justifyContent: "center", alignItems: "center" }}>
-                                            <ImageUploaderPopUp
+                                        <Grid item xs={12} sm={12} md={2} lg={2} xl={1} sx={{ display: "flex", justifyContent: { xm: "flex-start", sm: "flex-start", md: "center" }, alignItems: "center" }}>
+                                            {/* <ImageUploaderPopUp
                                                 id={profileDetails.userId}
                                                 name={profileDetails.firstName}
                                                 description="Profile Picture"
@@ -75,7 +106,14 @@ const EditProfile = (props) => {
                                                 setOpen={setOpenProfileModal}
                                                 cropData={cropData}
                                                 setCropData={setCropData}
-                                            />
+                                            /> */}
+                                            <FileUpload
+                                                handleImage={handleImage}
+                                                fileError={fileError}
+                                                handleUpload={handleUpload}
+                                                isFileExists={isFile}
+                                                fileName={fileName} />
+
                                         </Grid>
                                     </Grid>
 

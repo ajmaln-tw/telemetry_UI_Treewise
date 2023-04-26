@@ -10,7 +10,7 @@ const FieldArrayVesselVariable = ({ view = false, push, form: { values: { vessel
         <>
             <InputLabel htmlFor={"vesselVariables"} sx={{ pb: 0.4 }}>{"Variables"}</InputLabel >
 
-            <Grid container spacing={1}>
+            <Grid container spacing={1} sx={{ minHeight: "200px", maxHeight: "300px", overflowY: "scroll" }}>
                 {/* {!view && <IconButton onClick={() => push({
                 name: "",
                 label: ""
@@ -22,7 +22,7 @@ const FieldArrayVesselVariable = ({ view = false, push, form: { values: { vessel
                 {vesselVariables?.map((_item, index) => {
                     return (
                         <>
-                            <Grid item xs={6} sm={4} md={3} lg={2}>
+                            <Grid item xs={6} sm={6} md={6} lg={4} xl={3}>
                                 <FormController
                                     name={`vesselVariables[${index}].name`}
                                     control="checkbox"
@@ -40,7 +40,7 @@ const FieldArrayVesselVariable = ({ view = false, push, form: { values: { vessel
 const EditVariables = () => {
     return (
         <>
-            <Grid item pt={1}>
+            <Grid pt={1}>
                 <FieldArray
                     name="vesselVariables">
                     {(p) => <FieldArrayVesselVariable {...p} />}

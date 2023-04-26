@@ -36,7 +36,7 @@ const ChangePassword = (props) => {
                                     <FormController statusError={true} errorName={errors?.newPassword} control="input2" label={"New Password"} name="newPassword" isMandatory={true} />
                                 </Grid>
                                 <Grid item xs={12} md={12} lg={12} >
-                                    <FormController statusError={true} errorName={errors?.confirmPassword} control="input2" label={"Confrim Password"} name="confirmPassword" isMandatory={true} />
+                                    <FormController statusError={true} errorName={errors?.confirmPassword} control="input2" label={"Confirm Password"} name="confirmPassword" isMandatory={true} />
                                 </Grid>
                             </Grid>
                         </CardContent>

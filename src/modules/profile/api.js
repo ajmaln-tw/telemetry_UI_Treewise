@@ -13,3 +13,14 @@ export const fetUserById = (data) => {
         }
     };
 };
+
+export const uploadProfileImageApi = (data) => {
+    return {
+        url: API_URL.USER.UPLOAD_PROFILE_IMAGE,
+        method: REQUEST_METHOD.FILE,
+        payload: {
+            types: [ACTION_TYPES.UPLOAD_PROFILE_IMAGE_REQUEST, ACTION_TYPES.UPLOAD_PROFILE_IMAGE_SUCCESS, ACTION_TYPES.UPLOAD_PROFILE_IMAGE_FAILURE],
+            data
+        }
+    };
+};

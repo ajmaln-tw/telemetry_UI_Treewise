@@ -12,7 +12,7 @@ const initialState = {
             email: "test@company.com",
             designation: "",
             alternativeEmail: "",
-            profileImage: ""
+            profileImage: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
 
         }
 
@@ -33,7 +33,8 @@ const initialState = {
     },
     stepper: {
         activeStep: 0
-    }
+    },
+    profileImageFile: null
 };
 
 
@@ -42,6 +43,9 @@ const slice = createSlice({
     name: STATE_REDUCER_KEY,
     reducers: {
         clearAll: () => initialState,
+        clearProfileImageFile: (state) => {
+            state.profileImageFile = initialState.profileImageFile;
+        },
         setOpenProfileModal: (state, action) => {
             state.modal.openProfileModal = action.payload;
         },
@@ -60,6 +64,9 @@ const slice = createSlice({
         },
         setActiveStepBack: (state) => {
             state.stepper.activeStep = state.stepper.activeStep - 1;
+        },
+        setImage: (state, { payload }) => {
+            state.profileImageFile = payload;
         }
 
     },

@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { PrivateRoute } from "../common/protected-route/protectedRoute";
 
-const Info = lazy(() => import("./components/EditProfile"));
+const Info = lazy(() => import("./components/editProfile/EditProfile"));
 const ChangePassword = lazy(() => import("./components/ChangePassword"));
 const Settings = lazy(() => import("./components/Settings"));
 const Subscription = lazy(() => import("./components/Subscriptions"));

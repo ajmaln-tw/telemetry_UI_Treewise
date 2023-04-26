@@ -4,7 +4,7 @@ import { deleteRequest, getRequest, patchRequest, postRequest, putRequest } from
 import _ from "lodash";
 import { API_URL } from "../modules/user-management/urls";
 import { call, delay, put } from "redux-saga/effects";
-import { errorNotify, warningNotify } from "./notificationUtils";
+import { errorNotify } from "./notificationUtils";
 import { HTTP_CONSTANTS, REQUEST_METHOD, STORAGE_KEYS } from "../common/constants";
 import { logout } from "../modules/common/actions";
 
@@ -29,7 +29,7 @@ const getRequestParams = ({ url, data, method }) => {
     let bearerToken = localStorage.getItem(STORAGE_KEYS.ACCESS_TOKEN);
     let extraParams = {};
 
-    const api = (method === REQUEST_METHOD.DELETE) ? deleteRequest : (method === REQUEST_METHOD.PUT) ? putRequest : (method === REQUEST_METHOD.PATCH) ? patchRequest : (method === REQUEST_METHOD.POST) ? postRequest : getRequest;
+    const api = (method === REQUEST_METHOD.DELETE) ? deleteRequest : (method === REQUEST_METHOD.PUT) ? putRequest : (method === REQUEST_METHOD.PATCH) ? patchRequest : (method === REQUEST_METHOD.POST || REQUEST_METHOD.FILE) ? postRequest : getRequest;
     baseURL = process.env.REACT_APP_API_URL;
     if (bearerToken) {
         authHeaders = { Authorization: `Bearer ${bearerToken}` };
@@ -44,16 +44,15 @@ const getRequestParams = ({ url, data, method }) => {
     }
 
     if (method === REQUEST_METHOD.FILE) {
-        extraParams.responseType = "blob";
-    }
+        headers["Content-Type"] = "multipart/form-data";
+        const formData = new FormData();
+        formData.append("file", data);
 
+        return { config: { headers: { ...headers, ...authHeaders }, ...extraParams }, baseURL, data: formData, api, ajmal: "ajmal" };
+    }
     return { config: { headers: { ...headers, ...authHeaders }, ...extraParams }, baseURL, data, api };
 };
 
-const API_RESULT_CODE = {
-    SUCCESS: "COMM_OPERATION_SUCCESS",
-    FAILURE: "COMM_OPERATION_FAILURE"
-};
 
 function* invokeApi(method, url, payload) {
     const { types = ["REQUEST", "SUCCESS", "FAILURE"], data: payloadData } = payload;
@@ -96,22 +95,27 @@ function* invokeApi(method, url, payload) {
         }
         yield put(errorNotify({ id, ...errorMessage }));
     } else {
-        if (_.get(response, "resultCode", "") === API_RESULT_CODE.FAILURE) {
-            yield put(warningNotify({ id: "ERROR_PRIMARY", title: "Operation Failure", message: _.get(response, "resultString", "Operation Failure") }));
-        } else if (_.has(response, "error")) {
-            let customError = response.error || {};
-            yield put(failureAction({ error: customError }));
-            const { code, message, response: { status, data: { resultString } = {} } = {} } = customError;
-            yield put(errorNotify({ id: "ERROR_PRIMARY", title: `${status || ""} ${code || "ERROR"}`, message: resultString || message }));
-        } else {
-            yield put(successAction(KEY_CLOAK_APIS.includes(url) || method === REQUEST_METHOD.FILE ? response : _.get(response, "payLoad", {})));
-        }
+        //TODO Handle success / failure operation
+        // if (_.get(response, "resultCode", "") === API_RESULT_CODE.FAILURE) {
+        //     yield put(warningNotify({ id: "ERROR_PRIMARY", title: "Operation Failure", message: _.get(response, "resultString", "Operation Failure") }));
+        // } else if (_.has(response, "error")) {
+        //     let customError = response.error || {};
+        //     yield put(failureAction({ error: customError }));
+        //     const { code, message, response: { status, data: { resultString } = {} } = {} } = customError;
+        //     yield put(errorNotify({ id: "ERROR_PRIMARY", title: `${status || ""} ${code || "ERROR"}`, message: resultString || message }));
+        // } else {
+        //     yield put(successAction(KEY_CLOAK_APIS.includes(url) || method === REQUEST_METHOD.FILE ? response : _.get(response, "payLoad", {})));
+        // }
+        yield put(successAction(_.get(response)));
     }
 
     return { response, error };
 }
 
+
 export function* handleAPIRequest(apiFn, ...rest) {
     let { method, url, payload } = apiFn(...rest);
     return yield call(invokeApi, method, url, payload);
 }
+
+
