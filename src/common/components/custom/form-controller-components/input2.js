@@ -1,4 +1,4 @@
-import { Grid, IconButton, InputAdornment, InputLabel, TextField, Typography } from "@mui/material";
+import { Box, Grid, IconButton, InputAdornment, InputLabel, TextField, Typography } from "@mui/material";
 import { ErrorMessage, Field } from "formik";
 
 import { FORM_CONTROL_STYLE_ALT } from "./style";
@@ -52,8 +52,10 @@ function Input2(props) {
                                         )
                                     }}
                                 />
-                                {statusError ? <Typography variant="p" sx={{ color: "error.main", lineHeight: 0 }}>{errorName}</Typography> :
-                                    <ErrorMessage component={TextErrorType2} name={name} />}
+                                <Box sx={{ display: "black" }}>
+                                    {statusError ? <Typography variant="p" sx={{ color: "error.main", lineHeight: 0 }}>{errorName}</Typography> :
+                                        <ErrorMessage component={TextErrorType2} name={name} />}
+                                </Box>
 
                             </>
                         );
