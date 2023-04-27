@@ -1,12 +1,14 @@
-import { List, ListItemButton, ListItemText } from "@mui/material";
+import { Box, IconButton, List, ListItemButton, ListItemText } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import { BiLogOutCircle } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { STATE_REDUCER_KEY } from "../constants";
+import { FiMenu as Menu } from "react-icons/fi";
+import { actions as sliceActions } from "../slice";
 
 export let active = {
     display: "flex",
@@ -33,6 +35,8 @@ const SideBar = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const drawerToggle = useSelector(state => state[STATE_REDUCER_KEY]).drawerToggle;
+    const dispatch = useDispatch();
+    const handleDrawer = () => dispatch(sliceActions.setUnsetDrawer());
     let dashStyle = { ...inActive };
     let analyticsStyle = { ...inActive };
     let notificationsStyle = { ...inActive };
@@ -74,6 +78,13 @@ const SideBar = () => {
 
         <List sx={mainStyle}>
             <List sx={{ px: 1.5, height: "calc(100vh - 240px) !important", overflowX: "hidden", overflowY: "auto" }}>
+                <List sx={{ px: 0.5, py: 0, mb: 2, display: "flex", justifyContent: drawerToggle ? "flex-start" : "center" }}>
+                    <Box >
+                        <IconButton type="button" onClick={handleDrawer}>
+                            <Menu size="20px" />
+                        </IconButton>
+                    </Box>
+                </List>
                 <List sx={{ px: 0.5, py: 0 }}>
                     <ListItemButton sx={{ ...dashStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
                         <MdOutlineSpaceDashboard size="20px" />
