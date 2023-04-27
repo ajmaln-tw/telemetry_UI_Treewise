@@ -1,4 +1,4 @@
-import { IconButton, Modal, Tooltip, useMediaQuery, useTheme } from "@mui/material";
+import { IconButton, Modal, Tooltip } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { Icons } from "../../../common/components";
@@ -6,7 +6,7 @@ import Main from "./Main";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 
-const { Map, SupportAgent, CloseOutlined } = Icons;
+const { SupportAgent, CloseOutlined } = Icons;
 
 const iconStyle = {
     position: "fixed",
@@ -53,18 +53,18 @@ const Footer = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const theme = useTheme();
-    const smScreen = useMediaQuery(theme.breakpoints.down("md"));
+    // const theme = useTheme();
+    // const smScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-    if (smScreen) {
-        icons = [<IconButton key={2} sx={iconWrapper}>
-            <Map fontSize="small" sx={{ color: "primary.main" }} />
-        </IconButton>,
-        <IconButton key={1} sx={iconWrapper}>
-            <SupportAgent size="small" sx={{ color: "primary.main" }} />
-        </IconButton>
-        ];
-    }
+    // if (smScreen) {
+    //     icons = [<IconButton key={2} sx={iconWrapper}>
+    //         <Map fontSize="small" sx={{ color: "primary.main" }} />
+    //     </IconButton>,
+    //     <IconButton key={1} sx={iconWrapper}>
+    //         <SupportAgent size="small" sx={{ color: "primary.main" }} />
+    //     </IconButton>
+    //     ];
+    // }
 
     return (
         <>

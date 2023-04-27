@@ -22,7 +22,7 @@ const FieldArrayVesselVariable = ({ view = false, push, form: { values: { vessel
                 {vesselVariables?.map((_item, index) => {
                     return (
                         <>
-                            <Grid item xs={6} sm={6} md={6} lg={4} xl={3}>
+                            <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
                                 <FormController
                                     name={`vesselVariables[${index}].name`}
                                     control="checkbox"
