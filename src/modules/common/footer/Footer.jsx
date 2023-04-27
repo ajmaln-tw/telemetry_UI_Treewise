@@ -1,4 +1,4 @@
-import { IconButton, Modal, useMediaQuery, useTheme } from "@mui/material";
+import { IconButton, Modal, Tooltip, useMediaQuery, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { Icons } from "../../../common/components";
@@ -10,8 +10,8 @@ const { Map, SupportAgent, CloseOutlined } = Icons;
 
 const iconStyle = {
     position: "fixed",
-    minHeight: "55px",
-    minWidth: "55px",
+    minHeight: "30px",
+    minWidth: "30px",
     bottom: 21,
     right: 10,
     backgroundColor: "transparent",
@@ -22,8 +22,8 @@ const iconStyle = {
 };
 const modalStyle = {
     position: "fixed",
-    bottom: 20,
-    right: 10,
+    bottom: 8,
+    right: 9,
     p: 4,
     display: "flex",
     flexDirection: "column",
@@ -69,8 +69,11 @@ const Footer = () => {
     return (
         <>
             <IconButton sx={iconStyle} onClick={() => handleOpen()}>
-                <HelpOutlineIcon onClick={() => handleOpen()} fontSize="medium" sx={{ iconStyle, color: "primary.main" }} />
+                <Tooltip title="Help Center" >
+                    <HelpOutlineIcon fontSize="medium" sx={{ color: "primary.main" }} />
+                </Tooltip>
             </IconButton>
+
             <Main />
             <Modal
                 open={open}
@@ -78,8 +81,8 @@ const Footer = () => {
                 onClose={handleClose}>
                 <Box style={modalStyle}>
                     {icons}
-                    <IconButton sx={{ ...iconWrapper, backgroundColor: "secondary.main" }}>
-                        <CloseOutlined size="small" onClick={() => handleClose()} sx={{ color: "primary.main" }} />
+                    <IconButton onClick={() => handleClose()} sx={{ ...iconWrapper, backgroundColor: "secondary.main" }}>
+                        <CloseOutlined size="small" sx={{ color: "primary.main" }} />
                     </IconButton>
                 </Box>
             </Modal>

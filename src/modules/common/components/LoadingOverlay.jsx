@@ -9,8 +9,8 @@ import FetchLoader from "./FetchLoader";
 
 const DefaultLoader = ({ speedMultiplier, color }) => {
     return <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-        <SyncLoader speedMultiplier={speedMultiplier} color={color} />;
         <Typography sx={{ fontWeight: 600, fontSize: "14px" }} color={color}>Loading...</Typography>
+        <SyncLoader speedMultiplier={speedMultiplier} color={color} />;
     </Box>;
 };
 const LoadingCustomOverlay = ({ active, children, spinnerProps = "" }) => {

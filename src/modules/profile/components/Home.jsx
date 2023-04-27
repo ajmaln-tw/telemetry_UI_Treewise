@@ -30,7 +30,7 @@ const MyProfile = () => {
         <Grid sx={{ m: 2, mt: 3, overflow: "visible" }}>
             <Box sx={{ width: "100%" }}>
                 <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                    <Tabs value={value} onChange={handleChange} sx={{ overflowX: "scroll", width: { sm: "90vw", xs: "90vw" } }}>
+                    <Tabs value={value} onChange={handleChange} sx={{ overflowX: "scroll", width: { sm: "70vw", xs: "70vw" } }}>
                         <Tab label={"Profile"} onClick={() => navigate("./info")} />
                         <Tab label={"Change Password"} onClick={() => navigate("./change-password")} />
                         <Tab label={"Settings"} onClick={() => navigate("./settings")} />

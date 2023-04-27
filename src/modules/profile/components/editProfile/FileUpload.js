@@ -5,7 +5,6 @@ import { removeStringPortion } from "../../../../utils/commonUtils";
 
 
 const FileUpload = ({ handleImage, fileError = "", handleUpload, isFileExists = false, fileName = "" }) => {
-
     return (
         <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
             <Grid sx={{ width: { sm: "110px", xs: "110px", xl: "110px" }, borderRadius: "5px", border: "1px dotted grey", p: 0.2 }}>
@@ -17,7 +16,10 @@ const FileUpload = ({ handleImage, fileError = "", handleUpload, isFileExists = 
                 <Input
                     id="file-upload"
                     type="file"
-                    onChange={handleImage}
+                    name="fileUpload"
+                    onChange={(e) => {
+                        handleImage(e); e.target.value = "";
+                    }}
                     style={{ display: "none", "&:hover": { backgroundColor: "primary.light" } }}
                 />
             </Grid>

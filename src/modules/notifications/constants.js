@@ -23,13 +23,13 @@ export const NOTIFICATIONS_TABLE_COLUMN = [
         size: 250
     },
     {
-        id: "phone",
+        id: "SOG",
         header: "SOG",
         accessorKey: "phone",
         size: 250
     },
     {
-        id: "phone",
+        id: "RPM",
         header: "RPM",
         accessorKey: "phone",
         size: 250

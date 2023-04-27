@@ -1,14 +1,12 @@
-import { Box, IconButton, List, ListItemButton, ListItemText } from "@mui/material";
+import { List, ListItemButton, ListItemText } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import { BiLogOutCircle } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
-import MenuIcon from "@mui/icons-material/Menu";
+import { useSelector } from "react-redux";
 import { STATE_REDUCER_KEY } from "../constants";
-import { actions as sliceActions } from "../slice";
 
 export let active = {
     display: "flex",
@@ -34,9 +32,7 @@ export let inActive = {
 const SideBar = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const dispatch = useDispatch();
     const drawerToggle = useSelector(state => state[STATE_REDUCER_KEY]).drawerToggle;
-    const handleDrawer = () => dispatch(sliceActions.setUnsetDrawer());
     let dashStyle = { ...inActive };
     let analyticsStyle = { ...inActive };
     let notificationsStyle = { ...inActive };
@@ -77,12 +73,7 @@ const SideBar = () => {
     return (
 
         <List sx={mainStyle}>
-            <Box sx={{ alignSelf: drawerToggle ? "start" : "center" }}>
-                <IconButton type="button" onClick={handleDrawer}>
-                    <MenuIcon />
-                </IconButton>
-            </Box>
-            <List sx={{ px: 1.5, pt: 6, height: "calc(100vh - 240px) !important", overflowX: "hidden", overflowY: "auto" }}>
+            <List sx={{ px: 1.5, height: "calc(100vh - 240px) !important", overflowX: "hidden", overflowY: "auto" }}>
                 <List sx={{ px: 0.5, py: 0 }}>
                     <ListItemButton sx={{ ...dashStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
                         <MdOutlineSpaceDashboard size="20px" />
