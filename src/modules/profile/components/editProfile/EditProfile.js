@@ -10,7 +10,7 @@ import { FormController, Icons } from "../../../../common/components";
 import Button from "../../../../common/components/custom/Button";
 import LoadingCustomOverlay from "../../../common/components/LoadingOverlay";
 import { actions as sliceActions } from "../../slice";
-
+import { fetchCurrentUser } from "../../../user-management/actions";
 const { Person } = Icons;
 
 import { updateProfile, uploadProfileImage } from "../../actions";
@@ -52,7 +52,7 @@ const EditProfile = (props) => {
 
 
     useEffect(() => {
-
+        dispatch(fetchCurrentUser());
     }, []);
 
     return (
@@ -122,7 +122,7 @@ const EditProfile = (props) => {
                                     <FormController statusError={true} errorName={errors?.designation} control="input2" label={"Designation"} name="designation" isMandatory={true} />
                                 </Grid>
                                 <Grid item xs={12} md={12} lg={12} >
-                                    <FormController control="input2" label={"Alternate Email"} name="alternateEmail" />
+                                    <FormController control="input2" label={"Alternate Email"} name="alternativeEmail" />
                                 </Grid>
                             </Grid>
                         </CardContent>

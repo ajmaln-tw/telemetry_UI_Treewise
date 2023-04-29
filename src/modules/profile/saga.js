@@ -6,6 +6,7 @@ import { getProfileImageFile } from "./selectors";
 import { errorNotify, successNotify } from "../../utils/notificationUtils";
 import { actions as sliceActions } from "./slice";
 
+
 export function* fetchUser({ payload: id }) {
     yield call(handleAPIRequest, fetUserById, { id });
 }

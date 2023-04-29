@@ -1,26 +1,19 @@
-// import { CircularProgress, Paper } from "@mui/material";
 import { withFormik } from "formik";
 import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Form, useLocation, useNavigate } from "react-router-dom";
-// import { createStructuredSelector } from "reselect";
-// import { confirmDialog, infoNotify }
 import { Components, FormController } from "../../../common/components";
 
 import { actions as sliceActions } from "../slice";
 import { signInSchema as validator } from "../validate";
-// import { getSignIn } from "../selectors";
 import { signIn } from "../actions";
 import { Box, Paper, useMediaQuery, useTheme } from "@mui/material";
-// import FAQs from "../../common/FAQs/FAQs";
 import { createStructuredSelector } from "reselect";
 import { getSignIn } from "../selectors";
 import logo from "../../../assets/images/logo_tele.png";
-// import bg from "../../../assets/images/background.jpg"
 import { images } from "../constants";
 import Carousal from "../../../common/components/carousal/Carousal";
-
-// const { Card, CardActions, CardContent, CardHeader, Divider, Grid, Typography } = Components;
+import { actions as commonActions } from "../../common/slice";
 const { Divider, Grid, Typography } = Components;
 
 const { Button, CircularProgress } = Components;
@@ -47,6 +40,7 @@ function SignIn(props) {
     // }
 
     useEffect(() => {
+        dispatch(commonActions.setNavigator(navigate));
         return () => dispatch(sliceActions.clear());
     }, [pathname]);
     // const faqStyle = { position: "absolute", left: "35px", bottom: "-20px", width: { md: "60%", lg: "55%", xl: "45%" }, height: "13vh", alignItems: "center", justifyContent: "end", display: { xs: "none", md: "flex" }, borderRadius: "20px" };
@@ -66,7 +60,7 @@ function SignIn(props) {
                                             <FormController control="input" name="email" label={"Email"} placeholder="eg:- user@companydomain.com" />
                                         </Grid>
                                         <Grid sx={{ my: 1, py: { md: 1, xl: 1.5 }, pb: { md: 2, xl: 3 } }}>
-                                            <FormController control="input" name="password" label={"Password"} placeholder="*********" />
+                                            <FormController control="input" name="password" label={"Password"} placeholder="*********" type="password" />
                                         </Grid>
                                         <Box sx={{ display: "flex", justifyContent: "space-between", pb: 1 }}>
                                             <Grid sx={{ display: "flex", alignItems: "flex-start" }}>

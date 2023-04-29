@@ -1,20 +1,22 @@
 // import { CircularProgress } from "@mui/material";
 import { withFormik } from "formik";
 import { useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { Form, useLocation, useNavigate } from "react-router-dom";
 import { Components, FormController } from "../../../common/components";
 
 import { actions as sliceActions } from "../slice";
 import { signUpSchema as validator } from "../validate";
 import { signUp } from "../actions";
-import { images, USER_TYPE } from "../constants";
+import { STATE_REDUCER_KEY, images } from "../constants";
 import { Box, Paper, useMediaQuery } from "@mui/material";
 import { getSignUp } from "../selectors";
 import { createStructuredSelector } from "reselect";
 import Carousal from "../../../common/components/carousal/Carousal";
 import { useTheme } from "@mui/system";
 import logo from "../../../assets/images/logo_tele.png";
+import { actions as commonActions } from "../../common/slice";
+import { confirmDialog } from "../../../utils/notificationUtils";
 
 const { Button, CircularProgress, Divider, Grid, Typography } = Components;
 
@@ -25,23 +27,22 @@ function SignUp(props) {
     const theme = useTheme();
     const smScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
-    const { handleSubmit, setFieldValue, signUp: { requestInProgress = false } = {} } = props;
-    // setFieldValue("userType", USER_TYPE.VESSEL);
-    // const confirmed = useSelector(state => state[REDUCER_KEY].signUpForm.confirm);
+    const { handleSubmit, signUp: { requestInProgress = false } = {} } = props;
+    const confirmed = useSelector(state => state[STATE_REDUCER_KEY]).signUp.confirm;
 
-    // if (confirmed) {
-    //     confirmDialog({
-    //         title: I18n("account_created"), showDenyButton: false
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             navigate("/login");
-    //             window.sessionStorage.setItem("stepper", 0);
-    //         }
-    //     });
-    // }
+    if (confirmed) {
+        confirmDialog({
+            title: "Sign Up completed", showDenyButton: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                navigate("/login");
+
+            }
+        });
+    }
 
     useEffect(() => {
-        setFieldValue("userType", USER_TYPE.VESSEL);
+        dispatch(commonActions.setNavigator(navigate));
         return () => dispatch(sliceActions.clear());
     }, [pathname]);
     return (
@@ -66,7 +67,7 @@ function SignUp(props) {
                                                 <FormController control="input" placeholder="*********" label={"Password"} isMandatory={true} name="password" type="password" />
                                             </Grid>
                                             <Grid sx={{ my: 1, py: { md: 1, xl: 1.5 }, pb: { md: 2, xl: 3 } }}>
-                                                <FormController control="input" placeholder="*********" label={"Confirm Password"} placeho isMandatory={true} name="confirmPassword" type="password" />
+                                                <FormController control="input" placeholder="*********" label={"Confirm Password"} isMandatory={true} name="confirmPassword" type="password" />
                                             </Grid>
                                             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
                                                 <Button sx={{ width: "70%", borderRadius: "17px", fontSize: { xs: "16px", xl: "18px" }, height: { xs: "40px", xl: "50px" } }} variant="contained" type="submit" onClick={handleSubmit}>{"Sign Up"}</Button>

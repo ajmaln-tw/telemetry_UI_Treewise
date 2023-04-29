@@ -14,14 +14,15 @@ const initialState = {
         }
     },
     signUp: {
+        confirm: false,
         requestInProgress: false,
         data: {
             email: "",
             password: "",
             confirmPassword: "",
             companyName: "",
-            vesselName: "",
-            mobile: ""
+            vesselName: "zxc",
+            mobile: "545654"
 
         }
     }
@@ -54,9 +55,11 @@ const slice = createSlice({
                 _.set(state, "signUp.requestInProgress", true);
             })
             .addCase(ACTION_TYPES.SIGN_UP_SUCCESS, (state) => {
+                _.set(state, "signUp.confirm", true);
                 _.set(state, "signUp.requestInProgress", false);
             })
             .addCase(ACTION_TYPES.SIGN_UP_FAILURE, (state) => {
+                _.set(state, "signUp.confirm", false);
                 _.set(state, "signUp.requestInProgress", false);
             });
 

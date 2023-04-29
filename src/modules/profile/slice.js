@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
 
 import { ACTION_TYPES } from "./actions";
+import { ACTION_TYPES as USER_MANAGEMENT_ACTION } from "../user-management/actions";
 import { STATE_REDUCER_KEY, VESSEL_VARIABLES } from "./constants";
 const initialState = {
     profileDetails: {
@@ -72,6 +73,9 @@ const slice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            .addCase(USER_MANAGEMENT_ACTION.USER_PROFILE_SUCCESS, (state, { payload = {} }) => {
+                _.set(state, "profileDetails.data", payload);
+            })
             .addCase(ACTION_TYPES.FETCH_USER_BY_ID_REQUEST, (state) => {
                 _.set(state, "profileDetails.requestInProgress", true);
             })
@@ -85,5 +89,6 @@ const slice = createSlice({
 
     }
 });
+//USER_PROFILE_SUCCESS
 
 export const { actions, reducer } = slice;

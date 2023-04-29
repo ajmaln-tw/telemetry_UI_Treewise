@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { STATE_REDUCER_KEY } from "../constants";
 import { FiMenu as Menu } from "react-icons/fi";
 import { actions as sliceActions } from "../slice";
+import { logout as logoutAction } from "../actions";
 
 export let active = {
     display: "flex",
@@ -37,6 +38,9 @@ const SideBar = () => {
     const drawerToggle = useSelector(state => state[STATE_REDUCER_KEY]).drawerToggle;
     const dispatch = useDispatch();
     const handleDrawer = () => dispatch(sliceActions.setUnsetDrawer());
+    const handleLogout = () => {
+        dispatch(logoutAction());
+    };
     let dashStyle = { ...inActive };
     let analyticsStyle = { ...inActive };
     let notificationsStyle = { ...inActive };
@@ -112,7 +116,7 @@ const SideBar = () => {
             </List>
             <List sx={{ px: 1.5, pt: 6 }}>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...logout, px: 1, py: 0 }} onClick={() => navigate("./logout")}>
+                    <ListItemButton sx={{ ...logout, px: 1, py: 0 }} onClick={() => handleLogout()}>
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Logout"}</ListItemText>}
                         <BiLogOutCircle size="20px" />
                     </ListItemButton>

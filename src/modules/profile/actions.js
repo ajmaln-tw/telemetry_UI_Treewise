@@ -31,7 +31,6 @@ export const ACTION_TYPES = {
 
 
 };
-
 export const uploadProfileImage = createAction(ACTION_TYPES.UPLOAD_PROFILE_IMAGE);
 export const updateProfile = createAction(ACTION_TYPES.FETCH_USER_BY_ID);
 export const changePassword = createAction(ACTION_TYPES.CHANGE_PASSWORD);
