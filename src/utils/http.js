@@ -71,7 +71,6 @@ function* invokeApi(method, url, payload) {
     yield put(requestAction());
     const { api, config, baseURL, data } = getRequestParams({ url, data: payloadData, method });
     const { data: apiResponse, error } = yield call(api, url, { config, baseURL, data });
-    // const dataAPi = yield call(api, url, { config, baseURL, data });
     const { data: response } = apiResponse || {};
     if (error) {
         yield put(failureAction({ error }));
