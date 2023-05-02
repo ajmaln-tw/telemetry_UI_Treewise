@@ -2,6 +2,7 @@ import { withFormik } from "formik";
 import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Form, useLocation, useNavigate } from "react-router-dom";
+import { MoonLoader } from "react-spinners";
 import { Components, FormController } from "../../../common/components";
 
 import { actions as sliceActions } from "../slice";
@@ -16,7 +17,7 @@ import Carousal from "../../../common/components/carousal/Carousal";
 import { actions as commonActions } from "../../common/slice";
 const { Divider, Grid, Typography } = Components;
 
-const { Button, CircularProgress } = Components;
+const { Button } = Components;
 
 function SignIn(props) {
     const { pathname } = useLocation();
@@ -82,7 +83,7 @@ function SignIn(props) {
                                             <Button sx={{ width: "70%", borderRadius: "17px", fontSize: { xs: "16px", xl: "18px" }, height: { xs: "40px", xl: "50px" } }} variant="contained" type="submit" onClick={handleSubmit}>
                                                 {"Login"}
                                             </Button>
-                                            {requestInProgress && <CircularProgress size={20} color="primary" />}
+                                            {requestInProgress && <MoonLoader color="#33aaf8" size={20} speedMultiplier={1.5} />}
                                         </Box>
                                     </Form>
                                 </Box>

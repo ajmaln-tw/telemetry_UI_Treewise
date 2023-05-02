@@ -3,6 +3,8 @@ import { withFormik } from "formik";
 import { useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Form, useLocation, useNavigate } from "react-router-dom";
+import { MoonLoader } from "react-spinners";
+
 import { Components, FormController } from "../../../common/components";
 
 import { actions as sliceActions } from "../slice";
@@ -18,7 +20,7 @@ import logo from "../../../assets/images/logo_tele.png";
 import { actions as commonActions } from "../../common/slice";
 import { confirmDialog } from "../../../utils/notificationUtils";
 
-const { Button, CircularProgress, Divider, Grid, Typography } = Components;
+const { Button, Divider, Grid, Typography } = Components;
 
 function SignUp(props) {
     const { pathname } = useLocation();
@@ -71,7 +73,7 @@ function SignUp(props) {
                                             </Grid>
                                             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
                                                 <Button sx={{ width: "70%", borderRadius: "17px", fontSize: { xs: "16px", xl: "18px" }, height: { xs: "40px", xl: "50px" } }} variant="contained" type="submit" onClick={handleSubmit}>{"Sign Up"}</Button>
-                                                {requestInProgress && <CircularProgress size={20} color="primary" />}
+                                                {requestInProgress && <MoonLoader color="#33aaf8" size={20} speedMultiplier={1.5} />}
                                             </Box>
                                         </Form>
                                     </Box>

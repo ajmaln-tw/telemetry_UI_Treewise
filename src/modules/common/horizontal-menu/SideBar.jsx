@@ -39,7 +39,7 @@ const SideBar = () => {
     const dispatch = useDispatch();
     const handleDrawer = () => dispatch(sliceActions.setUnsetDrawer());
     const handleLogout = () => {
-        dispatch(logoutAction());
+        dispatch(logoutAction({ isManualLogout: true }));
     };
     let dashStyle = { ...inActive };
     let analyticsStyle = { ...inActive };

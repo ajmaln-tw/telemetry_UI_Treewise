@@ -1,17 +1,18 @@
 import React from "react";
 import { Box } from "@mui/system";
-import { CircularProgress, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import paletteColor from "../../../common/themes/palette.json";
+import { ScaleLoader } from "react-spinners";
 
 const FetchLoader = ({ bgColor = paletteColor.palette.primary.light }) => {
     return (
         <Box sx={{
             backgroundColor: bgColor,
-            display: "flex", justifyContent: "center",
+            display: "flex", justifyContent: "center", alignItems: "center",
             borderRadius: "10px", flexDirection: "column",
             px: 1.3, py: 1
         }}>
-            <Typography> Fetching Data...</Typography> <CircularProgress color="white" size={13} sx={{ alignSelf: "center" }} />
+            <Typography> Fetching Data...</Typography> <ScaleLoader color="#ffff" speedMultiplier={1.5} />
         </Box>
 
     );

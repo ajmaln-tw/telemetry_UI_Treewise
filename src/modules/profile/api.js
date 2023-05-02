@@ -3,12 +3,12 @@ import { REQUEST_METHOD } from "../../common/constants";
 import { ACTION_TYPES } from "./actions";
 import { API_URL } from "./urls";
 
-export const fetUserById = (data) => {
+export const updateProfileApi = (data) => {
     return {
-        url: API_URL.USER.FETCH_USER_BY_ID,
-        method: REQUEST_METHOD.GET,
+        url: API_URL.USER.UPDATE_PROFILE,
+        method: REQUEST_METHOD.POST,
         payload: {
-            types: [ACTION_TYPES.FETCH_USER_BY_ID_REQUEST, ACTION_TYPES.FETCH_USER_BY_ID_SUCCESS, ACTION_TYPES.FETCH_USER_BY_ID_FAILURE],
+            types: [ACTION_TYPES.PROFILE_UPDATE_REQUEST, ACTION_TYPES.PROFILE_UPDATE_SUCCESS, ACTION_TYPES.PROFILE_UPDATE_FAILURE],
             data
         }
     };

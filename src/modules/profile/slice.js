@@ -13,7 +13,7 @@ const initialState = {
             email: "test@company.com",
             designation: "",
             alternativeEmail: "",
-            profileImage: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+            profileImage: ""
 
         }
 
@@ -76,14 +76,14 @@ const slice = createSlice({
             .addCase(USER_MANAGEMENT_ACTION.USER_PROFILE_SUCCESS, (state, { payload = {} }) => {
                 _.set(state, "profileDetails.data", payload);
             })
-            .addCase(ACTION_TYPES.FETCH_USER_BY_ID_REQUEST, (state) => {
+            .addCase(ACTION_TYPES.PROFILE_UPDATE_REQUEST, (state) => {
                 _.set(state, "profileDetails.requestInProgress", true);
             })
-            .addCase(ACTION_TYPES.FETCH_USER_BY_ID_SUCCESS, (state, action) => {
+            .addCase(ACTION_TYPES.PROFILE_UPDATE_SUCCESS, (state, action) => {
                 _.set(state, "profileDetails.requestInProgress", false);
                 _.set(state, "profileDetails.data", action.payload);
             })
-            .addCase(ACTION_TYPES.FETCH_USER_BY_ID_FAILURE, (state) => {
+            .addCase(ACTION_TYPES.PROFILE_UPDATE_FAILURE, (state) => {
                 _.set(state, "profileDetails.requestInProgress", false);
             });
 

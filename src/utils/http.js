@@ -19,7 +19,8 @@ const ERROR_CODES = {
     INVALID_TOKEN: 4403
 };
 
-const requestWrapper = (body = {}) => ({ data: { ...body } });
+// const requestWrapper = (body = {}) => ({ data: { ...body } });
+const requestWrapper = (body = {}) => body;
 
 const getRequestParams = ({ url, data, method }) => {
     let headers = HTTP_CONSTANTS.HTTP_HEADERS;
@@ -84,26 +85,24 @@ function* invokeApi(method, url, payload) {
                 {
                     if (errorCode === ERROR_CODES.JWT_TOKEN_EXPIRED) {
                         errorMessage = { title: "Token Expired", message: "Please login again." };
-                        yield delay(500);
-                        yield put(logout());
                     } else if (errorCode === ERROR_CODES.INVALID_TOKEN) {
                         errorMessage = { title: "Invalid Token", message: "Please login again." };
-                        yield delay(500);
-                        yield put(logout());
                     } else {
                         errorMessage = { title: `${dataError || statusText || "ERROR"}`, message: errors || errorDescription };
                     }
+                    yield delay(500);
+                    yield put(logout());
                 }
                 break;
             case HTTP_RESPONSE_STATUS.NOT_FOUND:
             case HTTP_RESPONSE_STATUS.INTERNAL_SERVER_ERROR:
-                errorMessage = { title: "Error", message: resultString };
+                errorMessage = { title: "Error", message: resultString || errors };
                 break;
             default:
                 errorMessage = { title: `${status || ""} ${id || "ERROR"}`, message: resultString || message };
                 break;
         }
-        yield put(errorNotify({ id, error, ...errorMessage }));
+        yield put(errorNotify({ id, error, ...errorMessage, dismissAfter: 2500 }));
     } else {
         //TODO Handle success / failure operation
         // if (_.get(response, "resultCode", "") === API_RESULT_CODE.FAILURE) {
