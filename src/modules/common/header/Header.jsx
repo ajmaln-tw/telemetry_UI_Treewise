@@ -19,7 +19,7 @@ const Header = () => {
             >
                 <Box sx={{ minWidth: "268px" }}>
                     <Box sx={{ m: 1, mr: 1, p: 2 }}>
-                        <img width={65} height={56} src={companyLogo} alt="logo" />
+                        <img width={58} height={55} src={companyLogo} alt="logo" />
                     </Box>
                 </Box>
                 {/* Search */}
