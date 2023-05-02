@@ -26,6 +26,7 @@ const FileUpload = ({ handleImage, fileError = "", handleUpload, isFileExists = 
             {fileError && <Typography color={"error"}> {fileError}</Typography>}
 
             {isFileExists && <Box>  <Button onClick={handleUpload} sx={{
+                position: "static",
                 backgroundColor: "primary.100", "&:hover": {
                     backgroundColor: "primary.200"
                 }

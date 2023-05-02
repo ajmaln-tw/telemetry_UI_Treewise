@@ -81,15 +81,17 @@ const EditProfile = (props) => {
                                             <InputLabel sx={{ fontWeight: 700 }} htmlFor={name}>{"Profile Picture"} </InputLabel>
                                         </Grid>
                                         {profileDetails.data.profileImage ?
-                                            <Grid item xs={12} sm={12} md={2} sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
-                                                <Avatar
-                                                    variant="square"
-                                                    alt={profileDetails?.data.firstName}
-                                                    src={`${profileDetails.data.profileImage}`}
-                                                    sx={{
-                                                        borderRadius: "5px",
-                                                        width: 110, height: 110
-                                                    }} />
+                                            <Grid item xs={12} sm={12} md={2} sx={{ display: "flex", sm: { justifyContent: "center", px: "10px" } }}>
+                                                <Box>
+                                                    <Avatar
+                                                        variant="square"
+                                                        alt={profileDetails?.data.firstName}
+                                                        src={`${profileDetails.data.profileImage}`}
+                                                        sx={{
+                                                            borderRadius: "5px",
+                                                            width: 110, height: 110
+                                                        }} />
+                                                </Box>
                                             </Grid>
                                             : <Grid item xs={12} sm={12} md={2} lg={2} xl={1} sx={{ display: " flex", justifyContent: "center", alignItems: "center" }}>
                                                 <Person sx={{ fontSize: "4rem", color: "grey.main", opacity: 0.8 }} />
