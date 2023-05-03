@@ -13,11 +13,10 @@ const Header = () => {
         >
             <Box
                 sx={{
-                    display: "flex", justifyContent: "end", alignItems: "center", mr: 5, borderRadius: "10px", p: 1, position: "relative"
+                    display: "flex", justifyContent: "space-between", alignItems: "center", mr: 1, borderRadius: "10px", p: 1, position: "relative"
                 }}
-                variant="contained" component="div"
             >
-                <Box sx={{ minWidth: "268px" }}>
+                <Box sx={{ minWidth: "140px" }}>
                     <Box sx={{ m: 1, mr: 1, p: 2 }}>
                         <img width={58} height={55} src={companyLogo} alt="logo" />
                     </Box>

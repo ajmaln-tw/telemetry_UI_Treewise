@@ -8,16 +8,16 @@ const SubScriptionBanner = ({ type = "", premiumAmount, term = "", features = []
 
     const { Stars } = Icons;
     return (
-        < Paper sx={{ m: 2, overflow: "visible", minWidth: "310px", p: 1 }}>
-            {active ? <Chip sx={{ position: "relative", top: "-20px", left: "115px", fontSize: "14px", fontWeight: 500 }} label="Active" color="primary" />
+        < Paper sx={{ m: 2, overflow: "visible", minWidth: "300px", p: 1 }}>
+            {active ? <Chip sx={{ position: "relative", top: "-20px", left: "40%", fontSize: "14px", fontWeight: 500 }} label="Active" color="primary" />
                 : <Grid sx={{ height: "20px" }}> </Grid>}
             <Grid sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <Grid sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} >
                     <img src={tile} alt="tile" width={30} height={23} />
                 </Grid>
-                <Typography sx={{ textAlign: "left", color: "grey.main", fontSize: "30px", fontWeight: 600 }}>{type} </Typography>
+                <Typography sx={{ textAlign: "left", color: "grey.main", fontSize: { xs: "25px", sm: "30px" }, fontWeight: 600 }}>{type} </Typography>
                 <Grid sx={{ display: "flex", justifyContent: "space-evenly", alignItems: "center", flexDirection: "column" }}>
-                    <Typography variant="h5" component="h5" sx={{ color: "primary.main", fontSize: "30px", fontWeight: 700 }}>{premiumAmount} </Typography>
+                    <Typography variant="h5" component="h5" sx={{ color: "primary.main", fontSize: { xs: "25px", sm: "30px" }, fontWeight: 700 }}>{premiumAmount} </Typography>
                     <Typography variant="p" sx={{ color: "grey.light" }}>{term}</Typography>
                 </Grid>
             </Grid>

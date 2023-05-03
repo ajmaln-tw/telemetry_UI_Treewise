@@ -39,7 +39,7 @@ const SearchResults = ({ results = [] }) => {
                 display: open ? "flex" : "none", position: "fixed",
                 flexDirection: "column",
                 justifyContent: "flex-end",
-                top: 70, left: 300
+                top: 70, left: 80
             }}>
                 {(loading || results.length > 0) && <>
                     <IconButton sx={{ alignSelf: "flex-end" }} type="button" onClick={handleClose}>

@@ -12,7 +12,7 @@ const FetchLoader = ({ bgColor = paletteColor.palette.primary.main }) => {
             borderRadius: "10px", flexDirection: "column",
             px: 1.3, py: 1
         }}>
-            <Typography sx={{ fontWeight: 600, fontSize: "14px" }}> Dashboard Data Fetching ...</Typography>
+            <Typography sx={{ fontWeight: 600, fontSize: "14px" }}> Fetching Data...</Typography>
             <ScaleLoader color="#ffff" speedMultiplier={1.9} />
         </Box>
 
