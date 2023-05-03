@@ -10,15 +10,16 @@ import { FormController, Icons } from "../../../../common/components";
 import Button from "../../../../common/components/custom/Button";
 import LoadingCustomOverlay from "../../../common/components/LoadingOverlay";
 import { actions as sliceActions } from "../../slice";
-import { fetchCurrentUser } from "../../../user-management/actions";
+
 const { Person } = Icons;
 
-import { updateProfile, uploadProfileImage } from "../../actions";
+import { profileData, profileImage, updateProfile, uploadProfileImage } from "../../actions";
 
 
 import { profileInfoSchema, verifyFile } from "../../validate";
 import { getCropData, getModalOpen, getProfileDetails } from "../../selectors";
 import FileUpload from "./FileUpload";
+
 
 const EditProfile = (props) => {
     const { id = 0 } = useParams();
@@ -26,6 +27,8 @@ const EditProfile = (props) => {
     const [isFile, setIsFile] = useState(false);
     const [fileName, setFileName] = useState("");
     const { handleSubmit, profileDetails = {}, errors = {} } = props;
+    const { requestInProgress } = profileDetails;
+
     const dispatch = useDispatch();
     const handleImage = (e) => {
         setFileError("");
@@ -52,12 +55,13 @@ const EditProfile = (props) => {
 
 
     useEffect(() => {
-        dispatch(fetchCurrentUser());
+        dispatch(profileData());
+        dispatch(profileImage());
     }, []);
 
     return (
         <Grid sx={{ overflow: "visible" }} >
-            <LoadingCustomOverlay active={false}>
+            <LoadingCustomOverlay active={requestInProgress}>
                 <Box sx={{ mt: 2 }}>
                     <Form onSubmit={handleSubmit} >
                         <Typography pl={2} component="h6" variant="h6" sx={{ fontWeight: 700 }}> Profile Info</Typography>
@@ -80,13 +84,13 @@ const EditProfile = (props) => {
                                         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                                             <InputLabel sx={{ fontWeight: 700 }} htmlFor={name}>{"Profile Picture"} </InputLabel>
                                         </Grid>
-                                        {profileDetails.data.profileImage ?
+                                        {profileDetails.profileImage ?
                                             <Grid item xs={12} sm={12} md={2} sx={{ display: "flex", sm: { justifyContent: "center", px: "10px" } }}>
                                                 <Box>
                                                     <Avatar
                                                         variant="square"
                                                         alt={profileDetails?.data.firstName}
-                                                        src={`${profileDetails.data.profileImage}`}
+                                                        src={`${profileDetails.profileImage}`}
                                                         sx={{
                                                             borderRadius: "5px",
                                                             width: 110, height: 110

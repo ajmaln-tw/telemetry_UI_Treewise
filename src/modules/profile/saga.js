@@ -1,6 +1,6 @@
 import { all, call, fork, put, select, take, takeLatest } from "redux-saga/effects";
 import { ACTION_TYPES } from "./actions";
-import { updateProfileApi, uploadProfileImageApi } from "./api";
+import { updateProfileApi, uploadProfileImageApi, profileDataApi, updateImageApi } from "./api";
 import { handleAPIRequest } from "../../utils/http";
 import { getProfileImageFile } from "./selectors";
 import { errorNotify, loaderNotify, successNotify } from "../../utils/notificationUtils";
@@ -10,8 +10,13 @@ import { removeStringPortion } from "../../utils/commonUtils";
 
 
 export function* updateProfile({ payload = {} }) {
-    yield call(handleAPIRequest, updateProfileApi, payload);
+    yield fork(handleAPIRequest, updateProfileApi, payload);
+    const responseAction = yield take([ACTION_TYPES.PROFILE_UPDATE_SUCCESS, ACTION_TYPES.PROFILE_UPDATE_FAILURE]);
+    if (responseAction.type === ACTION_TYPES.PROFILE_UPDATE_SUCCESS) {
+        yield put(successNotify({ title: "Success", message: "Profile Data updated" }));
+    }
 }
+
 
 export function* uploadProfilePicture() {
     const image = yield select(getProfileImageFile);
@@ -31,8 +36,18 @@ export function* uploadProfilePicture() {
 
 }
 
+export function* profileData() {
+    yield call(handleAPIRequest, profileDataApi);
+}
+
+export function* profileImage() {
+    yield call(handleAPIRequest, updateImageApi);
+}
+
 export default function* moduleSaga() {
     yield all([
+        takeLatest(ACTION_TYPES.PROFILE_DATA, profileData),
+        takeLatest(ACTION_TYPES.PROFILE_IMAGE, profileImage),
         takeLatest(ACTION_TYPES.PROFILE_UPDATE, updateProfile),
         takeLatest(ACTION_TYPES.UPLOAD_PROFILE_IMAGE, uploadProfilePicture)
 

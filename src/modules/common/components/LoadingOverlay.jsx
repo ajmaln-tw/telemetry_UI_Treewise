@@ -7,10 +7,10 @@ import palette from "../../../common/themes/palette.json";
 import SearchResultSkeleton from "./Skeleton/SearchResultSkeleton";
 import FetchLoader from "./FetchLoader";
 
-const DefaultLoader = ({ speedMultiplier, color = "#ffff" }) => {
-    return <Box sx={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-        <Typography sx={{ fontWeight: 600, fontSize: "14px" }} color={color}>Loading...</Typography>
-        <ScaleLoader speedMultiplier={speedMultiplier} color={color} />;
+const DefaultLoader = () => {
+    return <Box sx={{ display: "flex", px: 2, py: 1, justifyContent: "center", flexDirection: "column", borderRadius: "15px", backgroundColor: palette.palette.primary.main }}>
+        <Typography sx={{ fontWeight: 600, fontSize: "14px" }} color={"#fff"}>Loading...</Typography>
+        <ScaleLoader color={"#fff"} speedMultiplier={1.9} />
     </Box>;
 };
 const LoadingCustomOverlay = ({ active, children, spinnerProps = "" }) => {

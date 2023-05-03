@@ -45,7 +45,7 @@ function SignUp(props) {
 
     useEffect(() => {
         dispatch(commonActions.setNavigator(navigate));
-        return () => dispatch(sliceActions.clear());
+        return () => dispatch(sliceActions.clearAll());
     }, [pathname]);
     return (
         <>

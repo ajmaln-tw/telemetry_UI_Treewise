@@ -7,13 +7,13 @@ import { STATE_REDUCER_KEY, VESSEL_VARIABLES } from "./constants";
 const initialState = {
     profileDetails: {
         requestInProgress: false,
+        profileImage: "",
         data: {
             firstName: "",
             lastName: "",
-            email: "test@company.com",
+            email: "",
             designation: "",
-            alternativeEmail: "",
-            profileImage: ""
+            alternativeEmail: ""
 
         }
 
@@ -76,6 +76,14 @@ const slice = createSlice({
             .addCase(USER_MANAGEMENT_ACTION.USER_PROFILE_SUCCESS, (state, { payload = {} }) => {
                 _.set(state, "profileDetails.data", payload);
             })
+            .addCase(ACTION_TYPES.PROFILE_DATA_REQUEST, (state) => {
+                _.set(state, "profileDetails.requestInProgress", true);
+            }).addCase(ACTION_TYPES.PROFILE_DATA_SUCCESS, (state, { payload = {} }) => {
+                _.set(state, "profileDetails.requestInProgress", false);
+                _.set(state, "profileDetails.data", payload);
+            }).addCase(ACTION_TYPES.PROFILE_DATA_FAILURE, (state) => {
+                _.set(state, "profileDetails.requestInProgress", false);
+            })
             .addCase(ACTION_TYPES.PROFILE_UPDATE_REQUEST, (state) => {
                 _.set(state, "profileDetails.requestInProgress", true);
             })
@@ -85,10 +93,13 @@ const slice = createSlice({
             })
             .addCase(ACTION_TYPES.PROFILE_UPDATE_FAILURE, (state) => {
                 _.set(state, "profileDetails.requestInProgress", false);
+            })
+            .addCase(ACTION_TYPES.PROFILE_IMAGE_SUCCESS, (state, { payload }) => {
+                _.set(state, "profileDetails.profileImage", payload.profileImage || "");
             });
 
     }
 });
-//USER_PROFILE_SUCCESS
+//PROFILE_IMAGE_SUCCESS
 
 export const { actions, reducer } = slice;

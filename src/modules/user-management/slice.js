@@ -20,9 +20,7 @@ const initialState = {
             email: "",
             password: "",
             confirmPassword: "",
-            companyName: "",
-            vesselName: "zxc",
-            mobile: "545654"
+            companyName: ""
 
         }
     }

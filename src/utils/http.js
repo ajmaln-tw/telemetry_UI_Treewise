@@ -43,9 +43,9 @@ const getRequestParams = ({ url, data, method }) => {
     // }
 
     if ((method === REQUEST_METHOD.PUT || method === REQUEST_METHOD.PATCH || method === REQUEST_METHOD.POST) && url !== API_URL.USER_MANAGEMENT.AUTH_TOKEN) {
-        if (url !== API_URL.USER_MANAGEMENT.SIGN_UP) {
-            data = requestWrapper(data);
-        }
+        // if (url !== API_URL.USER_MANAGEMENT.SIGN_UP) {
+        data = requestWrapper(data);
+        // }
     }
 
     if (url === API_URL.USER_MANAGEMENT.AUTH_TOKEN) {
