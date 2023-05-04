@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import NotificationsSystem, { atalhoTheme, dismissNotification } from "reapop";
+import NotificationsSystem, { bootstrapTheme, dismissNotification } from "reapop";
 
 const ReactNotifications = () => {
     const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const ReactNotifications = () => {
             <NotificationsSystem
                 notifications={notifications}
                 dismissNotification={(id) => dispatch(dismissNotification(id))}
-                theme={atalhoTheme}
+                theme={bootstrapTheme}
             />
         </div>
     );
