@@ -9,6 +9,7 @@ const initialState = {
     navigator: {},
     table: {},
     drawerToggle: true
+
 };
 
 
