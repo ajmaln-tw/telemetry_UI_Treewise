@@ -1,7 +1,7 @@
 import { Box, IconButton, List, ListItemButton, ListItemText } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
-import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import { TbBrandGoogleAnalytics, TbBuildingFactory2 } from "react-icons/tb";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import { BiLogOutCircle } from "react-icons/bi";
@@ -45,6 +45,7 @@ const SideBar = () => {
     let analyticsStyle = { ...inActive };
     let notificationsStyle = { ...inActive };
     let profileStyle = { ...inActive };
+    let emissionsStyle = { ...inActive };
     if (location.pathname === "/dashboard") {
         dashStyle = { ...active };
     }
@@ -56,6 +57,9 @@ const SideBar = () => {
     }
     if (location.pathname.includes("/profile")) {
         profileStyle = { ...active };
+    }
+    if (location.pathname.includes("/emissions")) {
+        emissionsStyle = { ...active };
     }
 
     let logout = {
@@ -105,6 +109,12 @@ const SideBar = () => {
                     <ListItemButton sx={{ ...notificationsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
                         <IoIosNotificationsOutline size="20px" />
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>}
+                    </ListItemButton>
+                </List>
+                <List sx={{ px: 0.5, py: 0 }}>
+                    <ListItemButton sx={{ ...emissionsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../emissions")}>
+                        <TbBuildingFactory2 size="20px" />
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Emissions"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>

@@ -1,4 +1,5 @@
-import { RESOURCE_PERMISSIONS, USER_TYPE_PERMISSIONS } from "modules/resources";
+import _ from "lodash";
+import { RESOURCE_PERMISSIONS, USER_TYPES, USER_TYPE_PERMISSIONS } from "../modules/common/constants";
 
 export const checkUserTypeMenuPermissions = (routes, userPermissions) => {
     if (userPermissions.includes(USER_TYPE_PERMISSIONS.ADMIN)) {
@@ -44,4 +45,21 @@ export const checkUserTypeMenuPermissions = (routes, userPermissions) => {
         }
     });
     return response;
+};
+
+
+export const routePermission = (user = {}, routes = []) => {
+    let newRoutes = _.cloneDeep(routes[0]);
+    let newChildren = [];
+    const { userType = USER_TYPES.COMPANY } = user;
+    routes[0].children.map((child = []) => {
+        if (userType === USER_TYPES.ADMIN && _.get(child, "path") === "admin") {
+            newChildren.push(child);
+        }
+        if (userType === USER_TYPES.COMPANY && _.get(child, "path") !== "admin") {
+            newChildren.push(child);
+        }
+    });
+    _.set(newRoutes, "children", newChildren);
+    return [newRoutes, routes[1]];
 };

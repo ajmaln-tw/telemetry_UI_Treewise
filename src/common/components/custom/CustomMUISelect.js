@@ -6,7 +6,7 @@ const selectTheme = createTheme({
         MuiInput: {
             styleOverrides: {
                 root: {
-                    backgroundColor: "#F8F8F8", borderRadius: "5px", color: "#888888", minWidth: "170px", alignItems: "center"
+                    backgroundColor: "#DFF2FF", borderRadius: "5px", color: "#0784D6", minWidth: "170px", alignItems: "center"
                 }
             }
         },

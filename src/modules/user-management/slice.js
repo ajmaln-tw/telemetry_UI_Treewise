@@ -5,7 +5,6 @@ import _ from "lodash";
 import { STATE_REDUCER_KEY } from "./constants";
 import { ACTION_TYPES } from "./actions";
 const initialState = {
-
     signIn: {
         requestInProgress: false,
         data: {
@@ -48,7 +47,6 @@ const slice = createSlice({
             })
             .addCase(ACTION_TYPES.AUTHENTICATE_USER_FAILURE, (state) => {
                 _.set(state, "signIn.requestInProgress", false);
-                //
             }).addCase(ACTION_TYPES.SIGN_UP_REQUEST, (state) => {
                 _.set(state, "signUp.requestInProgress", true);
             })

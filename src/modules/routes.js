@@ -12,10 +12,12 @@ import { routes as profileRoutes } from "../modules/profile/routes";
 const Dashboard = React.lazy(() => import("./dashboard/components/Dashboard"));
 const Analytics = React.lazy(() => import("./analytics/components/Analytics"));
 // const Profile = React.lazy(() => import("./profile/components/MyProfile"));
+const EmissionsData = React.lazy(() => import("./emissions/components/EmissionsData"));
 const NotificationTable = React.lazy(() => import("./notifications/components/NotificationTable"));
 
 
 const { Home } = Icons;
+
 const routes =
     [
         {
@@ -58,6 +60,14 @@ const routes =
                     element:
                         <PrivateRoute>
                             <NotificationTable />
+                        </PrivateRoute>,
+                    errorElement: <RootBoundary />
+                },
+                {
+                    path: "emissions",
+                    element:
+                        <PrivateRoute>
+                            <EmissionsData />
                         </PrivateRoute>,
                     errorElement: <RootBoundary />
                 },

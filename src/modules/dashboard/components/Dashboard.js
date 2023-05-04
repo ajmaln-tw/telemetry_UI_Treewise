@@ -8,10 +8,11 @@ import StatsCard from "./StatsCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDashBoardData } from "../actions";
 import LoadingCustomOverlay from "../../common/components/LoadingOverlay";
+import { Emissions } from "./Emissions";
 
 
 const chartStyle = {
-    padding: "10px", margin: 3, overflow: "hidden", maxHeight: 700, minHeight: 300, minWidth: "300px"
+    padding: "10px", margin: 3, overflow: "hidden", maxHeight: 600, minHeight: 300, minWidth: "300px"
 };
 const lineChartProps = {
     position: "bottom", axis: "y", filter: true, gradient: true, fillColor: "#57C2E9", legend: false, dataLabels: false
@@ -76,7 +77,7 @@ const Dashboard = () => {
                         </Box>
                         <Grid container rowSpacing={1} sx={{ display: "flex", justifyContent: "center" }}>
                             <Grid item xm={12} sm={12} md={12} lg={6} xl={6}>
-
+                                <Emissions />
                             </Grid>
                             <Grid item xm={12} sm={12} md={12} lg={6} xl={6} sx={{ display: smScreen ? "display" : "block" }}>
                                 <CustomCharts type="Bar" gradient={true} dataList={data} sx={chartStyle2} legend={false} axis="y" title="Alert Frequency" />
