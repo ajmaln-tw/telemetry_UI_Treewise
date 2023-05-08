@@ -2,6 +2,10 @@ import { createAction } from "@reduxjs/toolkit";
 import { STATE_REDUCER_KEY } from "./constants";
 
 export const ACTION_TYPES = {
+    TOGGLE_EMISSION: `${STATE_REDUCER_KEY}/TOGGLE_EMISSION`,
+    TOGGLE_DATE_RANGE: `${STATE_REDUCER_KEY}/TOGGLE_DATE_RANGE`,
+    SET_DAY: `${STATE_REDUCER_KEY}/SET_DAY`,
+
     LIST_VESSEL: `${STATE_REDUCER_KEY}/LIST_VESSEL`,
     LIST_VESSEL_REQUEST: `${STATE_REDUCER_KEY}/LIST_VESSEL_REQUEST`,
     LIST_VESSEL_SUCCESS: `${STATE_REDUCER_KEY}/LIST_VESSEL_SUCCESS`,
@@ -28,3 +32,6 @@ export const fetchOverAllEmissions = createAction(ACTION_TYPES.OVERALL_EMISSIONS
 export const fetchCurrentVesselEmission = createAction(ACTION_TYPES.FETCH_CURRENT_VESSEL_EMISSIONS);
 export const fetchGraph = createAction(ACTION_TYPES.FETCH_GRAPH_EMISSION_DATA);
 export const listVessel = createAction(ACTION_TYPES.LIST_VESSEL);
+export const toggleEmission = createAction(ACTION_TYPES.TOGGLE_EMISSION);
+export const toggleDateRange = createAction(ACTION_TYPES.TOGGLE_DATE_RANGE);
+export const setDay = createAction(ACTION_TYPES.SET_DAY);

@@ -106,15 +106,15 @@ const SideBar = () => {
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...notificationsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
-                        <IoIosNotificationsOutline size="20px" />
-                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>}
-                    </ListItemButton>
-                </List>
-                <List sx={{ px: 0.5, py: 0 }}>
                     <ListItemButton sx={{ ...emissionsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../emissions")}>
                         <TbBuildingFactory2 size="20px" />
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Emissions"}</ListItemText>}
+                    </ListItemButton>
+                </List>
+                <List sx={{ px: 0.5, py: 0 }}>
+                    <ListItemButton sx={{ ...notificationsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
+                        <IoIosNotificationsOutline size="20px" />
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>

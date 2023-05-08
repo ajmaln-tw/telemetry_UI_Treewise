@@ -12,3 +12,9 @@ export const getCurrentVesselEmissions = flow(getState, currentVesselEmissions);
 const vesselList = (state) => state.vesselList;
 export const getVesselList = flow(getState, vesselList);
 
+const emissionTypeGraph = (state) => state.emissionLineGraph.selectedSwitch;
+export const getEmissionTypeGraph = flow(getState, emissionTypeGraph);
+
+const emissionDateRangeGraph = (state) => state.emissionLineGraph.currentDateRange;
+export const getEmissionDateRangeGraph = flow(getState, emissionDateRangeGraph);
+
