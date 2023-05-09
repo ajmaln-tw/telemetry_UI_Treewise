@@ -5,9 +5,6 @@ import React from "react";
 import color from "../../themes/palette.json";
 import { useState } from "react";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import DatePicker from "react-date-picker";
-import "react-date-picker/dist/DatePicker.css";
-import "react-calendar/dist/Calendar.css";
 import { useRef } from "react";
 import { fromEpoch, toEpoch } from "../../../utils/dateUtils";
 

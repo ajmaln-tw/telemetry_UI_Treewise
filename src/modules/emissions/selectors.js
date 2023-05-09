@@ -18,3 +18,8 @@ export const getEmissionTypeGraph = flow(getState, emissionTypeGraph);
 const emissionDateRangeGraph = (state) => state.emissionLineGraph.currentDateRange;
 export const getEmissionDateRangeGraph = flow(getState, emissionDateRangeGraph);
 
+const emissionLineGraph = (state) => state.emissionLineGraph.data;
+export const getEmissionData = flow(getState, emissionLineGraph);
+
+const routeEmission = (state) => state.routeEmission.data;
+export const getRouteEmission = flow(getState, routeEmission);

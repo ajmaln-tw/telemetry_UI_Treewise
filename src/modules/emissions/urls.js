@@ -3,7 +3,8 @@ export const API_URL = {
         OVER_ALL: "sfsdf",
         BY_ID: "individual-emission",
         LINE_GRAPH: "df",
-        LIST_VESSEL: "list-vessel"
+        LIST_VESSEL: "list-vessel",
+        ROUTE_EMISSION: "route-emission"
     }
 };
 

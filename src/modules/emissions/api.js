@@ -43,3 +43,14 @@ export const listVesselAPI = () => {
         }
     };
 };
+
+export const fetchRouteEmissionApi = (data) => {
+    return {
+        url: API_URL.EMISSION_DATA.ROUTE_EMISSION,
+        method: REQUEST_METHOD.GET,
+        payload: {
+            types: [ACTION_TYPES.FETCH_ROUTE_EMISSION_REQUEST, ACTION_TYPES.FETCH_ROUTE_EMISSION_SUCCESS, ACTION_TYPES.FETCH_ROUTE_EMISSION_FAILURE],
+            data
+        }
+    };
+};

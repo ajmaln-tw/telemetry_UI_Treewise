@@ -31,8 +31,8 @@ const EmissionsData = (props) => {
             <Grid item xs={12} sm={12} md={6} sx={{ minHeight: 300, px: 1, py: 2.5, my: 1, display: "flex", justifyContent: "center" }}>
                 <ActualEmissions currentVesselEmissions={currentVesselEmissions.data} />
             </Grid>
-            <Grid sx={{ minHeight: 450, width: "100%", px: 1, py: 1.5, my: 1, display: "flex", justifyContent: "center" }}>
-                <CustomCard additionalStyle={{ p: 2, height: 400, width: "99%" }}>
+            <Grid sx={{ width: "100%", px: 1, py: 1.5, my: 1, display: "flex", justifyContent: "center" }}>
+                <CustomCard additionalStyle={{ p: 2, width: "99%" }}>
                     <EmissionLineCard />
                 </CustomCard>
             </Grid>

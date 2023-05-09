@@ -1,23 +1,34 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import CustomCharts from "../../../common/components/custom/CustomCharts";
 import StatusIndicator from "../../../common/components/custom/StatusIndicator";
 import CustomMultiSwitch from "../../../common/components/multi-switch";
-import { useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { setDay, toggleDateRange, toggleEmission } from "../actions";
 import { DATE_RANGE, EMISSION_TYPES, STATE_REDUCER_KEY } from "../constants";
 import { actions as sliceActions } from "../slice";
-const lineChartProps = {
-    position: "bottom", axis: "y", filter: false, gradient: true, fillColor: "#57C2E9", legend: false, dataLabels: false
+import { getEmissionData } from "../selectors";
+import { createStructuredSelector } from "reselect";
+import { fetchGraph } from "../actions";
+
+const doubleLineChartProps = {
+    yAxesLabel: "Emission Rate", xAxesLabel: "Time", legend: false, dataLabels: false,
+    position: "bottom", axis: "y", filter: false, gradient: false, fillColor1: "#BAC829", fillColor2: "#B0054C"
 };
 const chartStyle = {
-    padding: "10px", margin: 3, overflow: "hidden", maxHeight: 700, minHeight: 300, minWidth: "300px"
+    width: "80%",
+    padding: "10px", margin: 3, overflow: "hidden", maxHeight: 200, minHeight: 100, minWidth: "200px"
 };
-const EmissionLineCard = () => {
+const EmissionLineCard = (props) => {
     const dispatch = useDispatch();
     const currentEmissionLineGraph = useSelector(state => state[STATE_REDUCER_KEY].emissionLineGraph.selectedSwitch);
     const currentDateRange = useSelector(state => state[STATE_REDUCER_KEY].emissionLineGraph.currentDateRange);
     const dayValue = useSelector(state => state[STATE_REDUCER_KEY].emissionLineGraph.day);
+    const { emissionsData: { predictedEmissions = [], actualEmissions = [] } = {}, fetchLineGraph } = props;
+    const dataList = {
+        dataSetOne: predictedEmissions,
+        dataSetTwo: actualEmissions
+    };
     const handleToggle = (e) => {
         dispatch(toggleEmission(e));
     };
@@ -27,6 +38,10 @@ const EmissionLineCard = () => {
     const handleDateChange = (val) => {
         dispatch(setDay(val));
     };
+    useEffect(() => {
+        fetchLineGraph();
+    }, []);
+
     const handleClear = () => dispatch(sliceActions.clearDateRange());
     const switchItems = EMISSION_TYPES;
     return <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
@@ -66,10 +81,19 @@ const EmissionLineCard = () => {
                 />
             </Box>
         </Box>
-        <Box sx={{ minHeight: 300, display: "flex", width: "95%", justifyContent: "center", borderRight: "0.5px solid #000", borderBottom: "0.5px solid #000", borderLeft: "0.5px solid #000" }}>
-            <CustomCharts type="Line" sx={chartStyle} {...lineChartProps} />
+        <Box sx={{ width: "90%", justifyContent: "center", borderRight: "0.5px solid #000", borderBottom: "0.5px solid #000", borderLeft: "0.5px solid #000", mb: 4 }}>
+            <CustomCharts type="DoubleLine" sx={chartStyle} {...doubleLineChartProps} dataList={dataList} />
         </Box>
     </Box >;
 };
 
-export default EmissionLineCard;
+const mapStateToProps = createStructuredSelector({
+    emissionsData: getEmissionData
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    fetchLineGraph: () => dispatch(fetchGraph())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmissionLineCard);
+

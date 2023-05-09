@@ -5,6 +5,7 @@ import { Chart as ChartJS, BarElement, Title, Tooltip } from "chart.js/auto";
 import { barConfig } from "./config";
 import _ from "lodash";
 import CustomHeader from "../../../../modules/common/components/CustomHeader";
+import { Box } from "@mui/material";
 
 
 ChartJS.register(
@@ -31,9 +32,9 @@ const BarChart = (props) => {
     return (
         < >
             <CustomHeader content={title} />
-            <div style={chartStyle}>
+            <Box style={chartStyle}>
                 <Bar options={OPTIONS} data={dataList} style={{ width: "100%" }} />
-            </div >
+            </Box >
         </>
     );
 };

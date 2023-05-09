@@ -10,7 +10,7 @@ import { STATE_REDUCER_KEY } from "../constants";
 import { FiMenu as Menu } from "react-icons/fi";
 import { actions as sliceActions } from "../slice";
 import { logout as logoutAction } from "../actions";
-
+import { BiNavigation } from "react-icons/bi";
 export let active = {
     display: "flex",
     justifyContent: "space-evenly",
@@ -46,6 +46,7 @@ const SideBar = () => {
     let notificationsStyle = { ...inActive };
     let profileStyle = { ...inActive };
     let emissionsStyle = { ...inActive };
+    let routeEmissionStyle = { ...inActive };
     if (location.pathname === "/dashboard") {
         dashStyle = { ...active };
     }
@@ -60,6 +61,9 @@ const SideBar = () => {
     }
     if (location.pathname.includes("/emissions")) {
         emissionsStyle = { ...active };
+    }
+    if (location.pathname.includes("/route-emissions")) {
+        routeEmissionStyle = { ...active };
     }
 
     let logout = {
@@ -109,6 +113,12 @@ const SideBar = () => {
                     <ListItemButton sx={{ ...emissionsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../emissions")}>
                         <TbBuildingFactory2 size="20px" />
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Emissions"}</ListItemText>}
+                    </ListItemButton>
+                </List>
+                <List sx={{ px: 0.5, py: 0 }}>
+                    <ListItemButton sx={{ ...routeEmissionStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../route-emissions")}>
+                        <BiNavigation size="20px" />
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Route Emissions"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>

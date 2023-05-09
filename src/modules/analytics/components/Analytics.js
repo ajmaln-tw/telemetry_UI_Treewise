@@ -92,7 +92,14 @@ const Analytics = () => {
                         </Grid>
                         <Grid item xs={12} sm={12} md={3} lg={3} xl={4} >
                             {smScreen && <CustomCard additionalStyle={{ p: 0, minHeight: "33vh", width: "20rem" }}>
-                                <CustomMap title="Last Journey" coordinates={[51.505, -0.09]} />
+                                <CustomMap
+                                    title="Last Journey"
+                                    center={[51.505, -0.09]}
+                                    positionOne={[51.505, -0.09]}
+                                    positionTwo={[51.51, -0.1]}
+                                    requestInProgress={false}
+                                    borderRadius="0"
+                                />
                             </CustomCard>}
                         </Grid>
                     </Grid>
