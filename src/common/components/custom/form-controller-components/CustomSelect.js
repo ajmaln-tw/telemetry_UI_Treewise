@@ -22,15 +22,15 @@ function CustomSelect(props) {
                   styles={{
                     control: (baseStyles, state) => ({
                       ...baseStyles,
-                      border: state.isFocused ? "1px solid #009A93" : "1px solid #C0E1EC",
+                      border: state.isFocused ? "1px solid #0784D6" : "1px solid #000",
                       boxShadow: "none",
                       color: "#000",
-                      fontSize: "18px",
-                      minHeight: "50px",
-                      fontWeight: 400,
-                      borderRadius: "10px",
+                      fontSize: "15px",
+                      minHeight: "20px",
+                      fontWeight: 500,
+                      borderRadius: "5px",
                       "&:hover": {
-                        borderColor: "#009A93"
+                        borderColor: "#000"
                       }
                     })
                   }}
@@ -49,7 +49,7 @@ function CustomSelect(props) {
                   isMulti={multiple}
                   name={name}
                 />
-                {statusError ? <Typography variant="p" sx={{ color: "red", mt: 1, lineHeight: 0 }}>{errorName}</Typography> :
+                {statusError ? <Typography variant="p" sx={{ color: "red.main", mt: 1, lineHeight: 0 }}>{errorName}</Typography> :
                   <ErrorMessage component={TextError} name={name} />}
               </>
             );

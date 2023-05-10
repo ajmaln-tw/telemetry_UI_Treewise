@@ -5,6 +5,7 @@ import _ from "lodash";
 import { EMISSION_TYPES, DATE_RANGE } from "./constants";
 import { toEpoch } from "../../utils/dateUtils";
 import routes from "./route.json";
+import emissionJson from "./routeEmissions.json";
 const initialState = {
     vesselList: [],
     emissionsOverall: {
@@ -26,7 +27,23 @@ const initialState = {
         requestInProgress: false,
         data: {
             mapPositionCurrent: [17.6959515, 83.2873001],
-            mapJourney: routes.coordinates
+            mapJourney: routes.coordinates,
+            emissionRouteVariables: emissionJson.emissionRoute
+        }
+    },
+    emissionFilter: {
+        requestInProgress: false,
+        data: {
+            vesselType: [],
+            capacity: [],
+            departure: [],
+            destination: []
+        },
+        search: {
+            vesselType: "",
+            capacity: "",
+            departure: "",
+            destination: ""
         }
     }
 
@@ -71,6 +88,7 @@ const slice = createSlice({
             }).addCase(ACTION_TYPES.FETCH_ROUTE_EMISSION_FAILURE, (state) => {
                 _.set(state, "routeEmission.requestInProgress", false);
                 _.set(state, "routeEmission.data.mapJourney", routes.coordinates);
+                _.set(state, "routeEmission.data.emissionRouteVariables ", emissionJson.emissionRoute);
             });
     }
 });

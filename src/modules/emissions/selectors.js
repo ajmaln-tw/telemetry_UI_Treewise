@@ -23,3 +23,7 @@ export const getEmissionData = flow(getState, emissionLineGraph);
 
 const routeEmission = (state) => state.routeEmission.data;
 export const getRouteEmission = flow(getState, routeEmission);
+
+const emissionFilter = (state) => state.emissionFilter.data;
+export const getEmissionFilter = flow(getState, emissionFilter);
+

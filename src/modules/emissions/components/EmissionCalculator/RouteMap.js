@@ -12,20 +12,22 @@ import { fetchRouteEmission } from "../../actions";
 
 const RouteMap = (props) => {
     const requestInProgress = useSelector(state => state[STATE_REDUCER_KEY].routeEmission.requestInProgress);
-    const { routeEmission: { mapPositionCurrent = [], mapJourney = [] } = {} } = props;
+    const { routeEmission: { mapPositionCurrent = [], mapJourney = [], emissionRouteVariables = [] } = {} } = props;
+
     const dispatch = useDispatch();
     //todo
     //1 Icon
     useEffect(() => {
         dispatch(fetchRouteEmission());
     }, []);
-    return <Box sx={{ display: "flex", justifyContent: "center" }}>
+    return <Box sx={{ display: "flex", justifyContent: "center", pt: "40px" }}>
         <CustomMap
             title="Route Emissions"
             icon=""
             height="65vh"
-            width="80vw"
+            width="95vw"
             center={mapPositionCurrent || []}
+            markersList={emissionRouteVariables || []}
             mapJourney={mapJourney}
             requestInProgress={requestInProgress}
         />

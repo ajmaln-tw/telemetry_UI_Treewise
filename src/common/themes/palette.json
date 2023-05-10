@@ -10,7 +10,8 @@
       "secondary": {
         "main": "#F8F8F8",
         "light": "#f8f8f8",
-        "dark": "#eeeeee"
+        "dark": "#eeeeee",
+        "700": "#dadada"
       },
       "background": {
         "paper": "#ffff"
