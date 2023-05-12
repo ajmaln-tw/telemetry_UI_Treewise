@@ -49,7 +49,48 @@ export const fetchRouteEmissionApi = (data) => {
         url: API_URL.EMISSION_DATA.ROUTE_EMISSION,
         method: REQUEST_METHOD.GET,
         payload: {
-            types: [ACTION_TYPES.FETCH_ROUTE_EMISSION_REQUEST, ACTION_TYPES.FETCH_ROUTE_EMISSION_SUCCESS, ACTION_TYPES.FETCH_ROUTE_EMISSION_FAILURE],
+            types: [ACTION_TYPES.SEARCH_VESSEL_ROUTE_EMISSION_REQUEST, ACTION_TYPES.SEARCH_VESSEL_ROUTE_EMISSION_SUCCESS, ACTION_TYPES.SEARCH_VESSEL_ROUTE_EMISSION_FAILURE],
+            data
+        }
+    };
+};
+
+export const fetchVesselTypeDropDownApi = () => {
+    return {
+        url: API_URL.EMISSION_DATA.VESSEL_TYPE_DROP_DOWN,
+        method: REQUEST_METHOD.GET,
+        payload: {
+            types: [ACTION_TYPES.FETCH_VESSEL_TYPE_DROP_DOWN_REQUEST, ACTION_TYPES.FETCH_VESSEL_TYPE_DROP_DOWN_SUCCESS, ACTION_TYPES.FETCH_VESSEL_TYPE_DROP_DOWN_FAILURE]
+        }
+    };
+};
+export const fetchVesselSizeDropDownApi = () => {
+    return {
+        url: API_URL.EMISSION_DATA.VESSEL_SIZE_DROP_DOWN,
+        method: REQUEST_METHOD.GET,
+        payload: {
+            types: [ACTION_TYPES.FETCH_VESSEL_SIZE_DROP_DOWN_REQUEST, ACTION_TYPES.FETCH_VESSEL_SIZE_DROP_DOWN_SUCCESS, ACTION_TYPES.FETCH_VESSEL_SIZE_DROP_DOWN_FAILURE]
+        }
+    };
+};
+
+export const fetchDeparturePortDropDownApi = (data) => {
+    return {
+        url: API_URL.EMISSION_DATA.DEPARTURE_PORT,
+        method: REQUEST_METHOD.GET,
+        payload: {
+            types: [ACTION_TYPES.FETCH_DEPARTURE_DROP_DOWN_REQUEST, ACTION_TYPES.FETCH_DEPARTURE_DROP_DOWN_SUCCESS, ACTION_TYPES.FETCH_DEPARTURE_DROP_DOWN_FAILURE],
+            data
+        }
+    };
+};
+
+export const fetchDestinationPortDropDownApi = (data) => {
+    return {
+        url: API_URL.EMISSION_DATA.DESTINATION_PORT,
+        method: REQUEST_METHOD.GET,
+        payload: {
+            types: [ACTION_TYPES.FETCH_DESTINATION_DROP_DOWN_REQUEST, ACTION_TYPES.FETCH_DESTINATION_DROP_DOWN_SUCCESS, ACTION_TYPES.FETCH_DESTINATION_DROP_DOWN_FAILURE],
             data
         }
     };

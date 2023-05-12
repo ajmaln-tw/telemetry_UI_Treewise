@@ -27,3 +27,18 @@ export const getRouteEmission = flow(getState, routeEmission);
 const emissionFilter = (state) => state.emissionFilter.data;
 export const getEmissionFilter = flow(getState, emissionFilter);
 
+const vesselTypeDropDown = (state) => state.vesselTypeDropDown.data;
+export const getVesselTypeDropDown = flow(getState, vesselTypeDropDown);
+
+const vesselSizeDropDown = (state) => state.vesselSizeDropDown.data;
+export const getVesselSizeDropDown = flow(getState, vesselSizeDropDown);
+
+const departureDropDown = (state) => state.departureDropDown.data;
+export const getDepartureDropDown = flow(getState, departureDropDown);
+
+const destinationDropDown = (state) => state.destinationDropDown.data;
+export const getDestinationDropDown = flow(getState, destinationDropDown);
+
+const showVariables = (state) => state.routeEmission.showVariables;
+export const getShowVariables = flow(getState, showVariables);
+

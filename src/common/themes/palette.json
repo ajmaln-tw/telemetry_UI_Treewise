@@ -71,6 +71,9 @@
       },
       "pink": {
         "main": "#CB3EFC"
+      },
+      "orange": {
+        "main": "#CC6C06"
       }
     }
   }

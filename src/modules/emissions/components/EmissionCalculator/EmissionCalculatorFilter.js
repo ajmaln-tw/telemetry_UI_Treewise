@@ -4,7 +4,7 @@ import { Form, withFormik } from "formik";
 import { FormController } from "../../../../common/components";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { getEmissionFilter } from "../../selectors";
+import { getEmissionFilter, getVesselTypeDropDown } from "../../selectors";
 import { searchVesselEmissionData } from "../../actions";
 import { emissionRouteFilter } from "../../validate";
 import { ArrowDropDownCircle } from "@mui/icons-material";
@@ -27,6 +27,11 @@ const drawerIcon = {
     }
 
 };
+const modalTopLeft = {
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "flex-start"
+};
 const EmissionCalculatorFilter = (props) => {
     const [open, setOpen] = React.useState(false);
 
@@ -37,9 +42,8 @@ const EmissionCalculatorFilter = (props) => {
     const handleClose = () => {
         setOpen(false);
     };
-    const { handleSubmit, errors = {} } = props;
+    const { handleSubmit, errors = {}, vesselTypeOptions } = props;
     return <Box>
-        {/* <CustomCard additionStyles={{ m: 2, mt: 0, borderRadius: "0 10px 10px 10px" }}> */}
         <Grid sx={{ mt: 2 }}>
             <Box
                 onClick={handleOpen}
@@ -57,9 +61,7 @@ const EmissionCalculatorFilter = (props) => {
                 open={open}
                 onClose={handleClose}>
                 <CustomHeader content="Route Emissions Filter" sx={{ mt: 2 }} />
-                <DialogContent>
-
-
+                <DialogContent dividers sx={modalTopLeft}>
                     <Box sx={{ width: "100%" }}>
                         <Form onSubmit={handleSubmit} >
                             <Grid container spacing={0}
@@ -71,6 +73,7 @@ const EmissionCalculatorFilter = (props) => {
                                         errorName={errors?.vesselType}
                                         control="select" label={"Vessel Type"}
                                         name="vesselType"
+                                        options={vesselTypeOptions || []}
                                         // onChangeFromController={ } onInputChange={(e) => handleInputChange(e, "name")} options={[]}
                                         isMandatory={true} />
                                 </Grid>
@@ -96,15 +99,14 @@ const EmissionCalculatorFilter = (props) => {
                     <Button onClick={handleClose}>Cancel</Button>
                 </DialogActions>
             </Dialog>
-
         </Grid >
-        {/* </CustomCard > */}
     </Box >;
 };
 
 
 const mapStateToProps = createStructuredSelector({
-    emissionFilter: getEmissionFilter
+    emissionFilter: getEmissionFilter,
+    vesselTypeOptions: getVesselTypeDropDown
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -120,7 +122,7 @@ const filterEmission = withFormik({
     handleSubmit: (values, { props }) => {
         props.searchVessel(values);
     },
-    displayName: "Emission/Filter"
+    displayName: "Emission/FilterPop"
 })(EmissionCalculatorFilter);
 
 export default connect(mapStateToProps, mapDispatchToProps)(filterEmission);

@@ -1,13 +1,10 @@
 import * as Yup from "yup";
 
-export const emissionRouteFilter = Yup.object({
-    vesselType: Yup.string()
-        .required("Vessel Type Required"),
-    capacity: Yup.string()
-        .required("Vessel Capacity Required"),
-    departure: Yup.string()
-        .required("Departure Required"),
-    destination: Yup.string()
-        .required("Designation Required")
-
+export const emissionRouteFilter = Yup.object().shape({
+    vesselType: Yup.object().required("Vessel Type Required"),
+    vesselSize: Yup.object().required("Vessel Size Required"),
+    departure: Yup.object().required("Departure Port Required"),
+    destination: Yup.object().required("Destination Port Required")
 });
+
+

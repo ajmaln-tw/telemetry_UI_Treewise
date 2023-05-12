@@ -8,26 +8,30 @@ import { getRouteEmission } from "../../selectors";
 import "leaflet/dist/leaflet.css";
 import CustomMap from "../../../../common/components/map/CustomMap";
 import { useEffect } from "react";
-import { fetchRouteEmission } from "../../actions";
+import OverLayFilter from "./OverLayFilter";
+import { fetchVesselSizeDropDown, fetchVesselTypeDropDown } from "../../actions";
 
 const RouteMap = (props) => {
     const requestInProgress = useSelector(state => state[STATE_REDUCER_KEY].routeEmission.requestInProgress);
-    const { routeEmission: { mapPositionCurrent = [], mapJourney = [], emissionRouteVariables = [] } = {} } = props;
-
+    const { routeEmission: { mapPositionCurrent = [], mapJourney = [], emissionRouteCoordinatesVariables = [] } = {} } = props;
     const dispatch = useDispatch();
     //todo
     //1 Icon
     useEffect(() => {
-        dispatch(fetchRouteEmission());
+        dispatch(fetchVesselTypeDropDown());
+        dispatch(fetchVesselSizeDropDown());
     }, []);
     return <Box sx={{ display: "flex", justifyContent: "center", pt: "40px" }}>
         <CustomMap
             title="Route Emissions"
             icon=""
             height="65vh"
-            width="95vw"
+            width="80vw"
+            borderRadius="5px"
+            overLay={true}
+            overLayComponent={<OverLayFilter />}
             center={mapPositionCurrent || []}
-            markersList={emissionRouteVariables || []}
+            markersList={emissionRouteCoordinatesVariables || []}
             mapJourney={mapJourney}
             requestInProgress={requestInProgress}
         />

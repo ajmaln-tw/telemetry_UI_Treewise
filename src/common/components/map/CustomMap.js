@@ -11,10 +11,14 @@ import color from "../../themes/palette.json";
 import locationPng from "../../../assets/images/location.png";
 import markerPng from "../../../assets/images/blackMarkerDot.png";
 
+import "./styles.css";
+
+
 const CustomMap = (props) => {
     const mapRef = useRef(null);
     const { mapJourney = [], title = "", height = "50vh", width = "100%", destination = "", startingPoint = "",
-        requestInProgress = false, icon, zoom = 5, borderRadius = "15px", markersList = [] } = props;
+        requestInProgress = false, icon, zoom = 5, borderRadius = "15px", markersList = [], overLay = false,
+        overLayComponent } = props;
     const N = mapJourney.length - 1;
     const pointOne = destination || `${mapJourney[0][0]} , ${mapJourney[0][1]}`;
     const pointTwo = startingPoint || `${mapJourney[N][0]} , ${mapJourney[N][1]}`;
@@ -50,17 +54,22 @@ const CustomMap = (props) => {
     }
 
     return (
-        <Grid>
+        <Grid className="containerCustomMap">
             <LoadingCustomOverlay active={requestInProgress} spinnerProps="map">
                 <CustomHeader content={title} />
-                <div style={{ height, width, display: "flex", justifyContent: "center" }}>
+                <div style={{ height, width, display: "flex", justifyContent: "center", position: "relative" }}>
 
                     <MapContainer
                         ref={mapRef}
                         center={center}
                         zoom={zoom}
                         zoomControl={true}
-                        style={{ height: "inherit", width: "inherit", borderRadius: borderRadius }}
+                        style={{
+                            height: "inherit", width: "inherit", borderRadius: borderRadius,
+                            top: 0,
+                            left: 0,
+                            position: "absolute"
+                        }}
                     >
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -93,6 +102,9 @@ const CustomMap = (props) => {
                         </Polyline>
                         {markersList.length > 0 && <EmissionMarkers locations={markersList} />}
                     </MapContainer>
+                    {overLay && <div className="MapOverLayContainer01">
+                        {overLayComponent}
+                    </div>}
                 </div>
             </LoadingCustomOverlay>
         </Grid >

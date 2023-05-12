@@ -4,12 +4,11 @@ import Select from "react-select";
 import { FORM_CONTROL_STYLE } from "./style";
 import TextError from "./TextError";
 
-
 function CustomSelect(props) {
-  const { name = "", options = [], multiple = false, label = "", errorName = "", statusError = false, onChangeFromController, disabled = false, isMandatory = false, ...rest } = props;
+  const { name = "", options = [], width = "150px", multiple = false, label = "", errorName = "", statusError = false, onChangeFromController, disabled = false, isMandatory = false, ...rest } = props;
   return (
     <Grid sx={FORM_CONTROL_STYLE}>
-      <InputLabel htmlFor={name}>{label} {isMandatory && <span style={{ color: "red", fontSize: "14px" }}> *</span>}</InputLabel>
+      <InputLabel htmlFor={name} sx={{ fontSize: "12px" }}>{label} {isMandatory && <span style={{ color: "red", fontSize: "14px" }}> *</span>}</InputLabel>
       <Field
         as='select'
         name={name}
@@ -25,13 +24,20 @@ function CustomSelect(props) {
                       border: state.isFocused ? "1px solid #0784D6" : "1px solid #000",
                       boxShadow: "none",
                       color: "#000",
-                      fontSize: "15px",
-                      minHeight: "20px",
-                      fontWeight: 500,
+                      fontSize: "10px",
+                      minHeight: "12px",
+                      width: width,
+                      fontWeight: 400,
                       borderRadius: "5px",
+                      display: "flex",
+                      alignItems: "center",
                       "&:hover": {
                         borderColor: "#000"
                       }
+                    }),
+                    option: (provided) => ({
+                      ...provided,
+                      maxHeight: "30px", fontSize: "10px"
                     })
                   }}
                   {...field}
@@ -56,7 +62,7 @@ function CustomSelect(props) {
           }
         }
       </Field>
-    </Grid>
+    </Grid >
   );
 }
 
