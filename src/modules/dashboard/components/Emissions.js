@@ -41,7 +41,7 @@ export const Emissions = () => {
                     <Typography sx={{ fontSize: "14px", fontWeight: 500, color: "white.main" }}> SO<sub>x</sub></Typography>
                 </Box>
             </Box>
-            <Box sx={{ alignItems: "center", backgroundColor: "#249D57", borderRadius: "5px", textAlign: "center", display: "flex", justifyContent: "center", flexDirection: "column", height: "150px", width: "150px" }}>
+            <Box sx={{ alignItems: "center", backgroundColor: "green.main", borderRadius: "5px", textAlign: "center", display: "flex", justifyContent: "center", flexDirection: "column", height: "150px", width: "150px" }}>
                 <Box>
                     <Typography sx={{ fontSize: "30px", fontWeight: 800, color: "white.main" }}> 323</Typography>
                     <Typography sx={{ fontSize: "14px", fontWeight: 500, color: "white.main" }}> CO<sup>2</sup> </Typography>

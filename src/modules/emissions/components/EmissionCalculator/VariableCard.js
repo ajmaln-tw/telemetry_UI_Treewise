@@ -23,7 +23,7 @@ const VariableCard = (props) => {
                 fontSize: "10px", color: "#fff"
             }
         }), []);
-    return <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
+    return <Box sx={{ display: "flex", justifyContent: "space-evenly", flexDirection: { xs: "column", sm: "column", md: "row" } }}>
         <Box sx={{ backgroundColor: "#249D57", ...cardStyle.sx }}>
             <Typography {...variablesStyle}>{co2} </Typography>
             <Typography {...unitsStyle}>mt/kWh </Typography>

@@ -25,7 +25,7 @@ function CustomSelect(props) {
                       boxShadow: "none",
                       color: "#000",
                       fontSize: "10px",
-                      minHeight: "12px",
+                      minHeight: { sm: "6px", md: "12px" },
                       width: width,
                       fontWeight: 400,
                       borderRadius: "5px",

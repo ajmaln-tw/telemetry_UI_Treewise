@@ -19,9 +19,11 @@ const EmissionCalculatorFilterOverlay = (props) => {
 
     const paperStyle = useMemo(() => ({
         sx: {
+            overflowX: "scroll",
+            maxHeight: "600px",
             pointerEvents: "none",
             zIndex: "100001",
-            width: "70%",
+            width: { xs: "130px", sm: "150px", md: "400px" },
             minHeight: "180px",
             opacity: 0.3,
             borderRadius: "10px 10px 0 0",

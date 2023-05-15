@@ -7,8 +7,8 @@ const EmissionStatsCard = (props) => {
     return <Box sx={{
         borderRadius: "12px",
         boxShadow: "0px 0px 15px 3px rgba(0, 0, 0, 0.4)",
-        width: { xs: "90px", sm: "120px", md: "130px", lg: "150px", xl: "180px" },
-        height: { xs: "150px", sm: "200px", md: "200px" },
+        width: { xs: "80px", sm: "120px", md: "130px", lg: "150px", xl: "180px" },
+        height: { xs: "140px", sm: "200px", md: "200px" },
         display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", backgroundColor: color
     }}>
         <Box><Typography sx={{ display: "inline-flex", color: "white.main", fontSize: { xs: "10px", sm: "14px", md: "28px" }, fontWeight: 600 }}> {title}</Typography> <Typography sx={{ color: "white.main", display: "inline-flex" }}>(t/kWh)</Typography></Box>
