@@ -1,13 +1,13 @@
 const commonConfig = {
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     plugins: {
         legend: {
             position: "bottom",
             display: true,
             labels: {
                 font: {
-                    size: 14
+                    size: 12
                 }
             }
         },
@@ -17,10 +17,10 @@ const commonConfig = {
         },
         tooltip: {
             bodyFont: {
-                size: 16
+                size: 11
             },
             titleFont: {
-                size: 18
+                size: 12
             }
         },
         datalabels: {
@@ -71,6 +71,7 @@ export const barConfig = {
 export const lineConfig = {
     ...commonConfig,
     indexAxis: "x",
+    bezierCurve: false,
     datasets: {
         line: {
             fill: true,
@@ -92,9 +93,24 @@ export const doughnutConfig = {
     }
 };
 
-export function getGradient(ctx, fillColor) {
+export function hexToTransparent(hex = "", alpha = 0.2) {
+    // Remove the '#' from the beginning of the hex code
+    hex = hex.replace("#", "");
+    // Convert the hex code to its RGB equivalent
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4) || 0, 16);
+    const b = parseInt(hex.substring(4, 6) || 0, 16);
+    // Use the rgba() function to set the alpha value to 0
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+export function getGradient(ctx, fillColor, stroke = 300, transparent = false) {
     let gradient = "";
-    gradient = ctx.createLinearGradient(0, 0, 0, 300);
+    gradient = ctx.createLinearGradient(0, 0, 0, stroke);
+    if (transparent) {
+        gradient.addColorStop(0, hexToTransparent(fillColor));
+        gradient.addColorStop(1, hexToTransparent("#FFF"));
+    }
     gradient.addColorStop(0, fillColor);
     gradient.addColorStop(1, "#FFF");
     return gradient;

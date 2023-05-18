@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import Header from "../modules/common/header/Header";
 import Footer from "../modules/common/footer/Footer";
 import SideBar from "../modules/common/horizontal-menu/SideBar";
+import SearchResults from "../modules/home/components/SearchResults";
 
 const DashboardLayout = ({ children }) => {
     return (
@@ -12,8 +13,10 @@ const DashboardLayout = ({ children }) => {
             <Header />
             <Box sx={{ display: "flex", justifyContent: "space-between ", height: "100%" }}>
                 <SideBar />
-                <Box sx={{ flexGrow: 1, overflowX: "auto", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "calc(100vh - 82px) !important ", width: "100%", overflowY: "auto" }}>
+                <Box className="mainTreemetry" sx={{ flexGrow: 1, overflowX: "auto", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "calc(100vh - 82px) !important ", width: "100%", overflowY: "auto" }}>
+                    <SearchResults />
                     <Box
+
                         sx={{ bgcolor: "white.main", borderRadius: "20px", flexGrow: 1 }}
                     >
                         {children}

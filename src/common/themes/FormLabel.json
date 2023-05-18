@@ -1,0 +1,9 @@
+{
+    "MuiFormLabel": {
+        "styleOverrides": {
+            "root": {
+                "fontSize": "12px"
+            }
+        }
+    }
+}

@@ -1,11 +1,12 @@
 
-import { all, select, takeEvery, takeLatest } from "redux-saga/effects";
+import { all, select, takeEvery, takeLatest, delay, put } from "redux-saga/effects";
 
 import { ACTION_TYPES } from "./actions";
 
 // import { downloadFileAsync } from "utils/commonUtils";
 import { STORAGE_KEYS } from "../../common/constants";
 import { getNavigator } from "./selectors";
+import { successNotify } from "../../utils/notificationUtils";
 
 
 function* navigateToFn({ payload = "/" }) {
@@ -24,7 +25,12 @@ function* refreshFn() {
 }
 
 
-function* logoutUser() {
+function* logoutUser({ payload: data = {} }) {
+
+    if (data.isManualLogout) {
+        yield delay(500);
+        yield put(successNotify({ title: "Success", message: "You have been successfully logged out!" }));
+    }
     localStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN);
     yield navigateToFn({ payload: "/" });
     // yield put(navigateTo("/"));

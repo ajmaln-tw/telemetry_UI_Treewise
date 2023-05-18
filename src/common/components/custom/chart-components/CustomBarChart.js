@@ -2,11 +2,11 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Chart as ChartJS, BarElement, Title, Tooltip } from "chart.js/auto";
-import { DefaultComponents } from "common/components/material/Components";
 import { barConfig } from "./config";
 import _ from "lodash";
+import CustomHeader from "../../../../modules/common/components/CustomHeader";
+import { Box } from "@mui/material";
 
-const { Paper, Typography } = DefaultComponents;
 
 ChartJS.register(
     BarElement,
@@ -30,12 +30,12 @@ const BarChart = (props) => {
 
 
     return (
-        <Paper sx={{ p: "20px", backgroundColor: "#0000", m: 2 }}>
-            <Typography variant="h6">{title}</Typography>
-            <div style={chartStyle}>
+        < >
+            <CustomHeader content={title} />
+            <Box style={chartStyle}>
                 <Bar options={OPTIONS} data={dataList} style={{ width: "100%" }} />
-            </div >
-        </Paper>
+            </Box >
+        </>
     );
 };
 

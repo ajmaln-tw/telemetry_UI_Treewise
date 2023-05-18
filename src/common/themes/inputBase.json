@@ -3,18 +3,17 @@
         "styleOverrides": {
             "root": {
                 "multiline": "true",
-                "fontSize": "18px",
-                "borderRadius": "10px",
-                "height": "50px",
-                "width": "100%",
-                "fontWeight": 400,
+                "fontSize": "12px",
+                "borderRadius": "5px",
+                "height": "25px",
+                "fontWeight": 600,
                 "color": "#000",
-                "backgroundColor": "#fff",
+                "backgroundColor": "#f8f8f8",
                 "fieldset": {
-                    "border": "1px solid #C0E1EC !important"
+                    "border": "1px solid #E0F8E2 !important"
                 },
                 " &:hover fieldset": {
-                    "border": "1px solid #009A93 !important"
+                    "border": "1px solid #0784D6 !important"
                 }
             }
         }

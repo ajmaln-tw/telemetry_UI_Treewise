@@ -1,10 +1,10 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, Title, Tooltip } from "chart.js/auto";
-import { DefaultComponents } from "common/components/material/Components";
 import { pieConfig } from "./config";
 import ChartFilter from "./CustomFilter";
 import _ from "lodash";
+import { DefaultComponents } from "../../material/Components";
 
 const { Paper } = DefaultComponents;
 

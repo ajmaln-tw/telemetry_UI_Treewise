@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 
 const TextError = (props) =>
-  <Typography sx={{ color: "red", position: "absolute", bottom: "-12px" }} color="common.red" variant="p" >
+  <Typography sx={{ color: "error.main", position: "absolute", bottom: "-12px" }} color="error.main" variant="p" >
     {props.children}
   </Typography>;
 

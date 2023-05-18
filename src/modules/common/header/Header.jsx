@@ -1,51 +1,33 @@
-import { useState } from "react";
-// import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import { Avatar, ButtonBase, Typography } from "@mui/material";
 import { Components } from "../../../common/components";
-import ChevronLeftOutlinedIcon from "@mui/icons-material/ChevronLeftOutlined";
-
-import ProfileMenu from "./ProfileMenu";
-
+import companyLogo from "../../../assets/images/logo_tele.png";
+import SearchBox from "../../home/components/SearchBox";
+import { useLocation } from "react-router-dom";
 
 const { Box, Grid } = Components;
-
 const Header = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    let rotate = open === false ? "rotate(-90deg)" : "rotate(-270deg)";
-    // const { userDetails: { data: { activeProfile: { imageId = "" } = {}, firstName = "", lastName = "" } } = {} } = useSelector(state => state[STATE_REDUCER_KEY]);
-    let firstName = "Aj", lastName = "N", imageId = "";
+    //, "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.04)" }
+    // const drawerToggle = useSelector(state => state[STATE_REDUCER_KEY]).drawerToggle;
+    const { pathname } = useLocation();
     return (
         <Grid
             component="header"
-            sx={{ width: "100%", height: "82px", position: "sticky", top: 0, zIndex: 100, backgroundColor: "secondary.main", display: "flex", justifyContent: "space-between", alignItems: "center" }}
+            sx={{ backgroundColor: "secondary.main", pb: 0.4, width: "100%", height: "83px", position: "sticky", top: 0, zIndex: 100, display: "flex", justifyContent: "space-between", alignItems: "center" }}
         >
             <Box
                 sx={{
-                    display: "flex", justifyContent: "end", alignItems: "center", mr: 5, borderRadius: "10px", p: 1, position: "relative", "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.04)" }
+                    display: "flex", justifyContent: "space-between", alignItems: "center", mr: 1, borderRadius: "10px", p: 1, position: "relative"
                 }}
-                variant="contained" component="div"
             >
-                <ButtonBase onClick={handleClick} sx={{ float: "right" }}>
-                    {/* <SettingsOutlinedIcon sx={{ width: "30px", height: "33px", color: "white.main" }} /> */}
-                    <Box sx={{ display: "flex", pl: 6 }}>
-                        <Avatar sx={{ height: "23px", width: "23px" }} src={imageId ? `${process.env.REACT_APP_API_URL}/resource/api/auth/multimedia/download?id=${imageId}` : ""}></Avatar>
-                        <Typography sx={{
-                            fontSize: "12px", color: "#fff", alignSelf: "center", pl: 1, fontWeight: 400,
-                            whiteSpace: "break-spaces", width: "8rem", textAlign: "center", fontFamily: "Clash Display"
-                        }}>{`${firstName} ${lastName}`}</Typography>
+                <Box sx={{ minWidth: "140px" }}>
+                    <Box sx={{ m: 1, mr: 1, p: 2 }}>
+                        <img width={58} height={55} src={companyLogo} alt="logo" />
                     </Box>
-                    <ChevronLeftOutlinedIcon sx={{ color: "white.main", transform: rotate }} />
-                </ButtonBase>
+                </Box>
+                {/* Search */}
+                {pathname.includes("/analytics") && <SearchBox />}
+                {pathname.includes("/dashboard") && <SearchBox />}
+
             </Box>
-            <ProfileMenu open={open} handleClose={handleClose} anchorEl={anchorEl} />
         </Grid >
     );
 };

@@ -3,15 +3,16 @@
         "styleOverrides": {
             "root": {
                 "multiline": "true",
-                "fontSize": "18px",
+                "fontSize": "12px",
                 "borderRadius": "10px",
-                "height": "50px",
+                "height": "20px",
                 "width": "100%",
                 "fontWeight": 500,
+                "letterSpacing": "1px",
                 "color": "#5E5E5E",
                 "backgroundColor": "#fff",
                 " &:Mui-focused": {
-                    "backgroundColor": "#D8F5FF",
+                    "backgroundColor": "#E0F8E2",
                     "boxShadow": "none"
                 }
             }
