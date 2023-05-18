@@ -25,7 +25,6 @@ export default function ImageUploaderPopUp({ title = "Title", id, name = "Name",
     const imageMaxSize = 10000000; // bytes
     const acceptedFileTypesArray = ["image/x-png", "image/png", "image/jpg", "image/jpeg"];
     let uploadEvent = false;
-
     const verifyFile = (files) => {
         if (files && files.length > 0) {
             const currentFile = files[0];

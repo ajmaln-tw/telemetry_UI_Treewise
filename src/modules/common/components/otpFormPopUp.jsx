@@ -1,6 +1,6 @@
-import { Components, Icons } from "../../../common/components";
+import { Components, Icons } from ;
 import { Form, withFormik } from "formik";
-// import { Counter } from "modules/user-management/register/components/Counter";
+import { Counter } from "modules/user-management/register/components/Counter";
 import { useEffect, useState } from "react";
 import OtpInput from "react-otp-input";
 import { connect, useDispatch } from "react-redux";
@@ -22,7 +22,7 @@ const modalStyle = {
     p: 4
 };
 
-export const OtpForm = ({ handleSubmit, open, setOpen, count, otpDetails: { isVerified = false } = {} }) => {
+export const OtpForm = ({ handleSubmit, open, setOpen, count, reset, otpDetails: { isVerified = false } = {} }) => {
 
     const [OTP, setOTP] = useState("");
     const dispatch = useDispatch();
@@ -48,9 +48,9 @@ export const OtpForm = ({ handleSubmit, open, setOpen, count, otpDetails: { isVe
         };
     }, [count]);
 
-    // const resendOtp = () => {
-    //     dispatch(actions.resendOtp());
-    // };
+    const resendOtp = () => {
+        dispatch(actions.resendOtp());
+    };
     const handleBack = () => {
         setOpen(false);
     };
@@ -84,7 +84,7 @@ export const OtpForm = ({ handleSubmit, open, setOpen, count, otpDetails: { isVe
                             </CardContent>
                             <Divider />
                             <Grid sx={{ mb: 2, mt: 1 }} container justifyContent="center">
-                                {/* <Counter resendOtp={resendOtp} count={count} reset={reset} /> */}
+                                <Counter resendOtp={resendOtp} count={count} reset={reset} />
                             </Grid>
                         </Form>
                     </Card>

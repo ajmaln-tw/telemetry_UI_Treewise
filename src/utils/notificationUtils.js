@@ -7,19 +7,20 @@ const NOTIFICATION_PROPS = {
     title: "",
     message: "",
     dismissible: false,
+    dismissAfter: 2500,
     position: "top-right",
     allowHTML: true
 };
 
-export const successNotify = (props) => notify({ ...NOTIFICATION_PROPS, ...props, dismissAfter: 2500, status: "success" });
+export const successNotify = (props) => notify({ ...NOTIFICATION_PROPS, ...props, status: "success" });
 
-export const infoNotify = (props) => notify({ ...NOTIFICATION_PROPS, ...props, dismissAfter: 2500, status: "info" });
+export const infoNotify = (props) => notify({ ...NOTIFICATION_PROPS, ...props, status: "info" });
 
 export const warningNotify = (props) => notify({ ...NOTIFICATION_PROPS, ...props, status: "warning", dismissAfter: 4000 });
 
 export const errorNotify = (props) => notify({ ...NOTIFICATION_PROPS, ...props, status: "error", dismissAfter: 4000 });
 
-export const loaderNotify = (props) => notify({ ...NOTIFICATION_PROPS, ...props, status: "loading" });
+export const loderNotify = (props) => notify({ ...NOTIFICATION_PROPS, ...props, status: "loading" });
 
 export const confirmDialog = (payload = {}) => Swal.fire({
     title: `${"are_you_sure"} ?`, showDenyButton: true, confirmButtonText: "ok", denyButtonText: "cancel", denyButtonColor: palette.palette.error.main,

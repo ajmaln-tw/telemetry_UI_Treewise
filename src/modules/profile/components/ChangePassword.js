@@ -6,7 +6,7 @@ import { createStructuredSelector } from "reselect";
 import { FormController, Icons } from "../../../common/components";
 import Button from "../../../common/components/custom/Button";
 import LoadingCustomOverlay from "../../common/components/LoadingOverlay";
-import { changePassword } from "../actions";
+import { changePassowrd } from "../actions";
 
 import { changePasswordSchema } from "../validate";
 
@@ -36,7 +36,7 @@ const ChangePassword = (props) => {
                                     <FormController statusError={true} errorName={errors?.newPassword} control="input2" label={"New Password"} name="newPassword" isMandatory={true} />
                                 </Grid>
                                 <Grid item xs={12} md={12} lg={12} >
-                                    <FormController statusError={true} errorName={errors?.confirmPassword} control="input2" label={"Confirm Password"} name="confirmPassword" isMandatory={true} />
+                                    <FormController statusError={true} errorName={errors?.confirmPassword} control="input2" label={"Confrim Password"} name="confirmPassword" isMandatory={true} />
                                 </Grid>
                             </Grid>
                         </CardContent>
@@ -74,7 +74,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    changePassword: (data) => dispatch(changePassword(data))
+    changePassowrd: (data) => dispatch(changePassowrd(data))
 });
 
 const editUser = withFormik({
@@ -84,7 +84,7 @@ const editUser = withFormik({
     // },
     validationSchema: changePasswordSchema,
     handleSubmit: (values, { props }) => {
-        props.changePassword(values);
+        props.changePassowrd(values);
     },
     displayName: "View/ChangePassword"
 })(ChangePassword);

@@ -14,15 +14,3 @@ export const EMAIL = (string) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.tes
 
 export const SMS = (number) => !/\D/.test(number);
 
-export const RESOURCE_PERMISSIONS = {
-
-};
-
-export const USER_TYPES = {
-    ADMIN: 9,
-    COMPANY: 0
-};
-export const USER_TYPE_PERMISSIONS = {
-    ADMIN: USER_TYPES.ADMIN,
-    COMPANY: USER_TYPES.COMPANY
-};

@@ -1,4 +1,4 @@
-import { Box, Grid, IconButton, InputAdornment, InputLabel, TextField, Typography } from "@mui/material";
+import { Grid, IconButton, InputAdornment, InputLabel, TextField, Typography } from "@mui/material";
 import { ErrorMessage, Field } from "formik";
 
 import { FORM_CONTROL_STYLE_ALT } from "./style";
@@ -41,8 +41,7 @@ function Input2(props) {
                                     sx={{
                                         "& .MuiInputBase-input.Mui-disabled": {
                                             WebkitTextFillColor: "#5A5A5A"
-                                        },
-                                        maxWidth: "400px"
+                                        }
                                     }}
                                     InputProps={{
                                         endAdornment: (
@@ -52,10 +51,8 @@ function Input2(props) {
                                         )
                                     }}
                                 />
-                                <Box sx={{ display: "black" }}>
-                                    {statusError ? <Typography variant="p" sx={{ color: "error.main", lineHeight: 0 }}>{errorName}</Typography> :
-                                        <ErrorMessage component={TextErrorType2} name={name} />}
-                                </Box>
+                                {statusError ? <Typography variant="p" sx={{ color: "error.main", lineHeight: 0 }}>{errorName}</Typography> :
+                                    <ErrorMessage component={TextErrorType2} name={name} />}
 
                             </>
                         );
@@ -63,7 +60,7 @@ function Input2(props) {
                 </Field>
 
             </Grid>
-        </Grid >
+        </Grid>
     );
 }
 

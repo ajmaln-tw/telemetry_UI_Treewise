@@ -4,6 +4,13 @@
         "defaultProps": {
           "disableRipple": true
         },
+        "MuiInputLabel": {
+          "styleOverrides": {
+            "root": {
+              "fontWeight": 700
+            }
+          }
+        },
         "MuiTab": {
           "styleOverrides": {
             "root": {

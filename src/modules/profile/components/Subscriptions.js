@@ -26,11 +26,9 @@ const Subscriptions = () => {
             <Grid sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
                 <Grid sx={{ width: "80%", textAlign: "center" }}>
                     <Typography variant="h5" component="h5" sx={{ color: "primary.main", fontWeight: 800 }}> Choose Your Plan </Typography>
-                    <Typography variant="p" sx={{
-                        color: "primary.main", flexGrow: 1, textAlign: "left"
-                    }}>
+                    <Typography variant="p" sx={{ color: "primary.main", textAlign: "left" }}>
                         TreeWise offers powerful and convenient Telemetry application, specialized dashboard,
-                        customized alert configuration and analysis function for the shipping and marine industry.
+                        customised alert configuration and analysis function for the shipping and marine industry.
                     </Typography>
                 </Grid>
             </Grid>

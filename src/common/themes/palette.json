@@ -10,8 +10,7 @@
       "secondary": {
         "main": "#F8F8F8",
         "light": "#f8f8f8",
-        "dark": "#eeeeee",
-        "700": "#dadada"
+        "dark": "#eeeeee"
       },
       "background": {
         "paper": "#ffff"
@@ -26,8 +25,7 @@
         "main": "#FC3B3B "
       },
       "white": {
-        "main": "#ffffff",
-        "light": "#fcfcfc"
+        "main": "#ffffff"
       },
       "shaded": {
         "main": "#86938E"
@@ -39,15 +37,9 @@
         "main": "#F9F6EE"
       },
       "green": {
-        "400": "#249D57",
         "main": "#84BD0B",
         "dark": "#5d8508",
         "light": "#9ee20d "
-      },
-      "cyan": {
-        "main": "#249D57",
-        "dark": "#1d7d45",
-        "light": "#249D57 "
       },
       "red": {
         "main": "#D74654",
@@ -56,8 +48,6 @@
         "100": "#DC796E"
       },
       "grey": {
-        "300": "#cfcfcf",
-        "400": "#D9D9D9",
         "main": "#888888",
         "dark": "#616161",
         "light": "#9c9c9c"
@@ -71,9 +61,6 @@
       },
       "pink": {
         "main": "#CB3EFC"
-      },
-      "orange": {
-        "main": "#CC6C06"
       }
     }
   }

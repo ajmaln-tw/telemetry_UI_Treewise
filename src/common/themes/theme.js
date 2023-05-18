@@ -18,11 +18,9 @@ import paper from "./paper.json";
 import cardHeader from "./cardHeader.json";
 import CustomSwitch from "./CustomSwitch.json";
 import MuiCSSBaseLine from "./muiCssBaseline.json";
-import InputLabel from "./InputLabel.json";
 
 const overrides = {
   components: {
-    ...InputLabel,
     ...inputField,
     ...button,
     ...checkbox,

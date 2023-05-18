@@ -17,7 +17,7 @@ const Breadcrumb = () => {
                 const { route: { icon = null } = {}, pathname = "/", params } = match;
                 let newpathName = pathname;
                 if (pathname === "/") {
-                    newpathName = "/dashboard";
+                    newpathName = "/Dashboard";
                 }
                 if (params.id) {
                     breadcrumbsLength = breadcrumbsLength - 1;

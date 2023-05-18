@@ -1,15 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 // import { getPayloadContent } from "utils/apiUtils";
-import { ACTION_TYPES as USER_ACTION_TYPES } from "../user-management/actions";
+import { ACTION_TYPES } from "./actions";
 import { STATE_REDUCER_KEY } from "./constants";
-import _ from "lodash";
 
 const initialState = {
-    user: {},
     navigator: {},
     table: {},
     drawerToggle: true
-
 };
 
 
@@ -27,9 +24,11 @@ const slice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(USER_ACTION_TYPES.USER_PROFILE_SUCCESS, (state, { payload }) => {
-                _.set(state, "user", payload);
+            .addCase(ACTION_TYPES.FETCH_STATE_DROPDOWN_SUCCESS, (state, action) => {
+                state.stateDropdown.requestInProgress = false;
+                state.stateDropdown.data = action.payload;
             });
+
     }
 });
 

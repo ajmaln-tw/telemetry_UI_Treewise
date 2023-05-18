@@ -58,10 +58,3 @@ export const inrFormatter = (value, points) => {
         return converted;
     }
 };
-
-export const removeStringPortion = (str, maxLength = 20) => {
-    if (str.length > maxLength) {
-        return str.substr(0, maxLength) + "...";
-    }
-    return str;
-};

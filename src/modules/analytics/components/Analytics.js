@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import Gauge from "./Gauge";
 import { GAUGE_STATUS } from "../constants";
@@ -6,7 +6,7 @@ import CustomCard from "../../../common/components/custom/CustomCard";
 import CustomCharts from "../../../common/components/custom/CustomCharts";
 import CustomHeader from "../../common/components/CustomHeader";
 import CustomMap from "../../../common/components/map/CustomMap";
-import routesGeoJSON from "../../emissions/route.json";
+
 
 const chartStyle2 = {
     padding: "10px", margin: 3, overflow: "hidden", maxHeight: "auto", minHeight: 500, width: "100%"
@@ -48,9 +48,9 @@ const dataList = {
 
 
 const Analytics = () => {
-    const requestInProgress = false;
-    const mapJourney = routesGeoJSON.coordinates;
-    const center = mapJourney[Math.floor(mapJourney.length / 2)];
+    const theme = useTheme();
+    const smScreen = useMediaQuery(theme.breakpoints.up("md"));
+
 
     return (
         <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -91,17 +91,9 @@ const Analytics = () => {
                             </CustomCard>
                         </Grid>
                         <Grid item xs={12} sm={12} md={3} lg={3} xl={4} >
-                            <CustomCard additionalStyle={{ p: 0, minHeight: "33vh", width: "20rem" }}>
-                                <CustomMap
-                                    title="Last Journey"
-                                    borderRadius="0"
-                                    height="46vh"
-                                    icon=""
-                                    center={center || []}
-                                    mapJourney={mapJourney}
-                                    requestInProgress={requestInProgress}
-                                />
-                            </CustomCard>
+                            {smScreen && <CustomCard additionalStyle={{ p: 0, minHeight: "33vh", width: "20rem" }}>
+                                <CustomMap title="Last Journey" coordinates={[51.505, -0.09]} />
+                            </CustomCard>}
                         </Grid>
                     </Grid>
 

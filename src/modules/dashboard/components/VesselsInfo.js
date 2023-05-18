@@ -20,7 +20,7 @@ const VesselsInfo = ({ data = [] }) => {
             setNewData([2404, 2040, 2800, 2808, 2064, 1800, 1702, 2200, 2080, 3000, 3200, 2800]);
         }
     };
-    const selectList = ["All Vessels", "On Shore", "Sailing"];
+    const selectList = ["All Vessels", "ABC", "XYZ", "AXYZ", "QZA"];
     return (
         <CustomCard>
             <Grid sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -28,25 +28,25 @@ const VesselsInfo = ({ data = [] }) => {
                 <MUISelect value={select} dataList={selectList} onItemSelect={selectedItem} />
             </Grid>
 
-            <Grid className="mainTreemetry" sx={{ overflowY: "scroll", maxHeight: "75vh", width: { xs: "235px", sm: "300px" } }}>
+            <Grid className="mainTreemetry" sx={{ overflowY: "scroll", maxHeight: "75vh", width: "300px" }}>
                 <Grid sx={{ display: "flex", flexDirection: "column" }}>
 
                     {data.map((ele, i) =>
                         <Box key={`${i}${ele.title}.${ele.dateModified}`}>
                             <Grid sx={{ display: "flex", justifyContent: "space-between", px: 0.8, py: 0.5 }}>
                                 <Box item xs={6} sx={{ mx: 0.5, my: 1.2 }}>
-                                    <Typography sx={{ fontSize: { xs: "10px", sm: "12px" }, fontWeight: 700 }}>{ele.title} </Typography>
+                                    <Typography sx={{ fontSize: "12px", fontWeight: 700 }}>{ele.title} </Typography>
                                     <Typography
                                         sx={{
                                             display: "flex",
-                                            fontSize: { xs: "10px", sm: "12px" },
+                                            fontSize: "12px",
                                             fontWeight: 700,
                                             color: ele.status === "Sailing" ? "green.main" : "red.main"
                                         }}> {ele.status}</Typography>
                                 </Box>
                                 <Box item xs={6} sx={{ mx: 0.5, my: 1.2 }}>
                                     <Typography sx={{ fontSize: "10px", fontWeight: 600 }}> Last updated </Typography>
-                                    <Typography sx={{ display: "flex", fontSize: { xs: "10px", sm: "12px" }, fontWeight: 600 }}> {ele.dateModified}</Typography>
+                                    <Typography sx={{ display: "flex", fontSize: "12px", fontWeight: 600 }}> {ele.dateModified}</Typography>
                                 </Box>
                             </Grid>
 

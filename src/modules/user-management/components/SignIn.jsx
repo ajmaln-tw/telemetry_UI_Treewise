@@ -1,20 +1,27 @@
+// import { CircularProgress, Paper } from "@mui/material";
 import { withFormik } from "formik";
 import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Form, useLocation, useNavigate } from "react-router-dom";
-import { MoonLoader } from "react-spinners";
+// import { createStructuredSelector } from "reselect";
+// import { confirmDialog, infoNotify }
 import { Components, FormController } from "../../../common/components";
 
 import { actions as sliceActions } from "../slice";
 import { signInSchema as validator } from "../validate";
+// import { getSignIn } from "../selectors";
 import { signIn } from "../actions";
 import { Box, Paper, useMediaQuery, useTheme } from "@mui/material";
+// import FAQs from "../../common/FAQs/FAQs";
 import { createStructuredSelector } from "reselect";
 import { getSignIn } from "../selectors";
 import logo from "../../../assets/images/logo_tele.png";
+// import bg from "../../../assets/images/background.jpg"
 import { images } from "../constants";
 import Carousal from "../../../common/components/carousal/Carousal";
-import { actions as commonActions } from "../../common/slice";
+
+
+// const { Card, CardActions, CardContent, CardHeader, Divider, Grid, Typography } = Components;
 const { Divider, Grid, Typography } = Components;
 
 const { Button } = Components;
@@ -26,7 +33,7 @@ function SignIn(props) {
     const theme = useTheme();
     const smScreen = useMediaQuery(theme.breakpoints.up("sm"));
 
-    const { handleSubmit, signIn: { requestInProgress = false } = {} } = props;
+    const { handleSubmit } = props;
     // const confirmed = useSelector(state => state[REDUCER_KEY].signUpForm.confirm);
 
     // if (confirmed) {
@@ -41,7 +48,6 @@ function SignIn(props) {
     // }
 
     useEffect(() => {
-        dispatch(commonActions.setNavigator(navigate));
         return () => dispatch(sliceActions.clear());
     }, [pathname]);
     // const faqStyle = { position: "absolute", left: "35px", bottom: "-20px", width: { md: "60%", lg: "55%", xl: "45%" }, height: "13vh", alignItems: "center", justifyContent: "end", display: { xs: "none", md: "flex" }, borderRadius: "20px" };
@@ -61,17 +67,17 @@ function SignIn(props) {
                                             <FormController control="input" name="email" label={"Email"} placeholder="eg:- user@companydomain.com" />
                                         </Grid>
                                         <Grid sx={{ my: 1, py: { md: 1, xl: 1.5 }, pb: { md: 2, xl: 3 } }}>
-                                            <FormController control="input" name="password" label={"Password"} placeholder="*********" type="password" />
+                                            <FormController control="input" name="password" label={"Password"} placeholder="*********" />
                                         </Grid>
                                         <Box sx={{ display: "flex", justifyContent: "space-between", pb: 1 }}>
                                             <Grid sx={{ display: "flex", alignItems: "flex-start" }}>
                                                 <FormController control="checkbox" name="savePassword" />
-                                                <Typography sx={{ fontSize: "12px", fontWeight: 700, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}>{"Remember Me"}</Typography>
+                                                <Typography sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}>{"Remember Me"}</Typography>
                                             </Grid>
                                             <Grid sx={{ display: "flex", alignItems: "flex-start" }}>
                                                 <Typography
                                                     variant="p"
-                                                    sx={{ fontSize: "12px", fontWeight: 700, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}
+                                                    sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "primary.main", cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }}
                                                 // onClick={() => navigate("../reset-password")}
                                                 >
                                                     {"Forgot password?"}
@@ -79,23 +85,20 @@ function SignIn(props) {
                                                 </Typography>
                                             </Grid>
                                         </Box>
-                                        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-                                            <Button sx={{ width: "70%", borderRadius: "17px", fontSize: { xs: "16px", xl: "18px" }, height: { xs: "40px", xl: "50px" } }} variant="contained" type="submit" onClick={handleSubmit}>
-                                                {"Login"}
-                                            </Button>
-                                            {requestInProgress && <MoonLoader color="#33aaf8" size={20} speedMultiplier={1.5} />}
+                                        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                            <Button sx={{ width: "70%", borderRadius: "17px", fontSize: { xs: "16px", xl: "18px" }, height: { xs: "40px", xl: "50px" } }} variant="contained" type="submit" onClick={handleSubmit}>{"Login"}</Button>
                                         </Box>
                                     </Form>
                                 </Box>
                             </Box>
                             <Divider variant="caption" />
                             <Box sx={{ display: "flex", py: { xs: 3, xl: 4.5 }, justifyContent: "center", alignItems: "space-around", boxShadow: 0 }} elevation={0}>
-                                <Typography display="inline" sx={{ fontSize: "13px", color: "shaded.main" }}>{"Don’t have an account?"}</Typography>
-                                <Typography display="inline" variant="text" sx={{ fontWeight: 700, fontSize: "14px", pb: 0.6, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
+                                <Typography display="inline" sx={{ fontSize: { lg: "16px", xl: "18px" }, color: "shaded.main" }}>{"Need an Account?"}</Typography>
+                                <Typography display="inline" variant="text" sx={{ fontWeight: 600, fontSize: { lg: "16px", xl: "18px" }, pb: 0.5, m: 0, ml: 1, cursor: "pointer", "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" } }} color="primary"
                                     onClick={() => {
                                         navigate("../signup");
                                     }
-                                    }>{"Sign up"}</Typography>
+                                    }>{"Create Account"}</Typography>
                             </Box>
                         </Grid>
                     </Paper >
