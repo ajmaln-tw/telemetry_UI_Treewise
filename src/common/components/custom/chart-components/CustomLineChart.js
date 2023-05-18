@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import _ from "lodash";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, Title, Tooltip } from "chart.js/auto";
-import { getGradient, lineConfig } from "./config";
+import { getGradient } from "./config";
 import MUISelect from "../../custom/CustomMUISelect";
 import { DefaultComponents } from "../../material/Components";
 import CustomHeader from "../../../../modules/common/components/CustomHeader";
@@ -20,12 +20,23 @@ const CustomLineChart = (props) => {
     const [select, setSelect] = useState("Last Week");
     const [newData, setNewData] = useState([61, 60, 70, 72, 66, 45, 43, 55, 70, 75, 80, 70]);
     const options = {
-        ...lineConfig
-        // scales: {
-        //     y: {
-        //         type: "logarithmic"
-        //     }
-        // }
+        plugins: {
+            zoom: {
+                zoom: {
+                    wheel: {
+                        enabled: true
+                    },
+                    pinch: {
+                        enabled: true
+                    },
+                    animation: {
+                        duration: 1000,
+                        easing: "easeOutCubic"
+                    },
+                    mode: "xy"
+                }
+            }
+        }
     };
 
 
@@ -56,7 +67,7 @@ const CustomLineChart = (props) => {
             const { ctx } = chart;
             return getGradient(ctx, fillColor);
         } : fillColor,
-        tension: 0.4
+        tension: 0
     }] || dataList.dataSets;
 
     let DATA = { datasets: dataSet, labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] };
@@ -77,7 +88,7 @@ const CustomLineChart = (props) => {
     };
 
     return (
-        <Grid sx={{ p: 2, pb: 0, m: 1 }}>
+        <Grid sx={{ p: 2, pb: 0, m: 1 }} >
             {filter && <Grid sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Grid >
                     <CustomHeader content={title} />
@@ -85,11 +96,12 @@ const CustomLineChart = (props) => {
                 <Grid >
                     <MUISelect value={select} dataList={selectList} onItemSelect={selectedItem} />
                 </Grid>
-            </Grid>}
+            </Grid>
+            }
             <div style={chartStyle}>
                 <Line options={OPTIONS} data={DATA} />
             </div >
-        </Grid>
+        </Grid >
     );
 };
 

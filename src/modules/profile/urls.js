@@ -1,6 +1,9 @@
 export const API_URL = {
     USER: {
-        FETCH_USER_BY_ID: "sfsdf"
+        UPDATE_PROFILE: "profile_update",
+        UPLOAD_PROFILE_IMAGE: "upload",
+        PROFILE: "profile",
+        PROFILE_IMAGE: "profilepic"
     }
 };
 

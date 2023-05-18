@@ -1,14 +1,12 @@
 import { Box, IconButton, List, ListItemButton, ListItemText } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
-import { MdOutlineSpaceDashboard } from "react-icons/md";
-import { TbBrandGoogleAnalytics } from "react-icons/tb";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { CiUser } from "react-icons/ci";
-import { BiLogOutCircle } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import MenuIcon from "@mui/icons-material/Menu";
 import { STATE_REDUCER_KEY } from "../constants";
+import { FiMenu as Menu } from "react-icons/fi";
 import { actions as sliceActions } from "../slice";
+import { logout as logoutAction } from "../actions";
+import "./sideBar.css";
+import { Analytics, Dashboard, Emission, Notification, RouteEmission, Profile, Logout } from "../../../assets/svg";
 
 export let active = {
     display: "flex",
@@ -34,14 +32,19 @@ export let inActive = {
 const SideBar = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const dispatch = useDispatch();
     const drawerToggle = useSelector(state => state[STATE_REDUCER_KEY]).drawerToggle;
+    const dispatch = useDispatch();
     const handleDrawer = () => dispatch(sliceActions.setUnsetDrawer());
+    const handleLogout = () => {
+        dispatch(logoutAction({ isManualLogout: true }));
+    };
     let dashStyle = { ...inActive };
     let analyticsStyle = { ...inActive };
     let notificationsStyle = { ...inActive };
     let profileStyle = { ...inActive };
-    if (location.pathname === "/Dashboard") {
+    let emissionsStyle = { ...inActive };
+    let routeEmissionStyle = { ...inActive };
+    if (location.pathname === "/dashboard") {
         dashStyle = { ...active };
     }
     if (location.pathname === "/analytics") {
@@ -53,9 +56,14 @@ const SideBar = () => {
     if (location.pathname.includes("/profile")) {
         profileStyle = { ...active };
     }
+    if (location.pathname.includes("/emissions")) {
+        emissionsStyle = { ...active };
+    }
+    if (location.pathname.includes("/route-emissions")) {
+        routeEmissionStyle = { ...active };
+    }
 
     let logout = {
-        pl: 1, py: 0,
         color: "white.main",
         height: "47px",
         fontSize: "14px",
@@ -78,42 +86,56 @@ const SideBar = () => {
     return (
 
         <List sx={mainStyle}>
-            <Box sx={{ alignSelf: drawerToggle ? "end" : "center" }}>
-                <IconButton type="button" onClick={handleDrawer}>
-                    <MenuIcon />
-                </IconButton>
-            </Box>
-            <List sx={{ pl: 4, pr: 2, pt: 6, height: "calc(100vh - 240px) !important", overflowX: "hidden", overflowY: "auto" }}>
+            <List sx={{ px: 1.5, height: "calc(100vh - 240px) !important", overflowX: "hidden", overflowY: "auto" }}>
+                <List sx={{ px: 0.5, py: 0, mb: 2, display: "flex", justifyContent: drawerToggle ? "flex-start" : "center" }}>
+                    <Box >
+                        <IconButton type="button" onClick={handleDrawer}>
+                            <Menu size="20px" />
+                        </IconButton>
+                    </Box>
+                </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...dashStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../Dashboard")}>
-                        <MdOutlineSpaceDashboard size="20px" />
-                        {drawerToggle && <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>}
+                    <ListItemButton className="button-sidebar" sx={{ ...dashStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
+                        <Dashboard className="svg-Icon" />
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...analyticsStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../analytics")}>
-                        <TbBrandGoogleAnalytics size="20px" />
-                        {drawerToggle && <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Analytics"}</ListItemText>}
+                    <ListItemButton sx={{ ...analyticsStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../analytics")}>
+                        <Analytics />
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Analytics"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...notificationsStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
-                        <IoIosNotificationsOutline size="20px" />
-                        {drawerToggle && <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>}
+                    <ListItemButton sx={{ ...emissionsStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../emissions")}>
+                        <Emission />
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Emissions"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...profileStyle, pl: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../profile/info")}>
-                        <CiUser size="20px" />
-                        {drawerToggle && <ListItemText sx={{ pl: 1, fontSize: "14px !!important" }}>{"Profile"}</ListItemText>}
+                    <ListItemButton sx={{ ...routeEmissionStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../route-emissions")}>
+                        <RouteEmission />
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Route Emissions"}</ListItemText>}
+                    </ListItemButton>
+                </List>
+                <List sx={{ px: 0.5, py: 0 }}>
+                    <ListItemButton sx={{ ...notificationsStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
+                        <Notification />
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>}
+                    </ListItemButton>
+                </List>
+                <List sx={{ px: 0.5, py: 0 }}>
+                    <ListItemButton sx={{ ...profileStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../profile/info")}>
+                        <Profile />
+                        {drawerToggle && <>  <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Profile"}</ListItemText></>}
                     </ListItemButton>
                 </List>
             </List>
-            <List sx={{ pl: 4, pr: 2, pt: 6 }}>
+            <List sx={{ px: 1.5, pt: 6 }}>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={logout} onClick={() => navigate("./logout")}>
-                        {drawerToggle && <ListItemText sx={{ fontSize: "14px !!important" }}>{"Logout"}</ListItemText>}
-                        <BiLogOutCircle size="20px" />
+                    <ListItemButton sx={{ ...logout, px: 1, py: 0 }} onClick={() => handleLogout()}>
+                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Logout"}</ListItemText>}
+                        <Logout />
                     </ListItemButton>
                 </List>
             </List>

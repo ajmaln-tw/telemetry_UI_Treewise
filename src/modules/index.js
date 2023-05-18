@@ -6,7 +6,8 @@ import * as analytics from "./analytics";
 import * as notifications from "./notifications";
 import * as profile from "./profile";
 import * as home from "./home";
+import * as emissions from "./emissions";
 
 
-export { common, admin, userManagement, dashboard, analytics, notifications, profile, home };
+export { common, admin, userManagement, dashboard, analytics, notifications, profile, home, emissions };
 

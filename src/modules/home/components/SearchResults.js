@@ -14,8 +14,9 @@ const itemStyle = {
     p: 1,
     my: 0.1,
     "&:hover": {
-        backgroundColor: "#9c9c9c",
-        cursor: "pointer"
+        backgroundColor: "#f4f4f4",
+        cursor: "pointer",
+        borderRadius: "10px"
     }
 };
 
@@ -31,6 +32,7 @@ const SearchResults = ({ results = [] }) => {
     if (searchTerm.length > 2) {
         return (
             <Box sx={{
+                width: { xs: "200px", sm: "230px", md: "300px" },
                 backgroundColor: "white.main",
                 boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
                 pb: 1,
@@ -38,20 +40,20 @@ const SearchResults = ({ results = [] }) => {
                 display: open ? "flex" : "none", position: "fixed",
                 flexDirection: "column",
                 justifyContent: "flex-end",
-                top: 70, left: 300
+                top: 70, left: 80
             }}>
                 {(loading || results.length > 0) && <>
                     <IconButton sx={{ alignSelf: "flex-end" }} type="button" onClick={handleClose}>
                         <MdClose />
                     </IconButton>
                     <LoadingCustomOverlay active={loading} spinnerProps="skeleton">
-                        <Box sx={{ overflowY: "scroll", width: "300px", height: "180px", px: 1, pb: 1 }}>
+                        <Box sx={{ overflowY: "scroll", width: "100%", height: "180px", px: 1, pb: 1 }}>
                             {results.map((ele, i) => <Box sx={itemStyle} key={i} onClick={handleClose}>
-                                <Typography sx={{ fontSize: "14px", fontWeight: 700, color: "#0008" }}>
+                                <Typography sx={{ fontSize: "13px", fontWeight: 700, color: "grey.dark" }}>
                                     {ele.title.slice(0, 10)}
                                 </Typography>
-                                <Typography sx={{ fontWeight: 500, color: "grey.main", cursor: "pointer" }}>
-                                    {ele.title.slice(0, 15)}
+                                <Typography sx={{ fontWeight: 500, fontSize: "11px", color: "grey.light", cursor: "pointer" }}>
+                                    {ele.title.slice(0, 40)}
                                 </Typography>
                             </Box>)}
                         </Box>

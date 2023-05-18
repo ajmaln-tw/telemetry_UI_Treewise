@@ -12,10 +12,13 @@ import { routes as profileRoutes } from "../modules/profile/routes";
 const Dashboard = React.lazy(() => import("./dashboard/components/Dashboard"));
 const Analytics = React.lazy(() => import("./analytics/components/Analytics"));
 // const Profile = React.lazy(() => import("./profile/components/MyProfile"));
+const EmissionsData = React.lazy(() => import("./emissions/components/EmissionsData"));
+const EmissionCalc = React.lazy(() => import("./emissions/components/EmissionCalculator/WrapperEmissionCalculator"));
 const NotificationTable = React.lazy(() => import("./notifications/components/NotificationTable"));
 
 
 const { Home } = Icons;
+
 const routes =
     [
         {
@@ -38,7 +41,7 @@ const routes =
                     errorElement: <RootBoundary />
                 },
                 {
-                    path: "Dashboard",
+                    path: "dashboard",
                     element:
                         <PrivateRoute>
                             <Dashboard />
@@ -58,6 +61,22 @@ const routes =
                     element:
                         <PrivateRoute>
                             <NotificationTable />
+                        </PrivateRoute>,
+                    errorElement: <RootBoundary />
+                },
+                {
+                    path: "emissions",
+                    element:
+                        <PrivateRoute>
+                            <EmissionsData />
+                        </PrivateRoute>,
+                    errorElement: <RootBoundary />
+                },
+                {
+                    path: "route-emissions",
+                    element:
+                        <PrivateRoute>
+                            <EmissionCalc />
                         </PrivateRoute>,
                     errorElement: <RootBoundary />
                 },

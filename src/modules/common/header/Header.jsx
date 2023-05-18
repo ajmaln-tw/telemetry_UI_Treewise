@@ -1,10 +1,13 @@
 import { Components } from "../../../common/components";
 import companyLogo from "../../../assets/images/logo_tele.png";
 import SearchBox from "../../home/components/SearchBox";
+import { useLocation } from "react-router-dom";
 
 const { Box, Grid } = Components;
 const Header = () => {
     //, "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.04)" }
+    // const drawerToggle = useSelector(state => state[STATE_REDUCER_KEY]).drawerToggle;
+    const { pathname } = useLocation();
     return (
         <Grid
             component="header"
@@ -12,19 +15,18 @@ const Header = () => {
         >
             <Box
                 sx={{
-                    display: "flex", justifyContent: "end", alignItems: "center", mr: 5, borderRadius: "10px", p: 1, position: "relative"
+                    display: "flex", justifyContent: "space-between", alignItems: "center", mr: 1, borderRadius: "10px", p: 1, position: "relative"
                 }}
-                variant="contained" component="div"
             >
-                <Box sx={{ minWidth: "268px" }}>
-                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: 3 }}>
-                        <Box sx={{ m: 1 }}>
-                            <img width={70} height={70} src={companyLogo} alt="logo" />
-                        </Box>
+                <Box sx={{ minWidth: "140px" }}>
+                    <Box sx={{ m: 1, mr: 1, p: 2 }}>
+                        <img width={58} height={55} src={companyLogo} alt="logo" />
                     </Box>
                 </Box>
                 {/* Search */}
-                <SearchBox />
+                {pathname.includes("/analytics") && <SearchBox />}
+                {pathname.includes("/dashboard") && <SearchBox />}
+
             </Box>
         </Grid >
     );

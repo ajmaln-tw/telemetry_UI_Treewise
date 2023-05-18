@@ -23,9 +23,9 @@ const CustomMeter = ({ totalVessels = "0.70", sailing = 0, onShore = 0 }) => {
                 conic-gradient(transparent 0deg ${sailingAngle}deg, ${grey} ${sailingAngle}deg 360deg),
                 ${progressColor}`,
                 borderRadius: "50%",
-                width: "90px",
+                width: { xs: "70px", sm: "90px" },
                 // height: `${size}px`,
-                height: "90px",
+                height: { xs: "70px", sm: "90px" },
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center"
@@ -38,9 +38,9 @@ const CustomMeter = ({ totalVessels = "0.70", sailing = 0, onShore = 0 }) => {
                 conic-gradient(transparent 0deg ${onShoreAngle}deg, ${grey} ${onShoreAngle}deg 360deg),
                 ${circleColor}`,
                         borderRadius: "50%",
-                        width: "60px",
+                        width: { xs: "40px", sm: "60px" },
                         // height: `${size}px`,
-                        height: "60px",
+                        height: { xs: "40px", sm: "60px" },
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
@@ -52,19 +52,19 @@ const CustomMeter = ({ totalVessels = "0.70", sailing = 0, onShore = 0 }) => {
                     <Typography
                         variant="p"
                         fontWeight="bold"
-                        sx={{ color: "green.main", fontSize: "10px", display: "inline" }}
+                        sx={{ color: "green.main", fontSize: { sm: "11px", xs: "7px" }, display: "inline" }}
                     >
                         {`${sailingPer} %`}
                     </Typography>
                     <Typography
                         variant="p"
-                        sx={{ color: "green.main", display: "inline", fontSize: "11px" }}
+                        sx={{ color: "green.main", display: "inline", fontSize: { sm: "11px", xs: "7px" } }}
                     >
                         Sailing
                     </Typography>
                 </Box>
             </Box>
-        </Grid>
+        </Grid >
     );
 };
 

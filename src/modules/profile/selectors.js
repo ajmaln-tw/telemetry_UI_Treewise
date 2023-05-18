@@ -11,3 +11,9 @@ export const getCropData = flow(getState, cropData);
 
 const open = (state) => state.modal.openProfileModal;
 export const getModalOpen = flow(getState, open);
+
+const vesselData = (state) => state.vesselData;
+export const getVesselData = flow(getState, vesselData);
+
+const profileImageFile = (state) => state.profileImageFile;
+export const getProfileImageFile = flow(getState, profileImageFile);

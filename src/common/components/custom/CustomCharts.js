@@ -1,4 +1,4 @@
-import { PieChart, BarChart, LineChart, DoughnutChart, StackedChart } from "./chart-components";
+import { PieChart, BarChart, LineChart, DoughnutChart, StackedChart, DoubleLine } from "./chart-components";
 
 const CustomCharts = (props) => {
     const { type, ...rest } = props;
@@ -14,6 +14,8 @@ const CustomCharts = (props) => {
             return <DoughnutChart {...rest} />;
         case "Stacked":
             return <StackedChart {...rest} />;
+        case "DoubleLine":
+            return <DoubleLine {...rest} />;
         default:
             return null;
     }

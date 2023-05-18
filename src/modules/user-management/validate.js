@@ -27,7 +27,7 @@ export const signUpSchema = Yup.object({
         .required("Password Required"),
     confirmPassword: Yup.string()
         .max(150)
-        .required("Confrim Password Required")
+        .required("Confirm Password Required")
 
 });
 
