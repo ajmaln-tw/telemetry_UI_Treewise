@@ -1,4 +1,4 @@
-import { Grid, Paper } from "@mui/material";
+import { Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
 import React, { useMemo } from "react";
 import { Form, withFormik } from "formik";
 import { FormController } from "../../../../common/components";
@@ -11,6 +11,8 @@ import EmissionVariables from "./EmissionVariables";
 
 
 const EmissionCalculatorFilterOverlay = (props) => {
+    const theme = useTheme();
+    const smSc = useMediaQuery(theme.breakpoints.down("md"));
 
     const dispatch = useDispatch();
     const { handleSubmit, errors = {}, vesselTypeOptions = [], vesselSizeOptions = [],
@@ -59,6 +61,7 @@ const EmissionCalculatorFilterOverlay = (props) => {
                 sx={{ display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "transparent" }}>
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ display: "flex", justifyContent: "center" }}>
                     <FormController
+                        width={smSc ? "100px" : "150px"}
                         control="select" label={"Vessel Type"}
                         name="vesselType"
                         options={vesselTypeOptions}
@@ -66,13 +69,13 @@ const EmissionCalculatorFilterOverlay = (props) => {
                     />
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ display: "flex", justifyContent: "center" }}>
-                    <FormController statusError={true} errorName={errors?.vesselSize} control="select" label={"Vessel Size"} name="vesselSize" options={vesselSizeOptions} onChangeFromController={vesselSizeChange} />
+                    <FormController width={smSc ? "100px" : "150px"} statusError={true} errorName={errors?.vesselSize} control="select" label={"Vessel Size"} name="vesselSize" options={vesselSizeOptions} onChangeFromController={vesselSizeChange} />
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ display: "flex", justifyContent: "center" }}>
-                    <FormController statusError={true} errorName={errors?.departure} control="select" label={"Departure Port"} name="departure" options={departureOptions} onChangeFromController={departureChange} />
+                    <FormController width={smSc ? "100px" : "150px"} statusError={true} errorName={errors?.departure} control="select" label={"Departure Port"} name="departure" options={departureOptions} onChangeFromController={departureChange} />
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ display: "flex", justifyContent: "center" }}>
-                    <FormController statusError={true} errorName={errors?.destination} control="select" label={"Destination Port"} name="destination" options={destinationOptions} onChangeFromController={destinationChange} />
+                    <FormController width={smSc ? "100px" : "150px"} statusError={true} errorName={errors?.destination} control="select" label={"Destination Port"} name="destination" options={destinationOptions} onChangeFromController={destinationChange} />
                 </Grid>
             </Grid>
             {/* <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", mb: 1 }}>

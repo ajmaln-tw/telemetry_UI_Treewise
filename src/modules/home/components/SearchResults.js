@@ -32,6 +32,7 @@ const SearchResults = ({ results = [] }) => {
     if (searchTerm.length > 2) {
         return (
             <Box sx={{
+                width: { xs: "200px", sm: "230px", md: "300px" },
                 backgroundColor: "white.main",
                 boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
                 pb: 1,
@@ -46,7 +47,7 @@ const SearchResults = ({ results = [] }) => {
                         <MdClose />
                     </IconButton>
                     <LoadingCustomOverlay active={loading} spinnerProps="skeleton">
-                        <Box sx={{ overflowY: "scroll", width: "300px", height: "180px", px: 1, pb: 1 }}>
+                        <Box sx={{ overflowY: "scroll", width: "100%", height: "180px", px: 1, pb: 1 }}>
                             {results.map((ele, i) => <Box sx={itemStyle} key={i} onClick={handleClose}>
                                 <Typography sx={{ fontSize: "13px", fontWeight: 700, color: "grey.dark" }}>
                                     {ele.title.slice(0, 10)}

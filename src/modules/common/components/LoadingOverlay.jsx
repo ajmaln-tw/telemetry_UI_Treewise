@@ -12,7 +12,7 @@ import { fadeLoaderStyle } from "./constants";
 
 const DefaultLoader = () => {
     return <Box sx={{ display: "flex", px: 2, py: 1, justifyContent: "center", flexDirection: "column", borderRadius: "15px", backgroundColor: palette.palette.primary.main }}>
-        <Typography sx={{ fontWeight: 600, fontSize: "14px" }} color={"#fff"}>Loading...</Typography>
+        <Typography sx={{ fontWeight: 600, fontSize: "14px" }} color={"#fff"}>Fetching...</Typography>
         <ScaleLoader color={"#fff"} speedMultiplier={1.9} />
     </Box>;
 };

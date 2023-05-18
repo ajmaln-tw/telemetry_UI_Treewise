@@ -1,16 +1,13 @@
 import { Box, IconButton, List, ListItemButton, ListItemText } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
-import { MdOutlineSpaceDashboard } from "react-icons/md";
-import { TbBrandGoogleAnalytics, TbBuildingFactory2 } from "react-icons/tb";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { CiUser } from "react-icons/ci";
-import { BiLogOutCircle } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { STATE_REDUCER_KEY } from "../constants";
 import { FiMenu as Menu } from "react-icons/fi";
 import { actions as sliceActions } from "../slice";
 import { logout as logoutAction } from "../actions";
-import { BiNavigation } from "react-icons/bi";
+import "./sideBar.css";
+import { Analytics, Dashboard, Emission, Notification, RouteEmission, Profile, Logout } from "../../../assets/svg";
+
 export let active = {
     display: "flex",
     justifyContent: "space-evenly",
@@ -98,39 +95,39 @@ const SideBar = () => {
                     </Box>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...dashStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
-                        <MdOutlineSpaceDashboard size="20px" />
+                    <ListItemButton className="button-sidebar" sx={{ ...dashStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
+                        <Dashboard className="svg-Icon" />
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...analyticsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../analytics")}>
-                        <TbBrandGoogleAnalytics size="20px" />
+                    <ListItemButton sx={{ ...analyticsStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../analytics")}>
+                        <Analytics />
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Analytics"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...emissionsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../emissions")}>
-                        <TbBuildingFactory2 size="20px" />
+                    <ListItemButton sx={{ ...emissionsStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../emissions")}>
+                        <Emission />
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Emissions"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...routeEmissionStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../route-emissions")}>
-                        <BiNavigation size="20px" />
+                    <ListItemButton sx={{ ...routeEmissionStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../route-emissions")}>
+                        <RouteEmission />
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Route Emissions"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...notificationsStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
-                        <IoIosNotificationsOutline size="20px" />
+                    <ListItemButton sx={{ ...notificationsStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
+                        <Notification />
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>}
                     </ListItemButton>
                 </List>
                 <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...profileStyle, px: 0.5, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../profile/info")}>
-                        <CiUser size="20px" />
-                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Profile"}</ListItemText>}
+                    <ListItemButton sx={{ ...profileStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../profile/info")}>
+                        <Profile />
+                        {drawerToggle && <>  <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Profile"}</ListItemText></>}
                     </ListItemButton>
                 </List>
             </List>
@@ -138,7 +135,7 @@ const SideBar = () => {
                 <List sx={{ px: 0.5, py: 0 }}>
                     <ListItemButton sx={{ ...logout, px: 1, py: 0 }} onClick={() => handleLogout()}>
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Logout"}</ListItemText>}
-                        <BiLogOutCircle size="20px" />
+                        <Logout />
                     </ListItemButton>
                 </List>
             </List>
