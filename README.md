@@ -1,10 +1,14 @@
-## Requirements
+## Project Requirements
 
 - [x] Node.js `v18.12.1 (npm v8.19.2)`
 - [x] npm | yarn
 - [x] VS code version 1.77.0
 
 #### Initial setup
+- npm start
+
+#### Clear cache and lib 
+- npm clean
 
 
 ## Naming Conventions
