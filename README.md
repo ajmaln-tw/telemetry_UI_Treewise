@@ -12,3 +12,6 @@
 - Components should be PascalCase.
 - Methods should be in camelCase and be named for their function.
 - Folder names should be in lower case / hyphen-case.
+
+## Development Deployment status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9524e353-ccf6-4a20-8e0a-19fa53fd72df/deploy-status)](https://app.netlify.com/sites/telemetry-dev/deploys)
