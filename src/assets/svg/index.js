@@ -7,5 +7,6 @@ import { ReactComponent as RouteEmission } from "./Route_Calculator.svg";
 import { ReactComponent as SOx } from "./SOx.svg";
 import { ReactComponent as Analytics } from "./Analytics.svg";
 import { ReactComponent as Logout } from "./Logout.svg";
+import { ReactComponent as CO2 } from "./Co2.svg";
 
-export { Logout, Analytics, Dashboard, Emission, Notification, NOx, Profile, RouteEmission, SOx };
+export { Logout, Analytics, Dashboard, Emission, Notification, NOx, Profile, RouteEmission, SOx, CO2 };
