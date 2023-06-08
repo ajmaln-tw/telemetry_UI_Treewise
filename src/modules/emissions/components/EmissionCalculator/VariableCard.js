@@ -33,7 +33,7 @@ const VariableCard = (props) => {
             <Typography {...variablesStyle}>{fuelConsumption} </Typography>
             <Typography {...unitsStyle}>mt/kWh </Typography>
             <Typography sx={{ ...variablesStyle.sx, fontSize: "12px" }}>Fuel Cons. </Typography>
-        </Box>,
+        </Box>
         <Box sx={{ backgroundColor: "#3498DB", ...cardStyle.sx }}>
             <Typography {...variablesStyle}>{sox} </Typography>
             <Typography {...unitsStyle}>mt/kWh </Typography>
@@ -44,7 +44,6 @@ const VariableCard = (props) => {
             <Typography {...unitsStyle}>mt/kWh </Typography>
             <Typography sx={{ ...variablesStyle.sx, fontSize: "12px" }}>NOx </Typography>
         </Box>
-
     </Box >;
 };
 
