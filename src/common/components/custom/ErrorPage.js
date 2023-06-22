@@ -1,29 +1,28 @@
-import { HomeOutlined } from "@mui/icons-material";
-import { Grid, IconButton, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-
-const DATA = {
-    STATUS: "Something Went Wrong",
-    TITLE: "Oops!"
-};
+import I404 from "../../../assets/images/404.png";
 
 
 const ErrorPage = (props) => {
     const navigate = useNavigate();
 
-    let { error: { status, message, statusText } = {}, image, title = DATA.TITLE } = props;
+    // let { error: { status, message, statusText } = {}, image, title = "" } = props;
+    let { image } = props;
     return (
         <Grid sx={{ display: "flex", minHeight: "600px", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-            {image && <img src={image} alt='' height={"300"} width={"60%"} />}
+            <Typography sx={{
+                fontSize: "1.8rem", color: "black", textAlign: "center", py: 2
+            }}>
+                Oops! Looks like you lost in transit!
+            </Typography>
+            <img src={image || I404} alt='' height={"220"} width={"37%"} />
             <Grid sx={{
                 textAlign: "center", fontSize: "8rem", letterSpacing: "0.5rem"
             }}>
-                {title}
             </Grid>
-            <Typography sx={{
+            {/* <Typography sx={{
                 letterSpacing: "0.4rem", fontSize: "1.8rem", color: "grey", textAlign: "center"
-            }}>
+            }}> {title && title}
                 {status || DATA.STATUS}
             </Typography>
 
@@ -31,18 +30,24 @@ const ErrorPage = (props) => {
                 letterSpacing: "0.2rem", fontSize: "0.8rem", color: "red.light", textAlign: "center"
             }}>
                 {message || statusText}
-            </Typography>}
+            </Typography>} */}
             <Grid item xs={12} sx={{ bottom: "100px", position: "absolute" }}>
-                <Grid sx={{ textAlign: "center", display: "flex", alignItems: "center" }}>
+                <Grid sx={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                     <Typography sx={{
-                        fontSize: "1.6rem", letterSpacing: "0.4rem"
-                    }}>Take Me
-                        <IconButton aria-label="home" size="large" onClick={() => navigate("../dashboard")} color="primary.main">
-                            <HomeOutlined fontSize="inherit" />
-                        </IconButton>
+                        fontSize: "1.8rem", color: "black", textAlign: "center", pt: 2
+                    }}>It seems like the information you're looking for has taken an unexpected detour.
+                        Please double-check the address and try again.
                     </Typography>
                 </Grid>
             </Grid>
+            <Grid item xs={12} sx={{ bottom: "10px", position: "absolute" }}>
+                <Grid sx={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                    <Button variant="contained" size="large" onClick={() => navigate("../dashboard")} sx={{ fontWeight: 700 }} >
+                        Go to Dashboard
+                    </Button>
+                </Grid>
+            </Grid>
+
         </Grid >
     );
 };
