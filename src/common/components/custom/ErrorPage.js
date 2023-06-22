@@ -11,14 +11,14 @@ const ErrorPage = (props) => {
     return (
         <Grid sx={{ display: "flex", minHeight: "600px", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
             <Typography sx={{
-                fontSize: "1.8rem", color: "black", textAlign: "center", py: 2
+                fontSize: "18px", fontWeight: 600, color: "black", textAlign: "center", py: 2
             }}>
                 Oops! Looks like you lost in transit!
             </Typography>
-            <img src={image || I404} alt='' height={"220"} width={"37%"} />
             <Grid sx={{
-                textAlign: "center", fontSize: "8rem", letterSpacing: "0.5rem"
+                minWidth: "100%", minHeight: { md: "60%" }, display: "flex", justifyContent: "center",
             }}>
+                <img src={image || I404} alt='' height={"220"} width={"37%"} />
             </Grid>
             {/* <Typography sx={{
                 letterSpacing: "0.4rem", fontSize: "1.8rem", color: "grey", textAlign: "center"
@@ -34,7 +34,7 @@ const ErrorPage = (props) => {
             <Grid item xs={12} sx={{ bottom: "100px", position: "absolute" }}>
                 <Grid sx={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                     <Typography sx={{
-                        fontSize: "1.8rem", color: "black", textAlign: "center", pt: 2
+                        fontSize: "18px", fontWeight: 600, color: "black", textAlign: "center", pt: 2
                     }}>It seems like the information you're looking for has taken an unexpected detour.
                         Please double-check the address and try again.
                     </Typography>
