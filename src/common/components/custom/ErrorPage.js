@@ -16,7 +16,7 @@ const ErrorPage = (props) => {
                 Oops! Looks like you lost in transit!
             </Typography>
             <Grid sx={{
-                minWidth: "100%", minHeight: { md: "60%" }, display: "flex", justifyContent: "center",
+                minWidth: "100%", minHeight: { md: "60%" }, display: "flex", justifyContent: "center"
             }}>
                 <img src={image || I404} alt='' height={"220"} width={"37%"} />
             </Grid>
