@@ -22,9 +22,9 @@ const iconStyle = {
 };
 const modalStyle = {
     position: "fixed",
-    bottom: 8,
+    bottom: 10,
     right: 9,
-    p: 4,
+    p: 2,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -44,7 +44,9 @@ const iconWrapper = {
 };
 let icons = [
     <IconButton key={1} sx={iconWrapper}>
-        <SupportAgent size="small" sx={{ color: "primary.main" }} />
+        <Tooltip title="Call Support" >
+            <SupportAgent size="small" sx={{ color: "primary.main" }} />
+        </Tooltip>
     </IconButton>
 ];
 

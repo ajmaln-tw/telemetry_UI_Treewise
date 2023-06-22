@@ -38,8 +38,8 @@ const Subscriptions = () => {
                 <SubscribeTermButton handleButton1={handleButton1} button1={button1} button2={button2} />
             </Grid>
             <Grid sx={{ display: smScreen || mdScreen ? "block" : "flex", justifyContent: "center", alignItems: "center" }}>
-                <SubScriptionBanner type="Free" premiumAmount="$0" term="(14 days Trial)" features={FREE_TIER} active={false} />
-                <SubScriptionBanner type="Premium" premiumAmount="$4200" term="/yearly" features={PREMIUM_TIER} active={true} />
+                <SubScriptionBanner type="Free" premiumAmount="$0" term="(14 days Trial)" features={FREE_TIER} active={true} />
+                <SubScriptionBanner type="Premium" premiumAmount="$4200" term="/yearly" features={PREMIUM_TIER} active={false} />
             </Grid>
         </Box>
     );
