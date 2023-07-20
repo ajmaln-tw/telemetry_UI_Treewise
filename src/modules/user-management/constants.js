@@ -9,19 +9,23 @@ export const USER_TYPE = {
 
 export const images = [
     {
-        image:
-            "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&w=1400&h=750&q=60"
+        title: "Track and analyze",
+        description: "Track and analyze fleet performance globally for better decision-making.",
+        image: "https://iili.io/HLQqmFt.jpg"
     },
     {
-        image:
-            "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&w=1400&h=750&q=60"
+        title: "Actionable Insights",
+        description: "Gain actionable insights into fuel consumption and emissions through intuitive data visualization",
+        image: "https://iili.io/HLQqtMN.jpg"
     },
     {
-        image:
-            "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&w=1400&h=750&q=60"
+        title: "Go Environmental Friendly",
+        description: "Drive environmental progress with our emissions monitoring and reduction solutions.",
+        image: "https://iili.io/HLQqZnp.jpg"
     },
     {
-        image:
-            "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&w=1400&h=750&q=60"
+        title: "Easy Monitoring",
+        description: "Efficiently calculate fuel consumption and emissions with our ship telemetry system.",
+        image: "https://iili.io/HLQqDPI.jpg"
     }
 ];
