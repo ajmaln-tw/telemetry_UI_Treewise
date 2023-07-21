@@ -15,7 +15,7 @@ export const images = [
     },
     {
         title: "Actionable Insights",
-        description: "Gain actionable insights into fuel consumption and emissions through intuitive data visualization",
+        description: "Gain actionable insights into fuel consumption and emissions through intuitive data visualization.",
         image: "https://iili.io/HLQqtMN.jpg"
     },
     {

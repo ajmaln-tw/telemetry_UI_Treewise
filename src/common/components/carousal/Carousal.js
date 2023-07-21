@@ -36,8 +36,7 @@ function Item({ name = "", title = "", description = "", image = {} }) {
                     bottom: 0,
                     left: 34,
                     padding: "16px",
-                    width: "99%",
-                    // backgroundColor: "rgba(0, 0, 0, 0.3)"
+                    width: "99%"
                 }}
             >
 
