@@ -14,7 +14,7 @@ function Item({ name = "", title = "", description = "", image = {} }) {
 
             <Box
                 sx={{
-                    width: "90vw",
+                    width: "59vw",
                     height: "100vh",
                     backgroundImage: `url(${image})`,
                     backgroundSize: "cover", position: "relative"
@@ -34,10 +34,10 @@ function Item({ name = "", title = "", description = "", image = {} }) {
                 sx={{
                     position: "absolute",
                     bottom: 0,
-                    left: 22,
+                    left: 34,
                     padding: "16px",
-                    width: "100%",
-                    backgroundColor: "rgba(0, 0, 0, 0.3)"
+                    width: "99%",
+                    // backgroundColor: "rgba(0, 0, 0, 0.3)"
                 }}
             >
 

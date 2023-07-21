@@ -9,8 +9,8 @@ export const USER_TYPE = {
 
 export const images = [
     {
-        title: "Track and analyze",
-        description: "Track and analyze fleet performance globally for better decision-making.",
+        title: "Go Environmental Friendly",
+        description: "Drive environmental progress with our emissions monitoring and reduction solutions.",
         image: "https://iili.io/HLQqmFt.jpg"
     },
     {
@@ -19,8 +19,8 @@ export const images = [
         image: "https://iili.io/HLQqtMN.jpg"
     },
     {
-        title: "Go Environmental Friendly",
-        description: "Drive environmental progress with our emissions monitoring and reduction solutions.",
+        title: "Track and analyze",
+        description: "Track and analyze fleet performance globally for better decision-making.",
         image: "https://iili.io/HLQqZnp.jpg"
     },
     {
