@@ -6,7 +6,7 @@ import CustomHeader from "../../../modules/common/components/CustomHeader";
 import { CgLoadbar } from "react-icons/cg";
 import log from "../../../assets/images/slider/log.png";
 
-function Item({ name = "", title = "", description = "", image = {} }) {
+function Item({ name = "", title = "", description = "", image = {}, overlay = false }) {
 
     return (
         <Grid sx={{ height: "100vh" }}>
@@ -36,7 +36,8 @@ function Item({ name = "", title = "", description = "", image = {} }) {
                     bottom: 0,
                     left: 34,
                     padding: "16px",
-                    width: "99%"
+                    width: "99%",
+                    backgroundColor: overlay ? "rgba(0, 0, 0, 0.3)" : ""
                 }}
             >
 
