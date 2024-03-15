@@ -6,6 +6,7 @@ import { actions as commonActions } from "./modules/common/slice";
 import DashboardLayout from "./layouts/DashboardLayout";
 import { useDispatch } from "react-redux";
 import IndexHome from "./modules/home/components/IndexHome";
+import { Apps } from "./utils/commonUtils";
 
 function App() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ function App() {
   useEffect(() => {
     dispatch(commonActions.setNavigator(navigate));
   }, []);
+  Apps.init();
   return (
     <Typography className="app" component="div">
       <DashboardLayout >
